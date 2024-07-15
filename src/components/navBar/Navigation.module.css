@@ -1,0 +1,28 @@
+.header {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: rgb(60, 60, 236);
+  margin: 10px;
+}
+
+.list {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.list a {
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+}
+
+.list a:hover {
+  color: black;
+}
+
+.list a.active {
+  color: rgb(241, 8, 8);
+  text-decoration: underline;
+}
