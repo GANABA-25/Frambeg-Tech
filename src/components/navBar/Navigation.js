@@ -14,8 +14,8 @@ import SearchInput from "./SearchInput";
 import CartItem from "../cart/CartItems";
 import ScrollToTop from "../../pages/components/ScrollToTop";
 import Modal from "../model/Modal";
-import Login from "../../pages/page/Login";
-import Signup from "../../pages/page/Signup";
+import Login from "../../pages/page/authentication/Login";
+import Signup from "../../pages/page/authentication/Signup";
 import ResetPassword from "../../pages/page/authentication/ResetPassword";
 
 import "../offcanvas/Offcanvas.css";

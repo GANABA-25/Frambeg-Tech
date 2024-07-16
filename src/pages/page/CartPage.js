@@ -8,8 +8,8 @@ import NavigationBar from "../../components/navBar/Navigation";
 import CartItem from "../../components/cart/CartItems";
 import Footer from "../components/Footer";
 import Modal from "../../components/model/Modal";
-import Login from "./Login";
-import Signup from "./Signup";
+import Login from "./authentication/Login";
+import Signup from "./authentication/Signup";
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.items);

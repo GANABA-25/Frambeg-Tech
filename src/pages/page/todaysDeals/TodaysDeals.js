@@ -1,11 +1,12 @@
 import { Fragment, useState } from "react";
 
 import TodaysDealsProducts from "./TodaysDealsProducts";
-import Footer from "../../components/Footer";
-import ScrollToTop from "../../components/ScrollToTop";
 
+import ScrollToTop from "../../components/ScrollToTop";
 import NavigationBar from "../../../components/navBar/Navigation";
 import Header_BrandDeals from "./Header_BrandDeals";
+import axios from "axios";
+import Footer from "../../components/Footer";
 
 const todaysDealsData = [
   {
@@ -238,6 +239,7 @@ const TodaysDeals = () => {
   const filteredProducts = todaysDealsData.filter((product) =>
     product.productName.toLowerCase().includes(searchedWord.toLowerCase())
   );
+
   return (
     <Fragment>
       <ScrollToTop />

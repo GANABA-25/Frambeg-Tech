@@ -62,6 +62,7 @@ const Signup = ({ onClose, isOpen }) => {
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
+
     try {
       const response = await axios.post(
         "http://localhost:8080/user/signup",
