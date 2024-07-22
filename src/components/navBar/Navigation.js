@@ -454,6 +454,12 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
                   >
                     Login
                   </Link>
+                  <Link
+                    to="/Signup"
+                    className="border-2 border-white px-2 hover:text-blue-800"
+                  >
+                    signup
+                  </Link>
                 </motion.li>
               </ul>
             </nav>
