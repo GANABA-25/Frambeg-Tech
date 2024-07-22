@@ -6,7 +6,7 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
-const ResetPassword = ({ onClose }) => {
+const ResetPassword = () => {
   const [viewPassword, setViewPassword] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -51,9 +51,6 @@ const ResetPassword = ({ onClose }) => {
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
-      }, 3000);
-      setTimeout(() => {
-        onClose();
       }, 3000);
     } catch (error) {
       setErrorMsg(error.response.data.message);

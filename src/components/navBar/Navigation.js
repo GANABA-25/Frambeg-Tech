@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink, useLocation, Link } from "react-router-dom";
 import { Fragment } from "react";
 import { useSelector } from "react-redux";
-import { motion, spring } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaTimes } from "react-icons/fa";
@@ -13,10 +13,6 @@ import CartFile from "../cart/CartFile";
 import SearchInput from "./SearchInput";
 import CartItem from "../cart/CartItems";
 import ScrollToTop from "../../pages/components/ScrollToTop";
-import Modal from "../model/Modal";
-import Login from "../../pages/page/authentication/Login";
-import Signup from "../../pages/page/authentication/Signup";
-import ResetPassword from "../../pages/page/authentication/ResetPassword";
 
 import "../offcanvas/Offcanvas.css";
 import "../offcanvas/Offcanvas2.css";
@@ -195,7 +191,7 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
         ></div>
       </div>
 
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
+      {/* <Modal isOpen={isModalOpen} onClose={closeModal}>
         <Login
           onClose={closeModal}
           isOpen={openSignupModal}
@@ -212,7 +208,7 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
         onClose={closeResetPasswordModal}
       >
         <ResetPassword onClose={closeResetPasswordModal} />
-      </Modal>
+      </Modal> */}
 
       <header className="mt-5 lg:mt-0 relative">
         {/*---------------------------------- SMALL SCREEN & MEDIUM SCREEN NAVBAR ----------------------------------*/}
@@ -309,19 +305,12 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
                     >
                       <NavLink to="/TodaysDeals">Today's Deals</NavLink>
                     </li>
-                    <button
-                      onClick={closeOffcanvasAndOpenModal}
+                    <Link
+                      to="/Login"
                       className="border-2 border-white px-2 hover:text-blue-800"
                     >
                       Login
-                    </button>
-
-                    <button
-                      onClick={closeOffcanvasAndOpenSignupModal}
-                      className="border-2 border-white px-2 hover:text-blue-800"
-                    >
-                      SignUp
-                    </button>
+                    </Link>
                   </ul>
                 </nav>
               </nav>
@@ -459,19 +448,12 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
                   transition={{ duration: 3, delay: 0.8, type: "spring" }}
                   className={`p-2 lg:text-lg ${TodaysDealsPageColor}`}
                 >
-                  <button
-                    onClick={openModal}
+                  <Link
+                    to="/Login"
                     className="border-2 border-white px-2 hover:text-blue-800"
                   >
                     Login
-                  </button>
-
-                  <button
-                    onClick={openSignupModal}
-                    className="border-2 border-white px-2 hover:text-blue-800"
-                  >
-                    SignUp
-                  </button>
+                  </Link>
                 </motion.li>
               </ul>
             </nav>

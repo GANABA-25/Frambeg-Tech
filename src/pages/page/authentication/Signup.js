@@ -7,7 +7,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { MdCloudDone } from "react-icons/md";
 
-const Signup = ({ onClose, isOpen }) => {
+const Signup = () => {
   const [viewPassword, setViewPassword] = useState(false);
   const [viewConfirmPassword, setViewConfirmPassword] = useState(false);
   const [error, setError] = useState(false);
@@ -21,13 +21,6 @@ const Signup = ({ onClose, isOpen }) => {
     password: "",
     confirmPassword: "",
   });
-
-  const LoginHandler = () => {
-    onClose();
-    setTimeout(() => {
-      isOpen();
-    }, 300);
-  };
 
   const togglePasswordVisibility = () => {
     setViewPassword(!viewPassword);
@@ -80,10 +73,6 @@ const Signup = ({ onClose, isOpen }) => {
 
       setTimeout(() => {
         setSuccess(false);
-      }, 3000);
-
-      setTimeout(() => {
-        onClose();
       }, 3000);
     } catch (error) {
       const errors = error.response?.data?.errors;
@@ -215,10 +204,7 @@ const Signup = ({ onClose, isOpen }) => {
         </button>
       </form>
       <div className="flex justify-center items-center md:mb-5">
-        <h1
-          onClick={LoginHandler}
-          className="max-[767px]:gap-3 max-[767px]:my-4 text-center  cursor-pointer hover:text-blue-600 underline underline-offset-2 underline-blue-600 md:text-2xl lg:text-xl"
-        >
+        <h1 className="max-[767px]:gap-3 max-[767px]:my-4 text-center  cursor-pointer hover:text-blue-600 underline underline-offset-2 underline-blue-600 md:text-2xl lg:text-xl">
           Already have an Account Login
         </h1>
       </div>
