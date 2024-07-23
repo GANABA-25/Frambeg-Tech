@@ -157,10 +157,10 @@ const Login = () => {
             </button>
 
             <h1 className="cursor-pointer text-center hover:text-blue-600 md:text-2xl lg:text-xl">
-              Sign in with Google Account
+              Sign in with Google
             </h1>
 
-            <div className="max-[767px]:text-[0.7rem] max-[767px]:p-2 grid justify-center items-center bg-blue-50">
+            <div className="max-[767px]:text-[0.7rem] max-[767px]:p-2 grid justify-center items-center bg-blue-50 md:p-4">
               <h1 className="flex gap-2 cursor-pointer md:text-2xl lg:text-xl">
                 <span className="opacity-80">New to Frambeg Tech</span>
                 <span className="text-blue-600 hover:text-red-600">
@@ -171,16 +171,16 @@ const Login = () => {
           </div>
         </form>
       </div>
-      <div className="max-[767px]:w-[90%] m-auto">
-        <div className="max-[767px]:my-8 max-[767px]:p-4 border-4 opacity-80">
-          <h1 className="flex">
+      <div className="font-serif max-[767px]:my-8 max-[767px]:w-[82%] m-auto md:w-[62%] md:my-8">
+        <div className="max-[767px]:p-4 border-4 opacity-80 md:p-4 md:text-xl">
+          <h1>
             On a shared computer, make sure to sign out when you're done.
             Thishelps keep your account secure from other people using your
             device.
           </h1>
         </div>
 
-        <div className="flex max-[767px]:gap-3 opacity-80">
+        <div className="max-[767px]:mt-4 flex max-[767px]:gap-3 opacity-80 md:gap-4 md:mt-6 md:text-xl">
           <h1>@ Frambeg-Tech</h1>
           <h1>Contact</h1>
           <h1>Privacy & terms</h1>
