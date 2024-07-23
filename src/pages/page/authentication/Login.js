@@ -10,6 +10,7 @@ import { FaEyeSlash } from "react-icons/fa";
 // import Modal from "../../components/model/Modal";
 
 import { FcGoogle } from "react-icons/fc";
+import { IoIosLock } from "react-icons/io";
 
 const Login = () => {
   const [viewPassword, setViewPassword] = useState(false);
@@ -71,7 +72,7 @@ const Login = () => {
 
   return (
     <Fragment>
-      <div className="w-[90%] m-auto flex justify-center lg:items-center">
+      <div className="flex justify-center lg:items-center font-serif">
         {error && (
           <div className="font-bold capitalize border-2 border-red-600 mb-3 text-center">
             <div className="flex justify-center bg-red-600 text-white p-2 md:p-4 lg:p-2">
@@ -88,7 +89,7 @@ const Login = () => {
             <p className="p-2 text-sm md:text-lg">{successMsg}</p>
           </div>
         )}
-        <form onSubmit={SubmitHandler} className="font-serif">
+        <form onSubmit={SubmitHandler}>
           <h1 className="max-[767px]:text-xl max-[767px]:my-4 font-bold md:text-2xl md:my-8">
             Frambeg-Tech
           </h1>
@@ -98,11 +99,13 @@ const Login = () => {
               Sign in to your account
             </h1>
 
-            <div className=" grid max-[767px]:gap-6  md:gap-12">
+            <div className="max-[767px]:w-[18rem] grid max-[767px]:gap-6  md:gap-12">
               <div className="grid max-[767px]:gap-2 md:gap-4">
-                <label className="font-bold">Email</label>
+                <label className="font-bold max-[767px]:text-[0.8rem]">
+                  Email
+                </label>
                 <input
-                  className=" bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
+                  className="bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
                   type="email"
                   name="email"
                   placeholder="Please Enter Your Email"
@@ -113,9 +116,11 @@ const Login = () => {
               </div>
 
               <div className="relative grid max-[767px]:gap-2 md:gap-4 items-center">
-                <span className="flex justify-between">
-                  <label className="font-bold">Password</label>
-                  <h1 className="text-blue-600">Forget your Password?</h1>
+                <span className="max-[767px]:text-[0.8rem] flex justify-between">
+                  <label className="font-bold ">Password</label>
+                  <h1 className="text-blue-600 hover:text-black">
+                    Forget your Password?
+                  </h1>
                 </span>
 
                 <input
@@ -129,7 +134,7 @@ const Login = () => {
                 />
                 <div
                   onClick={togglePasswordVisibility}
-                  className="absolute right-4 flex items-center text-blue-600"
+                  className="absolute right-4 bottom-3 flex items-center text-blue-600"
                 >
                   {viewPassword ? (
                     <FaEyeSlash className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.5rem] lg:h-[1.5rem]" />
@@ -155,16 +160,31 @@ const Login = () => {
               Sign in with Google Account
             </h1>
 
-            {/* <div className="max-[767px]:text-[0.7rem] max-[767px]:p-2 grid justify-center items-center bg-blue-50 max-[767px]:m-2">
+            <div className="max-[767px]:text-[0.7rem] max-[767px]:p-2 grid justify-center items-center bg-blue-50">
               <h1 className="flex gap-2 cursor-pointer md:text-2xl lg:text-xl">
                 <span className="opacity-80">New to Frambeg Tech</span>
                 <span className="text-blue-600 hover:text-red-600">
                   Create account
                 </span>
               </h1>
-            </div> */}
+            </div>
           </div>
         </form>
+      </div>
+      <div className="max-[767px]:w-[90%] m-auto">
+        <div className="max-[767px]:my-8 max-[767px]:p-4 border-4 opacity-80">
+          <h1 className="flex">
+            On a shared computer, make sure to sign out when you're done.
+            Thishelps keep your account secure from other people using your
+            device.
+          </h1>
+        </div>
+
+        <div className="flex max-[767px]:gap-3 opacity-80">
+          <h1>@ Frambeg-Tech</h1>
+          <h1>Contact</h1>
+          <h1>Privacy & terms</h1>
+        </div>
       </div>
     </Fragment>
   );
@@ -183,10 +203,6 @@ export default Login;
                   </h1>
                 </div>
 
-                 <h1>
-            On a shared computer, make sure to sign out when you're done.
-            Thishelps keep your account secure from other people using your
-            device.
-          </h1>
+               
                  */
 }
