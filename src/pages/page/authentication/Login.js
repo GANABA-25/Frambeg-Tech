@@ -90,18 +90,18 @@ const Login = () => {
           </div>
         )}
         <form onSubmit={SubmitHandler}>
-          <h1 className="max-[767px]:text-xl max-[767px]:my-4 font-bold md:text-2xl md:my-8">
+          <h1 className="max-[767px]:text-xl max-[767px]:my-4 font-bold md:text-2xl md:my-8 lg:text-xl">
             Frambeg-Tech
           </h1>
 
           <div className="border-2 bg-gray-300 p-8 grid gap-8 shadow-lg">
-            <h1 className="max-[767px]:text-xl font-bold md:text-2xl">
+            <h1 className="max-[767px]:text-xl font-bold md:text-2xl lg:text-xl">
               Sign in to your account
             </h1>
 
-            <div className="max-[767px]:w-[18rem] grid max-[767px]:gap-6  md:gap-12">
+            <div className="max-[767px]:w-[18rem] grid max-[767px]:gap-6  md:gap-12 lg:gap-6 lg:w-[30rem]">
               <div className="grid max-[767px]:gap-2 md:gap-4">
-                <label className="font-bold max-[767px]:text-[0.8rem]">
+                <label className="font-bold max-[767px]:text-[0.8rem] lg:text-[0.8rem]">
                   Email
                 </label>
                 <input
@@ -116,7 +116,7 @@ const Login = () => {
               </div>
 
               <div className="relative grid max-[767px]:gap-2 md:gap-4 items-center">
-                <span className="max-[767px]:text-[0.8rem] flex justify-between">
+                <span className="max-[767px]:text-[0.8rem] flex justify-between lg:text-[0.8rem]">
                   <label className="font-bold ">Password</label>
                   <h1 className="text-blue-600 hover:text-black">
                     Forget your Password?
@@ -143,25 +143,25 @@ const Login = () => {
                   )}
                 </div>
               </div>
-              <div className="flex gap-4">
-                <input type="checkbox" />
+              <div className="flex gap-2">
+                <input className="w-[1rem]" type="checkbox" />
                 <label className="opacity-70">Stay signed in for a week</label>
               </div>
             </div>
 
             <button
               type="submit"
-              className="max-[767px]:p-2 max-[767px]:text-xl font-bold border-none active:bg-blue-600 flex justify-center items-center w-full bg-blue-600 text-white border-2 hover:bg-blue-700 md:p-3 md:text-3xl lg:text-2xl"
+              className="max-[767px]:p-2 max-[767px]:text-xl font-bold border-none active:bg-blue-600 flex justify-center items-center w-full bg-blue-600 text-white border-2 hover:bg-blue-700 md:p-3 md:text-3xl lg:p-2 lg:text-xl"
             >
               Sign in
             </button>
 
-            <h1 className="cursor-pointer text-center hover:text-blue-600 md:text-2xl lg:text-xl">
+            <h1 className="cursor-pointer text-center hover:text-blue-600 md:text-2xl lg:text-sm">
               Sign in with Google
             </h1>
 
             <div className="max-[767px]:text-[0.7rem] max-[767px]:p-2 grid justify-center items-center bg-blue-50 md:p-4">
-              <h1 className="flex gap-2 cursor-pointer md:text-2xl lg:text-xl">
+              <h1 className="flex gap-2 cursor-pointer md:text-2xl lg:text-sm">
                 <span className="opacity-80">New to Frambeg Tech</span>
                 <span className="text-blue-600 hover:text-red-600">
                   Create account
@@ -171,8 +171,8 @@ const Login = () => {
           </div>
         </form>
       </div>
-      <div className="font-serif max-[767px]:my-8 max-[767px]:w-[82%] m-auto md:w-[62%] md:my-8">
-        <div className="max-[767px]:p-4 border-4 opacity-80 md:p-4 md:text-xl">
+      <div className="font-serif max-[767px]:my-8 max-[767px]:w-[82%] m-auto md:w-[62%] md:my-8 lg:w-[36%]">
+        <div className="max-[767px]:p-4 border-4 opacity-80 md:p-4 md:text-xl lg:text-sm">
           <h1>
             On a shared computer, make sure to sign out when you're done.
             Thishelps keep your account secure from other people using your
@@ -180,7 +180,7 @@ const Login = () => {
           </h1>
         </div>
 
-        <div className="max-[767px]:mt-4 flex max-[767px]:gap-3 opacity-80 md:gap-4 md:mt-6 md:text-xl">
+        <div className="max-[767px]:mt-4 flex max-[767px]:gap-3 opacity-80 md:gap-4 md:mt-6 md:text-xl lg:text-sm">
           <h1>@ Frambeg-Tech</h1>
           <h1>Contact</h1>
           <h1>Privacy & terms</h1>
