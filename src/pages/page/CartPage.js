@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -7,59 +6,10 @@ import { FaCartFlatbed } from "react-icons/fa6";
 import NavigationBar from "../../components/navBar/Navigation";
 import CartItem from "../../components/cart/CartItems";
 import Footer from "../components/Footer";
-import Modal from "../../components/model/Modal";
-import Login from "./authentication/Login";
-import Signup from "./authentication/Signup";
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const subtotal = useSelector((state) => state.cart.subtotal);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isSignUpModalOpen, setSignUpModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const openSignupModal = () => {
-    setSignUpModalOpen(true);
-  };
-
-  const closeSignupModal = () => {
-    setSignUpModalOpen(false);
-  };
-
-  // const closeOffcanvasAndOpenSignupModal = () => {
-  //   setTimeout(() => {
-  //     setSignUpModalOpen(true);
-  //   }, 250);
-  // };
-
-  // const closeOffcanvasAndOpenModal = () => {
-  //   setTimeout(() => {
-  //     setIsModalOpen(true);
-  //   }, 250);
-  // };
-
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  // };
-
-  // const openSignupModal = () => {
-  //   setSignUpModalOpen(true);
-  // };
-
-  // const closeOffcanvasAndOpenModal = () => {
-  //   setIsModalOpen(true);
-  // };
-
-  // const closeModal = () => {
-  //   setIsModalOpen(false);
-  // };
 
   const isLoggedIn = false;
 
@@ -70,7 +20,6 @@ const CartPage = () => {
         console.log("loggedIn ");
       } else {
         console.log("not LoggedIn");
-        openModal();
       }
     } catch (error) {
       console.log("user is Not LoggedIn please loggedIN");
@@ -79,13 +28,7 @@ const CartPage = () => {
   return (
     <div>
       <NavigationBar />
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <Login onClose={closeModal} isOpen={openSignupModal} />
-      </Modal>
 
-      <Modal isOpen={isSignUpModalOpen} onClose={closeSignupModal}>
-        <Signup onClose={closeSignupModal} isOpen={openModal} />
-      </Modal>
       <section className=" py-24 lg:mt-24 m-4 font-serif lg:w-4/5 lg:m-auto">
         <div className="flex justify-between border-b-2 border-blue-600">
           <div className="text-4xl font-bold mt-3">

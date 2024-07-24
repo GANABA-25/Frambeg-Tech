@@ -8,6 +8,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaTimes } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 import { FaCartFlatbed } from "react-icons/fa6";
+import { IoIosArrowForward } from "react-icons/io";
 
 import CartFile from "../cart/CartFile";
 import SearchInput from "./SearchInput";
@@ -448,18 +449,16 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
                   transition={{ duration: 3, delay: 0.8, type: "spring" }}
                   className={`p-2 lg:text-lg ${TodaysDealsPageColor}`}
                 >
-                  <Link
-                    to="/Login"
-                    className="border-2 border-white px-2 hover:text-blue-800"
-                  >
-                    Login
+                  <Link to="/SignIn" className="flex items-center lg:text-lg">
+                    Sign in <IoIosArrowForward />
                   </Link>
-                  <Link
+
+                  {/* <Link
                     to="/Signup"
                     className="border-2 border-white px-2 hover:text-blue-800"
                   >
-                    signup
-                  </Link>
+                    Sign in
+                  </Link> */}
                 </motion.li>
               </ul>
             </nav>

@@ -1,18 +1,14 @@
 import { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { BiSolidError } from "react-icons/bi";
-import { RiLockPasswordFill } from "react-icons/ri";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
-// import ResetPassword from "./authentication/ResetPassword";
-// import Modal from "../../components/model/Modal";
+import ScrollToTop from "../../components/ScrollToTop";
 
-import { FcGoogle } from "react-icons/fc";
-import { IoIosLock } from "react-icons/io";
-
-const Login = () => {
+const SignIn = () => {
   const [viewPassword, setViewPassword] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -72,6 +68,7 @@ const Login = () => {
 
   return (
     <Fragment>
+      <ScrollToTop />
       <div className="flex justify-center lg:items-center font-serif">
         {error && (
           <div className="font-bold capitalize border-2 border-red-600 mb-3 text-center">
@@ -118,9 +115,12 @@ const Login = () => {
               <div className="relative grid max-[767px]:gap-2 md:gap-4 items-center">
                 <span className="max-[767px]:text-[0.8rem] flex justify-between lg:text-[0.8rem]">
                   <label className="font-bold ">Password</label>
-                  <h1 className="text-blue-600 hover:text-black">
+                  <Link
+                    to="/ResetPassword"
+                    className="text-blue-600 hover:text-black cursor-pointer"
+                  >
                     Forget your Password?
-                  </h1>
+                  </Link>
                 </span>
 
                 <input
@@ -163,9 +163,9 @@ const Login = () => {
             <div className="max-[767px]:text-[0.7rem] max-[767px]:p-2 grid justify-center items-center bg-blue-50 md:p-4">
               <h1 className="flex gap-2 cursor-pointer md:text-2xl lg:text-sm">
                 <span className="opacity-80">New to Frambeg Tech</span>
-                <span className="text-blue-600 hover:text-red-600">
+                <Link to="/Signup" className="text-blue-600 hover:text-red-600">
                   Create account
-                </span>
+                </Link>
               </h1>
             </div>
           </div>
@@ -190,7 +190,7 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;
 
 {
   /* <div className="flex justify-center items-center max-[767px]:gap-2 md:gap-3 ">
