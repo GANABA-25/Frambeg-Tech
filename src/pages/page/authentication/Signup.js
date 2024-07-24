@@ -6,6 +6,7 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { MdCloudDone } from "react-icons/md";
+import { FaRegCheckCircle } from "react-icons/fa";
 
 const Signup = () => {
   const [viewPassword, setViewPassword] = useState(false);
@@ -89,8 +90,8 @@ const Signup = () => {
   };
   return (
     <Fragment>
-      <div className="max-[767px]:w-[90%] m-auto md:w-[60%] font-serif">
-        <div className="max-[767px]:my-4 flex items-center max-[767px]:gap-2 md:gap-3 md:my-6">
+      <div className="max-[767px]:w-[90%] m-auto md:w-[60%] font-serif lg:w-[70%]">
+        <div className="max-[767px]:my-4 flex items-center max-[767px]:gap-2 md:gap-3 md:my-6 lg:hidden">
           <img
             className="max-[767px]:w-[2rem] md:w-[3rem] lg:w-[3rem]"
             src="https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711542176/FrambegTech/HOME%20PAGE/logo_ddmofy.png"
@@ -115,115 +116,177 @@ const Signup = () => {
             <p className="p-2 text-sm md:text-lg">{successMsg}</p>
           </div>
         )}
-        <form
-          onSubmit={SubmitHandler}
-          className="max-[767px]:px-4 max-[767px]:py-8 grid justify-center bg-gray-400 shadow-2xl md:px-6 md:py-10"
-        >
-          <h1 className="max-[767px]:text-[1.38rem] max-[767px]:mb-4 font-bold md:text-2xl md:mb-6">
-            Create your FrambegTech account
-          </h1>
-          <div className="max-[767px]:w-[20rem] grid max-[767px]:gap-8 md:gap-10">
-            <div className="grid gap-1 md:gap-2">
-              <label>Full Name</label>
-              <input
-                className="bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
-                type="text"
-                name="fullName"
-                placeholder="Please Enter Your First and Last Email"
-                onChange={fullNameInputHandler}
-                value={signupData.fullName}
-                required
+        <div className="lg:flex lg:gap-24 lg:my-12">
+          <div className="hidden lg:block justify-center items-center mt-[4rem]">
+            <div className="max-[767px]:my-4 flex items-center max-[767px]:gap-2 md:gap-3 md:my-6">
+              <img
+                className="lg:w-[2rem]"
+                src="https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711542176/FrambegTech/HOME%20PAGE/logo_ddmofy.png"
               />
+              <h1 className="max-[767px]:text-xl font-bold md:text-2xl">
+                Frambeg Tech
+              </h1>
             </div>
-
-            <div className="grid gap-1 md:gap-2">
-              <label>Email</label>
-              <input
-                className="bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
-                type="email"
-                name="email"
-                placeholder="Please Enter Your Email"
-                onChange={emailInputHandler}
-                value={signupData.email}
-                required
-              />
-            </div>
-
-            <div className="relative grid gap-1 md:gap-2">
-              <label>Password</label>
-              <input
-                className="bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
-                type={viewPassword ? "text" : "password"}
-                name="password"
-                placeholder="Please Enter Your Password"
-                onChange={passwordInputHandler}
-                value={signupData.password}
-                required
-              />
-              <div
-                onClick={togglePasswordVisibility}
-                className="opacity-80 absolute right-4 max-[767px]:bottom-3 cursor-pointer md:bottom-4 flex items-center text-blue-600"
-              >
-                {viewPassword ? (
-                  <FaEyeSlash className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.5rem] lg:h-[1.5rem]" />
-                ) : (
-                  <FaEye className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.5rem] lg:h-[1.5rem]" />
-                )}
+            <div className="grid gap-4">
+              <div>
+                <h1 className="flex items-center gap-3">
+                  <FaRegCheckCircle className="text-blue-600" />
+                  <span className="opacity-95">Get started quickly</span>
+                </h1>
+                <p className="opacity-70 text-sm">
+                  Integrate with developer-friendly APIs or choose low-code or
+                  pre-built solutions
+                </p>
+              </div>
+              <div>
+                <h1 className="flex items-center gap-3">
+                  <FaRegCheckCircle className="text-blue-600" />
+                  <span className="opacity-95">Support any business model</span>
+                </h1>
+                <p className="opacity-70 text-sm">
+                  E-commerce, subscriptions, SaaS platforms, marketplaces, and
+                  more—all within a unified platform.
+                </p>
+              </div>
+              <div>
+                <h1 className="flex items-center gap-3">
+                  <FaRegCheckCircle className="text-blue-600" />
+                  <span className="opacity-95">
+                    Join millions of businesses
+                  </span>
+                </h1>
+                <p className="opacity-70 text-sm">
+                  Stripe is trusted by ambitious startups and enterprises of
+                  every size.
+                </p>
               </div>
             </div>
 
-            <div className="relative  grid items-center gap-4">
-              <label>Confirm Password</label>
-              <input
-                className="bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
-                type={viewConfirmPassword ? "text" : "password"}
-                name="confirmPassword"
-                placeholder="Please confirm Your Password"
-                onChange={confirmPasswordInputHandler}
-                value={signupData.confirmPassword}
-                required
-              />
-              <div
-                onClick={toggleConfirmPasswordVisibility}
-                className="opacity-80 absolute right-4 max-[767px]:bottom-3 cursor-pointer md:bottom-4 flex items-center text-blue-600"
-              >
-                {viewConfirmPassword ? (
-                  <FaEyeSlash className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.5rem] lg:h-[1.5rem]" />
-                ) : (
-                  <FaEye className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.5rem] lg:h-[1.5rem]" />
-                )}
-              </div>
+            <div className="max-[767px]:mb-8 max-[767px]:mt-4 flex max-[767px]:gap-3 opacity-80 md:gap-4 md:mt-6 md:text-xl lg:text-sm">
+              <h1 className="curser-pointer">@ Frambeg-Tech</h1>
+              <h1>Contact</h1>
+              <h1>Privacy & terms</h1>
             </div>
           </div>
-          <div className="max-[767px]:my-10 grid max-[767px]:gap-5 md:my-12 md:gap-8">
-            <h1 className="opacity-70 max-[767px]:text-sm">
-              <span>
-                <input
-                  type="checkbox"
-                  className="max-[767px]:mr-2 md:mr-4 md:w-[1.3rem] md:h-[1.3rem]"
-                />
-              </span>
-              Get emails from frambegTech about product updates, industry news,
-              and discounts. You can
-              <span className="text-blue-600"> unsubscribe </span> at any time.
-              <span className="text-blue-600"> Privacy Policy</span>
+          <form
+            onSubmit={SubmitHandler}
+            className="max-[767px]:px-4 max-[767px]:py-8 grid justify-center bg-gray-400 shadow-2xl md:px-6 md:py-10  lg:px-16"
+          >
+            <h1 className="max-[767px]:text-[1.38rem] max-[767px]:mb-4 font-bold md:text-2xl md:mb-6 lg:text-xl">
+              Create your FrambegTech account
             </h1>
+            <div className="max-[767px]:w-[20rem] grid max-[767px]:gap-8 md:gap-10 lg:w-[25rem] lg:gap-4">
+              <div className="grid gap-1 md:gap-2 lg:gap-1">
+                <label>Full Name</label>
+                <input
+                  className="bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
+                  type="text"
+                  name="fullName"
+                  placeholder="Please Enter Your First and Last Email"
+                  onChange={fullNameInputHandler}
+                  value={signupData.fullName}
+                  required
+                />
+              </div>
 
-            <button
-              type="submit"
-              className="max-[767px]:p-2 max-[767px]:text-xl font-bold border-none active:bg-blue-600 flex justify-center items-center w-full bg-blue-600 text-white border-2 hover:bg-blue-700 md:text-xl md:p-3 lg:text-2xl lg:p-2"
-            >
-              Create account
-            </button>
-          </div>
+              <div className="grid gap-1 md:gap-2 lg:gap-1">
+                <label>Email</label>
+                <input
+                  className="bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
+                  type="email"
+                  name="email"
+                  placeholder="Please Enter Your Email"
+                  onChange={emailInputHandler}
+                  value={signupData.email}
+                  required
+                />
+              </div>
 
-          <h1 className="text-center bg-blue-50 max-[767px]:p-4 md:text-xl md:p-4 lg:text-xl">
-            Already have an account?
-            <span className="hover:text-blue-600 cursor-pointer"> Sign in</span>
-          </h1>
-        </form>
+              <div className="relative grid gap-1 md:gap-2 lg:gap-1">
+                <label>Password</label>
+                <input
+                  className="bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
+                  type={viewPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Please Enter Your Password"
+                  onChange={passwordInputHandler}
+                  value={signupData.password}
+                  required
+                />
+                <div
+                  onClick={togglePasswordVisibility}
+                  className="opacity-80 absolute right-4 max-[767px]:bottom-3 cursor-pointer md:bottom-4 flex items-center text-blue-600 lg:bottom-3"
+                >
+                  {viewPassword ? (
+                    <FaEyeSlash className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1rem] lg:h-[1rem]" />
+                  ) : (
+                    <FaEye className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1rem] lg:h-[1rem]" />
+                  )}
+                </div>
+              </div>
 
-        <div className="max-[767px]:mb-8 max-[767px]:mt-4 flex max-[767px]:gap-3 opacity-80 md:gap-4 md:mt-6 md:text-xl lg:text-sm">
+              <div className="relative grid gap-1 md:gap-2 lg:gap-1">
+                <label>Confirm Password</label>
+                <input
+                  className="bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
+                  type={viewConfirmPassword ? "text" : "password"}
+                  name="confirmPassword"
+                  placeholder="Please confirm Your Password"
+                  onChange={confirmPasswordInputHandler}
+                  value={signupData.confirmPassword}
+                  required
+                />
+                <div
+                  onClick={toggleConfirmPasswordVisibility}
+                  className="opacity-80 absolute right-4 max-[767px]:bottom-3 cursor-pointer md:bottom-4 flex items-center text-blue-600 lg:bottom-3"
+                >
+                  {viewConfirmPassword ? (
+                    <FaEyeSlash className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1rem] lg:h-[1rem]" />
+                  ) : (
+                    <FaEye className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1rem] lg:h-[1rem]" />
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="max-[767px]:my-10 grid max-[767px]:gap-5 md:my-12 md:gap-8 lg:w-[25rem]">
+              <h1 className="opacity-70 max-[767px]:text-sm lg:text-sm">
+                <span>
+                  <input
+                    type="checkbox"
+                    className="max-[767px]:mr-2 md:mr-4 md:w-[1.3rem] md:h-[1.3rem] lg:w-[0.8rem] lg:h-[0.8rem] lg:mr-2"
+                  />
+                </span>
+                Get emails from frambegTech about product updates, industry
+                news, and discounts. You can
+                <span className="text-blue-600 cursor-pointer hover:text-blue-800">
+                  {" "}
+                  unsubscribe{" "}
+                </span>{" "}
+                at any time.
+                <span className="text-blue-600 cursor-pointer hover:text-blue-800">
+                  {" "}
+                  Privacy Policy
+                </span>
+              </h1>
+
+              <button
+                type="submit"
+                className="max-[767px]:p-2 max-[767px]:text-xl font-bold border-none active:bg-blue-600 flex justify-center items-center w-full bg-blue-600 text-white border-2 hover:bg-blue-700 md:text-xl md:p-3 lg:text-sm lg:p-2"
+              >
+                Create account
+              </button>
+            </div>
+
+            <h1 className="flex justify-center gap-2 text-center bg-blue-50 max-[767px]:p-4 md:text-xl md:p-4 lg:w-[25rem] lg:text-sm">
+              Already have an account?
+              <span className="hover:text-blue-600 cursor-pointer">
+                Sign in
+              </span>
+            </h1>
+          </form>
+        </div>
+
+        <div className="max-[767px]:mb-8 max-[767px]:mt-4 flex max-[767px]:gap-3 opacity-80 md:gap-4 md:mt-6 md:text-xl lg:text-sm lg:hidden">
           <h1>@ Frambeg-Tech</h1>
           <h1>Contact</h1>
           <h1>Privacy & terms</h1>
