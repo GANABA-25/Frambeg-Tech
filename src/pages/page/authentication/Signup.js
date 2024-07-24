@@ -89,13 +89,13 @@ const Signup = () => {
   };
   return (
     <Fragment>
-      <div className="max-[767px]:w-[90%] m-auto">
-        <div className="max-[767px]:my-4 flex items-center max-[767px]:gap-2 md:gap-3 font-serif">
+      <div className="max-[767px]:w-[90%] m-auto md:w-[60%] font-serif">
+        <div className="max-[767px]:my-4 flex items-center max-[767px]:gap-2 md:gap-3 md:my-6">
           <img
-            className="max-[767px]:w-[2rem] md:w-[5rem] lg:w-[3rem]"
+            className="max-[767px]:w-[2rem] md:w-[3rem] lg:w-[3rem]"
             src="https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711542176/FrambegTech/HOME%20PAGE/logo_ddmofy.png"
           />
-          <h1 className="max-[767px]:text-xl font-bold md:text-4xl">
+          <h1 className="max-[767px]:text-xl font-bold md:text-2xl">
             Frambeg Tech
           </h1>
         </div>
@@ -117,13 +117,13 @@ const Signup = () => {
         )}
         <form
           onSubmit={SubmitHandler}
-          className="max-[767px]:px-4 max-[767px]:py-8 font-serif grid justify-center bg-gray-400 shadow-2xl"
+          className="max-[767px]:px-4 max-[767px]:py-8 grid justify-center bg-gray-400 shadow-2xl md:px-6 md:py-10"
         >
-          <h1 className="max-[767px]:text-[1.38rem] max-[767px]:mb-4 font-bold">
+          <h1 className="max-[767px]:text-[1.38rem] max-[767px]:mb-4 font-bold md:text-2xl md:mb-6">
             Create your FrambegTech account
           </h1>
-          <div className="max-[767px]:w-[20rem] grid max-[767px]:gap-8">
-            <div className=" grid gap-1">
+          <div className="max-[767px]:w-[20rem] grid max-[767px]:gap-8 md:gap-10">
+            <div className="grid gap-1 md:gap-2">
               <label>Full Name</label>
               <input
                 className="bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
@@ -136,7 +136,7 @@ const Signup = () => {
               />
             </div>
 
-            <div className=" grid gap-1">
+            <div className="grid gap-1 md:gap-2">
               <label>Email</label>
               <input
                 className="bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
@@ -149,7 +149,7 @@ const Signup = () => {
               />
             </div>
 
-            <div className="relative  grid gap-1">
+            <div className="relative grid gap-1 md:gap-2">
               <label>Password</label>
               <input
                 className="bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
@@ -162,7 +162,7 @@ const Signup = () => {
               />
               <div
                 onClick={togglePasswordVisibility}
-                className="opacity-80 absolute right-4 max-[767px]:bottom-3 cursor-pointer md:bottom-5 flex items-center text-blue-600"
+                className="opacity-80 absolute right-4 max-[767px]:bottom-3 cursor-pointer md:bottom-4 flex items-center text-blue-600"
               >
                 {viewPassword ? (
                   <FaEyeSlash className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.5rem] lg:h-[1.5rem]" />
@@ -185,7 +185,7 @@ const Signup = () => {
               />
               <div
                 onClick={toggleConfirmPasswordVisibility}
-                className="opacity-80 absolute right-4 max-[767px]:bottom-3 cursor-pointer md:bottom-5 flex items-center text-blue-600"
+                className="opacity-80 absolute right-4 max-[767px]:bottom-3 cursor-pointer md:bottom-4 flex items-center text-blue-600"
               >
                 {viewConfirmPassword ? (
                   <FaEyeSlash className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.5rem] lg:h-[1.5rem]" />
@@ -195,10 +195,13 @@ const Signup = () => {
               </div>
             </div>
           </div>
-          <div className="max-[767px]:my-10 grid max-[767px]:gap-5">
+          <div className="max-[767px]:my-10 grid max-[767px]:gap-5 md:my-12 md:gap-8">
             <h1 className="opacity-70 max-[767px]:text-sm">
               <span>
-                <input type="checkbox" className="max-[767px]:mr-2" />
+                <input
+                  type="checkbox"
+                  className="max-[767px]:mr-2 md:mr-4 md:w-[1.3rem] md:h-[1.3rem]"
+                />
               </span>
               Get emails from frambegTech about product updates, industry news,
               and discounts. You can
@@ -208,13 +211,13 @@ const Signup = () => {
 
             <button
               type="submit"
-              className="max-[767px]:p-2 max-[767px]:text-xl font-bold border-none active:bg-blue-600 flex justify-center items-center w-full bg-blue-600 text-white border-2 hover:bg-blue-700 md:text-5xl md:p-3 lg:text-2xl lg:p-2"
+              className="max-[767px]:p-2 max-[767px]:text-xl font-bold border-none active:bg-blue-600 flex justify-center items-center w-full bg-blue-600 text-white border-2 hover:bg-blue-700 md:text-xl md:p-3 lg:text-2xl lg:p-2"
             >
               Create account
             </button>
           </div>
 
-          <h1 className="text-center bg-blue-50 max-[767px]:p-4 md:text-2xl lg:text-xl">
+          <h1 className="text-center bg-blue-50 max-[767px]:p-4 md:text-xl md:p-4 lg:text-xl">
             Already have an account?
             <span className="hover:text-blue-600 cursor-pointer"> Sign in</span>
           </h1>
