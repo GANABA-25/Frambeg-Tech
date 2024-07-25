@@ -9,7 +9,6 @@ import NewArrival from "./pages/page/newArrival/NewArrival";
 import TodaysDeals from "./pages/page/todaysDeals/TodaysDeals";
 import CartPage from "./pages/page/CartPage";
 import ProductDetails from "./pages/page/ProductDetails";
-
 import SignIn from "./pages/page/authentication/SignIn";
 import Signup from "./pages/page/authentication/Signup";
 import ResetPasswordEmailVerification from "./pages/page/authentication/ResetPasswordEmailVerification";
