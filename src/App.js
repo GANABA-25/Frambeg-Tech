@@ -12,6 +12,7 @@ import ProductDetails from "./pages/page/ProductDetails";
 
 import SignIn from "./pages/page/authentication/SignIn";
 import Signup from "./pages/page/authentication/Signup";
+import ResetPasswordEmailVerification from "./pages/page/authentication/ResetPasswordEmailVerification";
 import ResetPassword from "./pages/page/authentication/ResetPassword";
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       { path: "/ProductDetails", element: <ProductDetails /> },
       { path: "/SignIn", element: <SignIn /> },
       { path: "/Signup", element: <Signup /> },
+      {
+        path: "/ResetPasswordEmailVerification",
+        element: <ResetPasswordEmailVerification />,
+      },
       { path: "/ResetPassword", element: <ResetPassword /> },
     ],
   },

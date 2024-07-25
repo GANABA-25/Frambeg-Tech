@@ -116,7 +116,7 @@ const SignIn = () => {
                 <span className="max-[767px]:text-[0.8rem] flex justify-between lg:text-[0.8rem]">
                   <label className="font-bold ">Password</label>
                   <Link
-                    to="/ResetPassword"
+                    to="/ResetPasswordEmailVerification"
                     className="text-blue-600 hover:text-black cursor-pointer"
                   >
                     Forget your Password?
@@ -191,18 +191,3 @@ const SignIn = () => {
 };
 
 export default SignIn;
-
-{
-  /* <div className="flex justify-center items-center max-[767px]:gap-2 md:gap-3 ">
-                  <img
-                    className="max-[767px]:w-[4rem] md:w-[5rem] lg:w-[3rem]"
-                    src="https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711542176/FrambegTech/HOME%20PAGE/logo_ddmofy.png"
-                  />
-                  <h1 className="max-[767px]:text-2xl font-bold md:text-4xl">
-                    Frambeg Tech
-                  </h1>
-                </div>
-
-               
-                 */
-}

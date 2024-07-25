@@ -1,12 +1,14 @@
 import { Fragment, useState } from "react";
 import axios from "axios";
 
+import ScrollToTop from "../../components/ScrollToTop";
+
 import { BiSolidError } from "react-icons/bi";
-import { RiLockPasswordFill } from "react-icons/ri";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { MdCloudDone } from "react-icons/md";
 import { FaRegCheckCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [viewPassword, setViewPassword] = useState(false);
@@ -90,6 +92,7 @@ const Signup = () => {
   };
   return (
     <Fragment>
+      <ScrollToTop />
       <div className="max-[767px]:w-[90%] m-auto md:w-[60%] font-serif lg:w-[70%]">
         <div className="max-[767px]:my-4 flex items-center max-[767px]:gap-2 md:gap-3 md:my-6 lg:hidden">
           <img
@@ -163,7 +166,7 @@ const Signup = () => {
             </div>
 
             <div className="max-[767px]:mb-8 max-[767px]:mt-4 flex max-[767px]:gap-3 opacity-80 md:gap-4 md:mt-6 md:text-xl lg:text-sm">
-              <h1 className="curser-pointer">@ Frambeg-Tech</h1>
+              <h1 className=" cursor-pointer">@ Frambeg-Tech</h1>
               <h1>Contact</h1>
               <h1>Privacy & terms</h1>
             </div>
@@ -279,9 +282,9 @@ const Signup = () => {
 
             <h1 className="flex justify-center gap-2 text-center bg-blue-50 max-[767px]:p-4 md:text-xl md:p-4 lg:w-[25rem] lg:text-sm">
               Already have an account?
-              <span className="hover:text-blue-600 cursor-pointer">
+              <Link to="/SignIn" className="hover:text-blue-600 cursor-pointer">
                 Sign in
-              </span>
+              </Link>
             </h1>
           </form>
         </div>
