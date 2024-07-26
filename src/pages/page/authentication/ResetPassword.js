@@ -1,5 +1,6 @@
 import { Fragment, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { BiSolidError } from "react-icons/bi";
@@ -9,6 +10,8 @@ import { FaEyeSlash } from "react-icons/fa";
 const ResetPassword = () => {
   const { token } = useParams();
   const [validToken, setValidToken] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTokenValidation = async () => {
@@ -17,7 +20,11 @@ const ResetPassword = () => {
           `http://localhost:8080/user/tokenValidation/${token}`
         );
 
-        console.log(res);
+        setUserId(res.data.userId);
+        setResetPassword((prevState) => ({
+          ...prevState,
+          userId: res.data.userId,
+        }));
         if (res.status == 200) {
           setValidToken(true);
         }
@@ -39,8 +46,9 @@ const ResetPassword = () => {
   const [successMsg, seSuccessMsg] = useState("");
 
   const [resetPassword, setResetPassword] = useState({
-    password: "",
     newPassword: "",
+    confirmPassword: "",
+    userId: userId,
   });
 
   const togglePasswordVisibility = () => {
@@ -53,13 +61,13 @@ const ResetPassword = () => {
 
   const emailInputHandler = (e) => {
     setResetPassword((prevState) => {
-      return { ...prevState, password: e.target.value };
+      return { ...prevState, newPassword: e.target.value };
     });
   };
 
   const passwordInputHandler = (e) => {
     setResetPassword((prevState) => {
-      return { ...prevState, newPassword: e.target.value };
+      return { ...prevState, confirmPassword: e.target.value };
     });
   };
 
@@ -68,14 +76,19 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(
-        ` http://localhost:8080/user/resetPassword/`,
+        ` http://localhost:8080/user/resetPassword/${token}`,
         resetPassword
       );
 
       setResetPassword({
-        password: "",
         newPassword: "",
+        confirmPassword: "",
+        userId: userId,
       });
+
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
 
       seSuccessMsg(response.data.message);
       setSuccess(true);
@@ -92,7 +105,7 @@ const ResetPassword = () => {
     }
   };
   const isButtonDisabled =
-    resetPassword.password === "" || resetPassword.newPassword === "";
+    resetPassword.newPassword === "" || resetPassword.confirmPassword === "";
   return (
     <Fragment>
       <div className="font-serif max-[767px]:w-[90%] m-auto md:w-[60%] lg:grid lg:justify-center lg:items-center lg:w-[30rem]">
@@ -139,7 +152,7 @@ const ResetPassword = () => {
                   name="password"
                   placeholder="Please enter a new password"
                   onChange={emailInputHandler}
-                  value={resetPassword.password}
+                  value={resetPassword.newPassword}
                   required
                 />
                 <div
@@ -159,10 +172,10 @@ const ResetPassword = () => {
                 <input
                   className="bg-grayDark focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-sm border-2 p-2 md:p-4 lg:p-2"
                   type={viewConfirmPassword ? "text" : "password"}
-                  name="newPassword"
+                  name="confirmPassword"
                   placeholder="Please confirm the password"
                   onChange={passwordInputHandler}
-                  value={resetPassword.newPassword}
+                  value={resetPassword.confirmPassword}
                   required
                 />
                 <div
