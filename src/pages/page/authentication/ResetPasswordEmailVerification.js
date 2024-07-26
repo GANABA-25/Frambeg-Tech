@@ -1,10 +1,8 @@
-import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { Fragment, useState } from "react";
 import axios from "axios";
 
 import { BiSolidError } from "react-icons/bi";
-import { FaEye } from "react-icons/fa";
-import { FaEyeSlash } from "react-icons/fa";
 
 import ScrollToTop from "../../components/ScrollToTop";
 
@@ -15,12 +13,12 @@ const ResetPasswordEmailVerification = () => {
   const [success, setSuccess] = useState(false);
   const [successMsg, seSuccessMsg] = useState("");
 
-  const [loginData, setLoginData] = useState({
+  const [emailVerificationData, setEmailVerificationData] = useState({
     email: "",
   });
 
   const emailInputHandler = (e) => {
-    setLoginData((prevState) => {
+    setEmailVerificationData((prevState) => {
       return { ...prevState, email: e.target.value };
     });
   };
@@ -30,12 +28,12 @@ const ResetPasswordEmailVerification = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/user/login",
-        loginData
+        "http://localhost:8080/user/resetPasswordEmailValidation",
+        emailVerificationData
       );
 
       if (response.status === 200) {
-        setLoginData({
+        setEmailVerificationData({
           email: "",
           password: "",
         });
@@ -58,23 +56,7 @@ const ResetPasswordEmailVerification = () => {
     <Fragment>
       <ScrollToTop />
       <div className="max-[767px]:w-[90%] m-auto grid justify-center lg:items-center font-serif md:w-[60%] lg:w-screen lg:h-screen">
-        {error && (
-          <div className="font-bold capitalize border-2 border-red-600 mb-3 text-center">
-            <div className="flex justify-center bg-red-600 text-white p-2 md:p-4 lg:p-2">
-              <BiSolidError className="text-center max-[767px]: md:text-2xl lg:text-xl" />
-            </div>
-            <p className="p-2 text-sm md:text-lg">{errorMsg}</p>
-          </div>
-        )}
-        {success && (
-          <div className="font-bold capitalize border-2 border-green-600 mb-3 text-center">
-            <div className="flex justify-center bg-green-600 text-white p-2 md:p-4 lg:p-2">
-              <BiSolidError className="text-center max-[767px]: md:text-2xl lg:text-xl" />
-            </div>
-            <p className="p-2 text-sm md:text-lg">{successMsg}</p>
-          </div>
-        )}
-        <h1 className="max-[767px]:text-xl max-[767px]:my-4 font-bold md:text-2xl md:my-8 lg:text-xl">
+        <h1 className="max-[767px]:text-xl max-[767px]:my-4 font-bold md:text-2xl md:my-8 lg:my-0 lg:text-xl">
           Frambeg-Tech
         </h1>
         <form onSubmit={SubmitHandler} className="border-2 shadow-2xl">
@@ -89,6 +71,23 @@ const ResetPasswordEmailVerification = () => {
               </p>
             </div>
 
+            {error && (
+              <div className="font-bold capitalize border-2 border-red-600 mb-3 text-center">
+                <div className="flex justify-center bg-red-600 text-white p-2 md:p-4 lg:p-2">
+                  <BiSolidError className="text-center max-[767px]: md:text-2xl lg:text-xl" />
+                </div>
+                <p className="p-2 text-sm md:text-lg">{errorMsg}</p>
+              </div>
+            )}
+            {success && (
+              <div className="font-bold capitalize border-2 border-green-600 mb-3 text-center">
+                <div className="flex justify-center bg-green-600 text-white p-2 md:p-4 lg:p-2">
+                  <BiSolidError className="text-center max-[767px]: md:text-2xl lg:text-xl" />
+                </div>
+                <p className="p-2 text-sm md:text-lg">{successMsg}</p>
+              </div>
+            )}
+
             <div className="grid max-[767px]:gap-6 md:gap-12 lg:gap-6 lg:w-[25rem]">
               <div className="grid max-[767px]:gap-2 md:gap-4">
                 <label className="font-bold max-[767px]:text-[0.8rem] lg:text-[0.8rem]">
@@ -100,7 +99,7 @@ const ResetPasswordEmailVerification = () => {
                   name="email"
                   placeholder="Please Enter Your Email"
                   onChange={emailInputHandler}
-                  value={loginData.email}
+                  value={emailVerificationData.email}
                   required
                 />
               </div>

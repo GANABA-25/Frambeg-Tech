@@ -103,22 +103,7 @@ const Signup = () => {
             Frambeg Tech
           </h1>
         </div>
-        {error && (
-          <div className="max-[767px]:w-[90%] m-auto capitalize font-bold border-2 border-red-600 mb-3 text-center md:w-[95%]">
-            <div className="flex justify-center bg-red-600 text-white p-2 md:p-4 lg:p-2">
-              <BiSolidError className="text-center max-[767px]: md:text-2xl lg:text-xl" />
-            </div>
-            <p className="p-2 text-sm md:text-lg">{errorMsg}</p>
-          </div>
-        )}
-        {success && (
-          <div className="max-[767px]:w-[90%] m-auto capitalize font-bold border-2 border-green-600 mb-3 text-center md:w-[95%]">
-            <div className="flex justify-center bg-green-600 text-white p-2 md:p-4 lg:p-2">
-              <MdCloudDone className="text-center max-[767px]: md:text-2xl lg:text-xl" />
-            </div>
-            <p className="p-2 text-sm md:text-lg">{successMsg}</p>
-          </div>
-        )}
+
         <div className="lg:flex lg:gap-24 lg:my-12">
           <div className="hidden lg:block justify-center items-center mt-[4rem]">
             <div className="max-[767px]:my-4 flex items-center max-[767px]:gap-2 md:gap-3 md:my-6">
@@ -178,6 +163,22 @@ const Signup = () => {
             <h1 className="max-[767px]:text-[1.38rem] max-[767px]:mb-4 font-bold md:text-2xl md:mb-6 lg:text-xl">
               Create your FrambegTech account
             </h1>
+            {error && (
+              <div className="max-[767px]:w-[90%] m-auto capitalize font-bold border-2 border-red-600 mb-3 text-center md:w-[95%]">
+                <div className="flex justify-center bg-red-600 text-white p-2 md:p-4 lg:p-2">
+                  <BiSolidError className="text-center max-[767px]: md:text-2xl lg:text-xl" />
+                </div>
+                <p className="p-2 text-sm md:text-lg">{errorMsg}</p>
+              </div>
+            )}
+            {success && (
+              <div className="max-[767px]:w-[90%] m-auto capitalize font-bold border-2 border-green-600 mb-3 text-center md:w-[95%]">
+                <div className="flex justify-center bg-green-600 text-white p-2 md:p-4 lg:p-2">
+                  <MdCloudDone className="text-center max-[767px]: md:text-2xl lg:text-xl" />
+                </div>
+                <p className="p-2 text-sm md:text-lg">{successMsg}</p>
+              </div>
+            )}
             <div className="max-[767px]:w-[20rem] grid max-[767px]:gap-8 md:gap-10 lg:w-[25rem] lg:gap-4">
               <div className="grid gap-1 md:gap-2 lg:gap-1">
                 <label>Full Name</label>
