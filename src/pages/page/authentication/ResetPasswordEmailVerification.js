@@ -7,11 +7,10 @@ import { BiSolidError } from "react-icons/bi";
 import ScrollToTop from "../../components/ScrollToTop";
 
 const ResetPasswordEmailVerification = () => {
-  const [viewPassword, setViewPassword] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [success, setSuccess] = useState(false);
-  const [successMsg, seSuccessMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
 
   const [emailVerificationData, setEmailVerificationData] = useState({
     email: "",
@@ -35,10 +34,9 @@ const ResetPasswordEmailVerification = () => {
       if (response.status === 200) {
         setEmailVerificationData({
           email: "",
-          password: "",
         });
       }
-      seSuccessMsg(response.data.message);
+      setSuccessMsg(response.data.message);
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
@@ -52,11 +50,13 @@ const ResetPasswordEmailVerification = () => {
       }, 3000);
     }
   };
+
+  const disableButton = emailVerificationData.email === "";
   return (
     <Fragment>
       <ScrollToTop />
-      <div className="max-[767px]:w-[90%] m-auto grid justify-center lg:items-center font-serif md:w-[60%] lg:w-screen lg:h-screen">
-        <h1 className="max-[767px]:text-xl max-[767px]:my-4 font-bold md:text-2xl md:my-8 lg:my-0 lg:text-xl">
+      <div className="max-[767px]:w-[90%] m-auto grid justify-center font-serif md:w-[60%] lg:w-screen">
+        <h1 className="max-[767px]:text-xl max-[767px]:my-4 font-bold md:text-2xl md:my-8 lg:text-xl">
           Frambeg-Tech
         </h1>
         <form onSubmit={SubmitHandler} className="border-2 shadow-2xl">
@@ -107,7 +107,10 @@ const ResetPasswordEmailVerification = () => {
 
             <button
               type="submit"
-              className="max-[767px]:p-2 max-[767px]:text-xl opacity-90 font-bold border-none active:bg-blue-600 flex justify-center items-center w-full bg-blue-600 text-white border-2 hover:bg-blue-700 md:p-3 md:text-3xl lg:w-[25rem] lg:p-2 lg:text-sm"
+              className={`max-[767px]:p-2 max-[767px]:text-xl font-bold border-none active:bg-blue-600 flex justify-center items-center w-full bg-blue-600 text-white border-2 hover:bg-blue-700 md:p-3 md:text-3xl lg:w-[25rem] lg:p-2 lg:text-sm ${
+                disableButton ? "opacity-50 cursor-not-allowed" : "opacity-100"
+              }`}
+              disabled={disableButton}
             >
               Continue
             </button>

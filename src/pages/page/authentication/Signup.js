@@ -90,6 +90,12 @@ const Signup = () => {
       }, 3000);
     }
   };
+
+  const disabledButton =
+    signupData.fullName === "" ||
+    signupData.email === "" ||
+    signupData.password === "" ||
+    signupData.confirmPassword === "";
   return (
     <Fragment>
       <ScrollToTop />
@@ -275,7 +281,12 @@ const Signup = () => {
 
               <button
                 type="submit"
-                className="max-[767px]:p-2 max-[767px]:text-xl font-bold border-none active:bg-blue-600 flex justify-center items-center w-full bg-blue-600 text-white border-2 hover:bg-blue-700 md:text-xl md:p-3 lg:text-sm lg:p-2"
+                className={`max-[767px]:p-2 max-[767px]:text-xl font-bold border-none active:bg-blue-600 flex justify-center items-center w-full bg-blue-600 text-white border-2 hover:bg-blue-700 md:text-xl md:p-3 lg:text-sm lg:p-2 ${
+                  disabledButton
+                    ? "opacity-50 curser-not-allowed"
+                    : "opacity-100"
+                }`}
+                disabled={disabledButton}
               >
                 Create account
               </button>

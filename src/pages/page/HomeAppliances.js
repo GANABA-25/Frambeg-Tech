@@ -3,7 +3,6 @@ import Lottie from "lottie-react";
 import loadingAnimation from "../../lottie/Animation - loading.json";
 import axios from "axios";
 
-
 import ProductItem from "../components/ProductItem";
 import NavigationBar from "../../components/navBar/Navigation";
 import ScrollToTop from "../components/ScrollToTop";

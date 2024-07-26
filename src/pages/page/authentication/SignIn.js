@@ -65,7 +65,7 @@ const SignIn = () => {
       }, 3000);
     }
   };
-
+  const disableButton = loginData.email === "" || loginData.password === "";
   return (
     <Fragment>
       <ScrollToTop />
@@ -151,7 +151,10 @@ const SignIn = () => {
 
             <button
               type="submit"
-              className="max-[767px]:p-2 max-[767px]:text-xl font-bold border-none active:bg-blue-600 flex justify-center items-center w-full bg-blue-600 text-white border-2 hover:bg-blue-700 md:p-3 md:text-3xl lg:p-2 lg:text-xl"
+              className={`max-[767px]:p-2 max-[767px]:text-xl font-bold border-none active:bg-blue-600 flex justify-center items-center w-full bg-blue-600 text-white border-2 hover:bg-blue-700 md:p-3 md:text-3xl lg:p-2 lg:text-xl ${
+                disableButton ? "opacity-50 cursor-not-allowed" : "opacity-100"
+              }`}
+              disabled={disableButton}
             >
               Sign in
             </button>
