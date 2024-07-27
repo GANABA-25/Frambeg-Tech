@@ -82,7 +82,7 @@ const Signup = () => {
       if (errors && Array.isArray(errors)) {
         setErrorMsg(errors.map((err) => err.msg).join(", "));
       } else {
-        setErrorMsg("An error occurred");
+        setErrorMsg("An error occurred!!");
       }
       setError(true);
       setTimeout(() => {
