@@ -25,7 +25,7 @@ const Carousel = () => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 4, type: "spring" }}
-        className="lg:mt-43 md:mt-37 mt-37"
+        className="max-[767px]:mt-[9rem] md:mt-[9rem] lg:mt-[9.6rem]"
       >
         <Slider {...settings}>
           <div className=" px-0 mx-0">

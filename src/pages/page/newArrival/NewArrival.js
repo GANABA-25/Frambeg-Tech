@@ -28,8 +28,6 @@ const NewArrival = () => {
       const { products, totalPages } = response.data;
       setNewArrivalProducts(products);
       setTotalPages(totalPages);
-
-      console.log(products);
     } catch (error) {
       console.log("ERROR FETCHING PRODUCTS", error);
     }

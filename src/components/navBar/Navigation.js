@@ -68,57 +68,12 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isSignUpModalOpen, setSignUpModalOpen] = useState(false);
-  const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] =
-    useState(false);
   const toggleOffcanvas2 = () => {
     setIsOpen2(!isOpen2);
   };
 
   const toggleOffcanvas = () => {
     setIsOpen(!isOpen);
-  };
-
-  //modal
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const openSignupModal = () => {
-    setSignUpModalOpen(true);
-  };
-
-  const closeSignupModal = () => {
-    setSignUpModalOpen(false);
-  };
-
-  const openResetPasswordModal = () => {
-    setIsResetPasswordModalOpen(true);
-  };
-
-  const closeResetPasswordModal = () => {
-    setIsResetPasswordModalOpen(false);
-  };
-
-  const closeOffcanvasAndOpenSignupModal = () => {
-    setTimeout(() => {
-      setSignUpModalOpen(true);
-    }, 250);
-
-    toggleOffcanvas2();
-  };
-
-  const closeOffcanvasAndOpenModal = () => {
-    setTimeout(() => {
-      setIsModalOpen(true);
-    }, 250);
-
-    toggleOffcanvas2();
   };
 
   return (
@@ -192,25 +147,6 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
         ></div>
       </div>
 
-      {/* <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <Login
-          onClose={closeModal}
-          isOpen={openSignupModal}
-          onReset={openResetPasswordModal}
-        />
-      </Modal>
-
-      <Modal isOpen={isSignUpModalOpen} onClose={closeSignupModal}>
-        <Signup onClose={closeSignupModal} isOpen={openModal} />
-      </Modal>
-
-      <Modal
-        isOpen={isResetPasswordModalOpen}
-        onClose={closeResetPasswordModal}
-      >
-        <ResetPassword onClose={closeResetPasswordModal} />
-      </Modal> */}
-
       <header className="mt-5 lg:mt-0 relative">
         {/*---------------------------------- SMALL SCREEN & MEDIUM SCREEN NAVBAR ----------------------------------*/}
         {/* SMALL & MEDIUM SCREEN NAVBAR ICONS */}
@@ -270,39 +206,39 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
                     <div className="flex gap-x-2">
                       <AiFillHome className="text-black mt-2.5 text-xl md:text-3xl md:mt-5" />
                       <li
-                        className={`py-2 text-md md:py-4 md:text-3xl  ${HomePageColor}`}
+                        className={`py-2 lg:hover:opacity-50 text-md md:py-4 md:text-3xl  ${HomePageColor}`}
                       >
                         <NavLink to="/">Home</NavLink>
                       </li>
                     </div>
 
                     <li
-                      className={`py-2 text-md md:py-4 md:text-3xl ${AllProductsPageColor}`}
+                      className={`py-2 lg:hover:opacity-50 text-md md:py-4 md:text-3xl ${AllProductsPageColor}`}
                     >
                       <NavLink to="/AllProducts">All Products</NavLink>
                     </li>
                     <li
-                      className={`py-2 text-md md:py-4 md:text-3xl ${HomeApplianceColor}`}
+                      className={`py-2 lg:hover:opacity-50 text-md md:py-4 md:text-3xl ${HomeApplianceColor}`}
                     >
                       <NavLink to="/HomeAppliance">Home Appliances</NavLink>
                     </li>
                     <li
-                      className={`py-2 text-md md:py-4 md:text-3xl ${AudioAndVideoColor}`}
+                      className={`py-2 lg:hover:opacity-50 text-md md:py-4 md:text-3xl ${AudioAndVideoColor}`}
                     >
                       <NavLink to="/AudioAndVideo">Audio & Video</NavLink>
                     </li>
                     <li
-                      className={`py-2 text-md md:py-4 md:text-3xl ${RefrigeratorsPageColor}`}
+                      className={`py-2 lg:hover:opacity-50 text-md md:py-4 md:text-3xl ${RefrigeratorsPageColor}`}
                     >
                       <NavLink to="/Refrigerators">Refrigerator</NavLink>
                     </li>
                     <li
-                      className={`py-2 text-md md:py-4 md:text-3xl ${NewArrivalPageColor}`}
+                      className={`py-2 lg:hover:opacity-50 text-md md:py-4 md:text-3xl ${NewArrivalPageColor}`}
                     >
                       <NavLink to="/NewArrival">New Arrivals</NavLink>
                     </li>
                     <li
-                      className={`py-2 text-md md:py-4 md:text-3xl ${TodaysDealsPageColor}`}
+                      className={`py-2 lg:hover:opacity-50 text-md md:py-4 md:text-3xl ${TodaysDealsPageColor}`}
                     >
                       <NavLink to="/TodaysDeals">Today's Deals</NavLink>
                     </li>
@@ -327,20 +263,10 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
         <nav className="font-serif hidden lg:block bg-blue-600 fixed w-full top-0 z-10">
           <div className="flex justify-center text-white lg:block">
             <div className="flex justify-between text-sm py-2 lg:w-4/5 lg:m-auto">
-              <h1
-                initial={{ opacity: 0, x: -75 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 3, type: "spring" }}
-                className=" text-white mx-2"
-              >
+              <h1 className=" text-white mx-2">
                 24/7 Customer Service +233 596498006
               </h1>
-              <div
-                initial={{ opacity: 0, x: 75 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 3, type: "spring" }}
-                className="flex mx-2"
-              >
+              <div className="flex mx-2">
                 <h1 className=" text-white mr-2">Shipping & return</h1>
                 <h1 className="uppercase text-white ml-2">Track order</h1>
               </div>
@@ -349,12 +275,7 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
             {/* SEARCH BUTTON */}
             <div className="bg-blue-1000 p-2">
               <div className="flex justify-between py-2 lg:w-4/5 lg:m-auto">
-                <div
-                  initial={{ opacity: 0, x: -75 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 3, type: "spring" }}
-                  className="flex"
-                >
+                <div className="flex">
                   <img
                     className="w-8"
                     src="https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711542176/FrambegTech/HOME%20PAGE/logo_ddmofy.png"
@@ -375,91 +296,57 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
 
             <nav>
               <ul className=" flex justify-between list-none text-base lg:w-4/5 lg:m-auto">
-                <motion.li
-                  initial={{ opacity: 0, x: -75, scale: 0.2 }}
-                  animate={{ opacity: 1, x: 1, scale: 1 }}
-                  transition={{ duration: 3, type: "spring" }}
-                  className={`p-2 lg:text-lg ${HomePageColor}`}
+                <li
+                  className={`p-2 lg:hover:opacity-50 lg:text-lg ${HomePageColor}`}
                 >
                   <NavLink to="/" end>
                     Home
                   </NavLink>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, x: -75, scale: 0.5 }}
-                  animate={{ opacity: 1, x: 1, scale: 1 }}
-                  transition={{ duration: 3, delay: 0.3, type: "spring" }}
-                  className={`p-2 lg:text-lg ${AllProductsPageColor}`}
+                </li>
+                <li
+                  className={`p-2 lg:hover:opacity-50 lg:text-lg ${AllProductsPageColor}`}
                 >
                   <NavLink to="/AllProducts">All Products</NavLink>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, x: -75, scale: 0.5 }}
-                  animate={{ opacity: 1, x: 1, scale: 1 }}
-                  transition={{ duration: 3, delay: 0.4, type: "spring" }}
-                  className={`p-2 lg:text-lg ${HomeApplianceColor}`}
+                </li>
+                <li
+                  className={`p-2 lg:hover:opacity-50 lg:text-lg ${HomeApplianceColor}`}
                 >
                   <NavLink to="/HomeAppliance">Home Appliances</NavLink>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, x: -75, scale: 0.5 }}
-                  animate={{ opacity: 1, x: 1, scale: 1 }}
-                  transition={{ duration: 3, delay: 0.5, type: "spring" }}
-                  className={`p-2 lg:text-lg ${AudioAndVideoColor}`}
+                </li>
+                <li
+                  className={`p-2 lg:hover:opacity-50 lg:text-lg ${AudioAndVideoColor}`}
                 >
                   <NavLink to="/AudioAndVideo">Audio & Video</NavLink>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, x: -75, scale: 0.5 }}
-                  animate={{ opacity: 1, x: 1, scale: 1 }}
-                  transition={{ duration: 3, delay: 0.6, type: "spring" }}
-                  className={`p-2 lg:text-lg ${RefrigeratorsPageColor}`}
+                </li>
+                <li
+                  className={`p-2 lg:hover:opacity-50 lg:text-lg ${RefrigeratorsPageColor}`}
                 >
                   <NavLink to="/Refrigerators">Refrigerator</NavLink>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, x: -75, scale: 0.5 }}
-                  animate={{ opacity: 1, x: 1, scale: 1 }}
-                  transition={{ duration: 3, delay: 0.7, type: "spring" }}
-                  className={`p-2 lg:text-lg ${NewArrivalPageColor}`}
+                </li>
+                <li
+                  className={`p-2 lg:hover:opacity-50 lg:text-lg ${NewArrivalPageColor}`}
                 >
                   <NavLink to="/NewArrival">New Arrivals</NavLink>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, x: -75, scale: 0.5 }}
-                  animate={{ opacity: 1, x: 1, scale: 1 }}
-                  transition={{ duration: 3, delay: 0.8, type: "spring" }}
-                  className={`p-2 lg:text-lg ${TodaysDealsPageColor}`}
+                </li>
+                <li
+                  className={`p-2 lg:hover:opacity-50 lg:text-lg ${TodaysDealsPageColor}`}
                 >
                   <NavLink to="/TodaysDeals">Today's Deals</NavLink>
-                </motion.li>
+                </li>
 
                 {/* LARGE SCREEN CART */}
-                <motion.span
-                  initial={{ opacity: 0, x: -75, scale: 0.5 }}
-                  animate={{ opacity: 1, x: 1, scale: 1 }}
-                  transition={{ duration: 3, delay: 0.9, type: "spring" }}
-                >
+                <li>
                   <CartFile onClick={toggleOffcanvas} />
-                </motion.span>
+                </li>
 
-                <motion.li
-                  initial={{ opacity: 0, x: -75, scale: 0.5 }}
-                  animate={{ opacity: 1, x: 1, scale: 1 }}
-                  transition={{ duration: 3, delay: 0.8, type: "spring" }}
-                  className={`p-2 lg:text-lg ${TodaysDealsPageColor}`}
-                >
-                  <Link to="/SignIn" className="flex items-center lg:text-lg">
+                <li>
+                  <Link
+                    to="/SignIn"
+                    className="flex items-center active:text-red-600 lg:hover:opacity-50 p-2 lg:hover:opacity-50 lg:text-lg"
+                  >
                     Sign in <IoIosArrowForward />
                   </Link>
-
-                  {/* <Link
-                    to="/Signup"
-                    className="border-2 border-white px-2 hover:text-blue-800"
-                  >
-                    Sign in
-                  </Link> */}
-                </motion.li>
+                </li>
               </ul>
             </nav>
           </div>

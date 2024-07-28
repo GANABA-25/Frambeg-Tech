@@ -39,8 +39,6 @@ const Refrigerator = () => {
     setCurrentPage(data.selected);
   };
 
-  console.log("Refrigerator", refrigeratorProducts);
-
   const filteredProducts = refrigeratorProducts.filter((product) =>
     product.productName.toLowerCase().includes(searchedWord.toLowerCase())
   );

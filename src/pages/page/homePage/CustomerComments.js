@@ -26,6 +26,7 @@ const Comments = [
     image:
       "https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711544711/FrambegTech/HOME%20PAGE/CUSTOMERS/Nathaniel_z7hnaj.jpg",
     name: "Nathaniel Owusu",
+    id: 1,
   },
   {
     star: star,
@@ -34,6 +35,7 @@ const Comments = [
     image:
       "https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711542323/FrambegTech/HOME%20PAGE/CUSTOMERS/Paul_2_cohqje.jpg",
     name: "Paul Yeboah Asamoah",
+    id: 2,
   },
   {
     star: star,
@@ -42,6 +44,7 @@ const Comments = [
     image:
       "https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711542311/FrambegTech/HOME%20PAGE/CUSTOMERS/Kusi_oe96vq.jpg",
     name: "Isaac Kusi",
+    id: 3,
   },
   {
     star: star,
@@ -50,6 +53,7 @@ const Comments = [
     image:
       "https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711542311/FrambegTech/HOME%20PAGE/CUSTOMERS/Dennis_eojd3y.jpg",
     name: "Dennis Owusu",
+    id: 4,
   },
   {
     star: star,
@@ -58,6 +62,7 @@ const Comments = [
     image:
       "https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711542318/FrambegTech/HOME%20PAGE/CUSTOMERS/Marina_xgou4f.jpg",
     name: "Marina Opoku Brefo",
+    id: 5,
   },
   {
     star: star,
@@ -66,6 +71,7 @@ const Comments = [
     image:
       "https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711544711/FrambegTech/HOME%20PAGE/CUSTOMERS/Nathaniel_z7hnaj.jpg",
     name: "Nathaniel Owusu",
+    id: 6,
   },
 ];
 
@@ -80,6 +86,7 @@ const CustomerComments = () => {
           <div className="md:grid md:grid-cols-3 md:gap-2 lg:gap-4">
             {Comments.map((Comment) => (
               <CustomerDetails
+                key={Comment.id}
                 star={Comment.star}
                 comments={Comment.comments}
                 image={Comment.image}

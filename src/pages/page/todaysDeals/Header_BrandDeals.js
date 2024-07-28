@@ -25,7 +25,7 @@ const Header_BrandDeals = () => {
               className="w-10 h-10 md:w-20 md:h-20"
               src="https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711542008/FrambegTech/TODAYS%20DEALS/card_yum6hv.png"
               alt="cardImage"
-            ></img>
+            />
           </div>
 
           <div className="text-xb md:text-xl md:mt-2">
