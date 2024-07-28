@@ -6,7 +6,6 @@ import { cartAction } from "../../store/cart-slice";
 
 const ProductItem = (props) => {
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const { title, price, discount, total, description, productImage, id } =
@@ -25,17 +24,18 @@ const ProductItem = (props) => {
       })
     );
   };
+
   return (
     <Fragment>
-      <div>
-        <div className="grid justify-center uppercase">
+      <div className="h-full flex flex-col justify-between border-2">
+        <div className="mb-auto">
           <div
             onClick={() =>
               navigate("/ProductDetails", {
                 state: { payload: props },
               })
             }
-            className="group bg-blue-10003 flex justify-center p-2"
+            className="group bg-blue-10003 flex justify-center"
           >
             <img
               src={props.productImage}
@@ -48,33 +48,32 @@ const ProductItem = (props) => {
               className="h-26 md:h-36 lg:h-46 text-center m-8 object-cover hidden opacity-0 lg:group-hover:block lg:group-hover:opacity-100 transition duration-600 ease-in-out"
             />
           </div>
-          <div className="mt-2 text-sm font-bold md:text-xl">
-            <h1>{props.productName}</h1>
-          </div>
 
-          <div className="py-4">
+          <div className="p-2 grid gap-4">
+            <div className=" text-sm font-bold md:text-xl">
+              <h1>{props.productName}</h1>
+            </div>
             <h4 className="text-sm cursor-pointer md:text-base leading-5 tracking-wide md:tracking-widest md:leading-6 lg:tracking-wide lg:leading-6">
               {props.description}
             </h4>
-            <div className="flex justify-between mt-2 text-center">
-              <div className="relative">
-                <p className="line-through">GH¢ {props.discount}</p>
-              </div>
-              <p className="font-bold opacity-75 text-xs pt-1 md:text-sm lg:text-mb">
-                GH¢
-                {props.price.toLocaleString(undefined, {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}
-              </p>
-              <button
-                onClick={addToCartHandler}
-                className="bg-slate-950 text-white p-2 rounded-md text-tb lg:text-xb hover:bg-blue-600 hover:-translate-y-1 hover:scale-110 duration-300 shadow-lg"
-              >
-                addToCart
-              </button>
-            </div>
           </div>
+        </div>
+
+        <div className="px-2 pb-2 flex justify-between items-center mt-4">
+          <p className="font-bold opacity-75 text-xs md:text-sm lg:text-mb">
+            GH¢
+            {props.price.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </p>
+          <button
+            onClick={addToCartHandler}
+            className="bg-slate-950 p-2 text-white rounded-md text-tb lg:text-xb hover:bg-blue-600 shadow-lg"
+          >
+            Add To Cart
+          </button>
+          x``
         </div>
       </div>
     </Fragment>
