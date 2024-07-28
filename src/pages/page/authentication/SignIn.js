@@ -60,8 +60,12 @@ const SignIn = () => {
         });
       }
     } catch (error) {
-      setErrorMsg(error.response.data.message);
-
+      const errors = error.response?.data?.errors;
+      if (errors) {
+        setErrorMsg(error.response.data.message);
+      } else {
+        setErrorMsg("An error occurred, Try again later");
+      }
       setError(true);
       setTimeout(() => {
         setError(false);
@@ -176,7 +180,10 @@ const SignIn = () => {
             <div className="max-[767px]:text-[0.7rem] max-[767px]:p-2 grid justify-center items-center bg-blue-50 md:p-4">
               <h1 className="flex gap-2 cursor-pointer md:text-2xl lg:text-sm">
                 <span className="opacity-80">New to Frambeg Tech</span>
-                <Link to="/Signup" className="text-blue-600 hover:text-red-600">
+                <Link
+                  to="/Signup"
+                  className="text-blue-600 hover:text-green-600"
+                >
                   Create account
                 </Link>
               </h1>
