@@ -71,7 +71,7 @@ const SignIn = () => {
         setError(false);
       }, 3000);
     } finally {
-      setIsLoading(false); // Set loading state to false after response
+      setIsLoading(false);
     }
   };
   const disableButton = loginData.email === "" || loginData.password === "";
@@ -137,9 +137,9 @@ const SignIn = () => {
                     className="absolute opacity-50 hover:opacity-100 right-4 bottom-3 flex items-center text-blue-600"
                   >
                     {viewPassword ? (
-                      <FaEyeSlash className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.5rem] lg:h-[1.5rem]" />
+                      <FaEyeSlash className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.2rem] lg:h-[1.2rem]" />
                     ) : (
-                      <FaEye className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.5rem] lg:h-[1.5rem]" />
+                      <FaEye className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.2rem] lg:h-[1.2rem]" />
                     )}
                   </div>
                 </div>

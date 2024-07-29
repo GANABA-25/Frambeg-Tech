@@ -73,7 +73,6 @@ const ProductItem = (props) => {
           >
             Add To Cart
           </button>
-          x``
         </div>
       </div>
     </Fragment>

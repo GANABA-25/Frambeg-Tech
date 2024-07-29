@@ -241,9 +241,9 @@ const Signup = () => {
                     className="opacity-50 hover:opacity-100 absolute right-4 max-[767px]:bottom-3 cursor-pointer md:bottom-4 flex items-center text-blue-600 lg:bottom-3"
                   >
                     {viewPassword ? (
-                      <FaEyeSlash className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1rem] lg:h-[1rem]" />
+                      <FaEyeSlash className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.2rem] lg:h-[1.2rem]" />
                     ) : (
-                      <FaEye className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1rem] lg:h-[1rem]" />
+                      <FaEye className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.2rem] lg:h-[1.2rem]" />
                     )}
                   </div>
                 </div>
@@ -264,9 +264,9 @@ const Signup = () => {
                     className="opacity-50 hover:opacity-100 absolute right-4 max-[767px]:bottom-3 cursor-pointer md:bottom-4 flex items-center text-blue-600 lg:bottom-3"
                   >
                     {viewConfirmPassword ? (
-                      <FaEyeSlash className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1rem] lg:h-[1rem]" />
+                      <FaEyeSlash className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.2rem] lg:h-[1.2rem]" />
                     ) : (
-                      <FaEye className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1rem] lg:h-[1rem]" />
+                      <FaEye className="w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] lg:w-[1.2rem] lg:h-[1.2rem]" />
                     )}
                   </div>
                 </div>
