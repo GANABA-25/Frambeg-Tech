@@ -28,7 +28,7 @@ const SearchInput = ({ onHandleInput, onCheckSearchValue }) => {
           placeholder="search for product"
           onChange={searchInputHandler}
           value={searchWord}
-          className="max-[767px]:w-72 text-slate-950 border-2 bg-grayDark focus:border-0 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:rounded-sm p-[0.4rem] md:w-full lg:w-72"
+          className="max-[767px]:w-full text-slate-950 border-2 bg-grayDark focus:border-0 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:rounded-sm p-[0.4rem] md:w-full lg:w-72"
         />
         <FaSearch
           className={`absolute right-2 opacity-${

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { NavLink, useLocation, Link } from "react-router-dom";
 import { Fragment } from "react";
 import { useSelector } from "react-redux";
-import { motion } from "framer-motion";
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaTimes } from "react-icons/fa";
@@ -30,6 +29,13 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
   const [NewArrivalPageColor, setNewArrivalPageColor] = useState("text-white");
   const [TodaysDealsPageColor, setTodaysDealsPageColor] =
     useState("text-white");
+
+  // const cartQuantity = useSelector((state) => state.cart.totalQuantity);
+  const subtotal = useSelector((state) => state.cart.subtotal);
+
+  const cartItems = useSelector((state) => state.cart.items);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
 
   useEffect(() => {
     location.pathname === "/"
@@ -60,13 +66,6 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
       ? setTodaysDealsPageColor("underline underline-offset-4")
       : setTodaysDealsPageColor("");
   }, [location.pathname]);
-
-  // const cartQuantity = useSelector((state) => state.cart.totalQuantity);
-  const subtotal = useSelector((state) => state.cart.subtotal);
-
-  const cartItems = useSelector((state) => state.cart.items);
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpen2, setIsOpen2] = useState(false);
 
   const toggleOffcanvas2 = () => {
     setIsOpen2(!isOpen2);
@@ -256,7 +255,7 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
           <div
             onClick={toggleOffcanvas2}
             className={`overlay2 ${isOpen2 ? "open2" : ""}`}
-          ></div>
+          />
         </div>
 
         {/*---------------------------------- LARGE SCREEN NAVIGATION BARS ---------------------------------- */}
