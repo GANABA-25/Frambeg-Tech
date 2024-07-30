@@ -1,12 +1,12 @@
 import { Fragment, useState } from "react";
+import { useDispatch } from "react-redux";
+import { userActions } from "../../../store/user-slice";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import axios from "axios";
 
 import { BiSolidError } from "react-icons/bi";
-import { FaRegCheckCircle } from "react-icons/fa";
-import { FaCircleCheck } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
@@ -14,6 +14,7 @@ import ScrollToTop from "../../components/ScrollToTop";
 import formLoadingAnimation from "../../../lottie/Animation - form loading.json";
 
 const SignIn = () => {
+  const dispatch = useDispatch();
   const [viewPassword, setViewPassword] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -53,6 +54,7 @@ const SignIn = () => {
       );
 
       if (response.status === 200) {
+        dispatch(userActions.setUser({ userId: response.data.userId }));
         navigate("/");
         setLoginData({
           email: "",

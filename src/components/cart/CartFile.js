@@ -10,7 +10,7 @@ const CartFile = (props) => {
   useEffect(() => {
     if (cartQuantity > 0) {
       setAddedToCart(true);
-      const timer = setTimeout(() => setAddedToCart(false), 1000); // Adjust the timeout as needed
+      const timer = setTimeout(() => setAddedToCart(false), 1000);
       return () => clearTimeout(timer);
     }
   }, [cartQuantity]);
