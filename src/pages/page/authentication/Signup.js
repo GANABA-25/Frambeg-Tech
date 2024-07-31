@@ -9,7 +9,6 @@ import formLoadingAnimation from "../../../lottie/Animation - form loading.json"
 import { BiSolidError } from "react-icons/bi";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { MdCloudDone } from "react-icons/md";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
 import { Link } from "react-router-dom";
@@ -119,6 +118,7 @@ const Signup = () => {
           <img
             className="max-[767px]:w-[2rem] md:w-[3rem] lg:w-[3rem]"
             src="https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711542176/FrambegTech/HOME%20PAGE/logo_ddmofy.png"
+            alt="logo"
           />
           <h1 className="max-[767px]:text-xl font-bold md:text-2xl">
             Frambeg Tech
@@ -131,6 +131,7 @@ const Signup = () => {
               <img
                 className="lg:w-[2rem]"
                 src="https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711542176/FrambegTech/HOME%20PAGE/logo_ddmofy.png"
+                alt="logo"
               />
               <h1 className="max-[767px]:text-xl font-bold md:text-2xl">
                 Frambeg Tech

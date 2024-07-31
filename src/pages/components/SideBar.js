@@ -1,35 +1,36 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 const SideBar = () => {
-  const [shouldMove, setShouldMove] = useState(false);
+  // const [shouldMove, setShouldMove] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollHeight = window.scrollY;
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollHeight = window.scrollY;
 
-      if (scrollHeight > 2400) {
-        setShouldMove(true);
-      } else {
-        setShouldMove(false);
-      }
-    };
+  //     if (scrollHeight > 2400) {
+  //       setShouldMove(true);
+  //     } else {
+  //       setShouldMove(false);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
-  const divStyle = {
-    position: "fixed",
-    top: shouldMove ? "-370px" : "130px",
-    transition: "top 0.3s ease",
-  };
+  // const divStyle = {
+  //   position: "fixed",
+  //   top: shouldMove ? "-370px" : "130px",
+  //   transition: "top 0.3s ease",
+  // };
+  // style={divStyle}
 
   return (
-    <div style={divStyle} className="mt-4 hidden lg:block">
-      <h1 className="font-bold text-2xl my-12">Categories</h1>
+    <div className="mt-4 hidden lg:block lg:pr-[4.5rem]">
+      <h1 className="font-bold text-2xl mt-[12rem]">Categories</h1>
       <ul className="my-24 opacity-75 text-sm md:text-xl lg:text-sm">
         <li className="my-3 hover:text-blue-500 cursor-pointer">
           Air conditioner

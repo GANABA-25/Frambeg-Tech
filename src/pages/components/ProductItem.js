@@ -39,12 +39,12 @@ const ProductItem = (props) => {
           >
             <img
               src={props.productImage}
-              alt="Initial Image"
+              alt="Initial"
               className="h-26 md:h-36 lg:h-46 text-center m-8 object-cover lg:group-hover:hidden opacity-100 lg:group-hover:opacity-0 transition duration-600 ease-in-out"
             />
             <img
               src={props.productImage2}
-              alt="Hover Image"
+              alt="second"
               className="h-26 md:h-36 lg:h-46 text-center m-8 object-cover hidden opacity-0 lg:group-hover:block lg:group-hover:opacity-100 transition duration-600 ease-in-out"
             />
           </div>

@@ -7,7 +7,6 @@ import ProductItem from "../components/ProductItem";
 import ScrollToTop from "../components/ScrollToTop";
 import Footer from "../components/Footer";
 import NavigationBar from "../../components/navBar/Navigation";
-import SideBar from "../components/SideBar";
 import Pagination from "../components/Pagination";
 
 const AllProducts = () => {
@@ -53,51 +52,49 @@ const AllProducts = () => {
         }
         onHandleInputInNav={(searchWord) => setSearchedWord(searchWord)}
       />
-      <div className="flex w-full h-full font-serif lg:w-4/5 lg:m-auto">
-        <div className="hidden lg:block flex-none w-[14rem] h-screen">
-          <SideBar />
+      <div className="max-[767px]:pt-[10rem] md:pt-[8rem] h-full font-serif lg:w-4/5 lg:m-auto">
+        <div className="max-[767px]:mb-4 grid gap-6 md:my-24 md:gap-6 mx-4 lg:mx-0">
+          <h1 className="text-6xl font-bold text-blue-600">Shop</h1>
+          <p className="opacity-75">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+            turpis velit, iaculis vel risus non, convallis rhoncus ligula.
+            Vestibulum ut lorem posuere, malesuada neque et, placerat quam. In
+            hac habitasse platea dictumst. Sed bibendum porttitor sem, at
+            sollicitudin orci placerat nec.
+          </p>
         </div>
-
-        {/* Body */}
-        <div className="flex-grow border-l-[0.2rem] mt-44">
-          <div className="">
-            <h1 className="text-6xl font-bold text-blue-600 m-24 ml-16">
-              Shop
-            </h1>
-            {productsToDisplay.length === 0 ? (
-              <div className="flex justify-center items-center w-full">
-                <Lottie
-                  className="w-[6rem]"
-                  animationData={loadingAnimation}
-                  loop={true}
-                />
-              </div>
-            ) : (
-              <>
-                <div className="grid grid-cols-2 mx-4 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0 lg:ml-16">
-                  {filteredProducts.map((product) => (
-                    <ProductItem
-                      key={product._id}
-                      id={product._id}
-                      productImage={product.productImage}
-                      productImage2={product.productImage2}
-                      productName={product.productName}
-                      description={product.description}
-                      price={product.price}
-                      addToCart={product.addToCart}
-                    />
-                  ))}
-                </div>
-
-                <div className="lg:ml-16">
-                  <Pagination
-                    totalPages={totalPages}
-                    handlePageClick={handlePageClick}
+        <div>
+          {productsToDisplay.length === 0 ? (
+            <div className="flex justify-center items-center w-full">
+              <Lottie
+                className="w-[6rem]"
+                animationData={loadingAnimation}
+                loop={true}
+              />
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-2 mx-4 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
+                {filteredProducts.map((product) => (
+                  <ProductItem
+                    key={product._id}
+                    id={product._id}
+                    productImage={product.productImage}
+                    productImage2={product.productImage2}
+                    productName={product.productName}
+                    description={product.description}
+                    price={product.price}
+                    addToCart={product.addToCart}
                   />
-                </div>
-              </>
-            )}
-          </div>
+                ))}
+              </div>
+
+              <Pagination
+                totalPages={totalPages}
+                handlePageClick={handlePageClick}
+              />
+            </>
+          )}
         </div>
       </div>
 
@@ -107,83 +104,3 @@ const AllProducts = () => {
 };
 
 export default AllProducts;
-
-// {
-//   /* <div className="font-serif mt-44">
-//         <div className="lg:hidden">
-//           <h1 className="text-4xl m-4 my-14 lg:text-7xl font-bold text-blue-600 lg:my-24">
-//             Shop
-//           </h1>
-
-//           {productsToDisplay.length === 0 ? (
-//             // <Lottie animationData={loadingAnimation} loop={true} />
-//             <div>Loading...</div>
-//           ) : (
-//             <div className="grid grid-cols-2 mx-4 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0 lg:ml-16">
-//               {productsToDisplay.map((product) => (
-//                 <ProductItem
-//                   key={product._id}
-//                   id={product._id}
-//                   productImage={product.productImage}
-//                   productImage2={product.productImage2}
-//                   productName={product.productName}
-//                   description={product.description}
-//                   price={product.price}
-//                   addToCart={product.addToCart}
-//                 />
-//               ))}
-//             </div>
-//           )}
-//           <div>
-//             <Pagination
-//               totalPages={totalPages}
-//               handlePageClick={handlePageClick}
-//             />
-//           </div>
-//         </div>
-
-//         <div className="md:m-4 lg:flex lg:w-4/5 lg:m-auto">
-//           <SideBar />
-//           <div>
-//             <div className="hidden lg:block lg:ml-52 border-l-2">
-//               <h1 className="text-6xl font-bold text-blue-600 m-24 ml-16">
-//                 Shop
-//               </h1>
-//               {productsToDisplay.length === 0 ? (
-//                 <div className="flex justify-center items-center w-12">
-//                   <Lottie
-//                     className=""
-//                     animationData={loadingAnimation}
-//                     loop={true}
-//                   />
-//                 </div>
-//               ) : (
-//                 <>
-//                   <div className="grid grid-cols-2 mx-4 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0 lg:ml-16">
-//                     {productsToDisplay.map((product) => (
-//                       <ProductItem
-//                         key={product._id}
-//                         id={product._id}
-//                         productImage={product.productImage}
-//                         productImage2={product.productImage2}
-//                         productName={product.productName}
-//                         description={product.description}
-//                         price={product.price}
-//                         addToCart={product.addToCart}
-//                       />
-//                     ))}
-//                   </div>
-
-//                   <div className="lg:ml-16">
-//                     <Pagination
-//                       totalPages={totalPages}
-//                       handlePageClick={handlePageClick}
-//                     />
-//                   </div>
-//                 </>
-//               )}
-//             </div>
-//           </div>
-//         </div>
-//       </div> */
-// }

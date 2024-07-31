@@ -10,8 +10,8 @@ const Pagination = ({ totalPages, handlePageClick }) => {
         nextLabel={<IoIosArrowRoundForward className="text-4xl" />}
         breakLabel={"..."}
         pageCount={totalPages}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
+        marginPagesDisplayed={0}
+        pageRangeDisplayed={3}
         onPageChange={handlePageClick}
         containerClassName={"flex items-center text-blue-600 my-12"}
         subContainerClassName={"pages pagination"}
