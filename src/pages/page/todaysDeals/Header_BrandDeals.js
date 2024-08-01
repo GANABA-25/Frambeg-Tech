@@ -7,13 +7,14 @@ const Header_BrandDeals = () => {
         <div className="mx-4 my-8 pb-7 md:flex lg:w-4/5 lg:m-auto">
           <div className="md:w-3/6 md:mt-3 md:border-r-2">
             <h1 className="text-4xl mb-4 font-bold opacity-80 md:text-5xl lg:text-6xl">
-              Toady's deals
+              Today's deals
             </h1>
           </div>
           <div className="md:w-3/6 opacity-75 md:text-xl md:border-l-2 md:p-6">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-              turpis velit, iaculis vel risus.
+              Find the best discounts on products available today! Discover
+              incredible deals and savings on a selection of items, and grab
+              your favorites at unbeatable prices.
             </p>
           </div>
         </div>

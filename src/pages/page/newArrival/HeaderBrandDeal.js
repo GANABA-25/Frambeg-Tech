@@ -29,8 +29,8 @@ const HeaderBrandDeal = () => {
           </div>
           <div className="md:w-3/6 opacity-75 md:text-xl md:border-l-2 md:p-6">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-              turpis velit, iaculis vel risus.
+              Check out the latest products just in! Discover new items and stay
+              updated with the freshest trends and innovations.
             </p>
           </div>
         </div>

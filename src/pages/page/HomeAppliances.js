@@ -60,11 +60,13 @@ const HomeAppliances = () => {
             Home Appliances
           </h1>
           <p className="m-4 opacity-75">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            turpis velit, iaculis vel risus non, convallis rhoncus ligula.
-            Vestibulum ut lorem posuere, malesuada neque et, placerat quam. In
-            hac habitasse platea dictumst. Sed bibendum porttitor sem, at
-            sollicitudin orci placerat nec.
+            Discover the best collection of products specifically focused on
+            home appliances. Find a comprehensive selection of kitchen
+            appliances, home electronics, and other household essentials.
+            Whether you're upgrading your kitchen or shopping for everyday
+            household items, you'll find everything you need right here. Enjoy
+            browsing top-quality brands and products designed to make your home
+            more comfortable and efficient.
           </p>
           <div className="grid grid-cols-2 mx-4 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0 lg:ml-16">
             {filteredProducts?.map((HomeAppliance) => (
@@ -94,11 +96,13 @@ const HomeAppliances = () => {
               Home Appliances
             </h1>
             <p className="">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-              turpis velit, iaculis vel risus non, convallis rhoncus ligula.
-              Vestibulum ut lorem posuere, malesuada neque et, placerat quam. In
-              hac habitasse platea dictumst. Sed bibendum porttitor sem, at
-              sollicitudin orci placerat nec.
+              Discover the best collection of products specifically focused on
+              home appliances. Find a comprehensive selection of kitchen
+              appliances, home electronics, and other household essentials.
+              Whether you're upgrading your kitchen or shopping for everyday
+              household items, you'll find everything you need right here. Enjoy
+              browsing top-quality brands and products designed to make your
+              home more comfortable and efficient.
             </p>
           </div>
           <div className="hidden lg:block ">
