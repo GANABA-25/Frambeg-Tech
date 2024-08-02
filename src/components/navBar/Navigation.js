@@ -125,14 +125,7 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
             </span>
           ) : (
             <>
-              <div className="grid gap-2 mt-8 m-2">
-                <Link
-                  to="/CartPage"
-                  className="bg-blue-10006 p-2 text-center text-white font-bold text-xl md:text-xl md:p-2 hover:bg-blue-600"
-                >
-                  <h1>View Cart</h1>
-                </Link>
-
+              <div className="mt-8 m-2">
                 <div className="bg-blue-10006 p-2 text-center text-white font-bold text-xl md:text-xl md:p-2 hover:bg-blue-600">
                   <h1>Check Out</h1>
                 </div>

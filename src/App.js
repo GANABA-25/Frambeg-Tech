@@ -7,7 +7,6 @@ import AudioAndVideo from "./pages/page/AudioAndVideo";
 import Refrigerator from "./pages/page/Refrigerator";
 import NewArrival from "./pages/page/newArrival/NewArrival";
 import TodaysDeals from "./pages/page/todaysDeals/TodaysDeals";
-import CartPage from "./pages/page/CartPage";
 import ProductDetails from "./pages/page/ProductDetails";
 import SignIn from "./pages/page/authentication/SignIn";
 import Signup from "./pages/page/authentication/Signup";
@@ -25,7 +24,6 @@ const router = createBrowserRouter([
       { path: "/Refrigerators", element: <Refrigerator /> },
       { path: "/NewArrival", element: <NewArrival /> },
       { path: "/TodaysDeals", element: <TodaysDeals /> },
-      { path: "/CartPage", element: <CartPage /> },
       { path: "/ProductDetails", element: <ProductDetails /> },
       { path: "/SignIn", element: <SignIn /> },
       { path: "/Signup", element: <Signup /> },
