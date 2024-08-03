@@ -5,7 +5,7 @@ import axios from "axios";
 import ProductItem from "../../components/ProductItem";
 import ScrollToTop from "../../components/ScrollToTop";
 import NavigationBar from "../../../components/navBar/Navigation";
-import Header_BrandDeals from "./Header_BrandDeals";
+import HeaderBrandDeals from "./HeaderBrandDeals";
 import loadingAnimation from "../../../lottie/Animation - loading.json";
 import Pagination from "../../components/Pagination";
 import Footer from "../../components/Footer";
@@ -44,6 +44,10 @@ const TodaysDeals = () => {
     product.productName.toLowerCase().includes(searchedWord.toLowerCase())
   );
 
+  const productsToDisplay = checkSearchedWord
+    ? filteredProducts
+    : bestDealsProducts;
+
   return (
     <Fragment>
       <ScrollToTop />
@@ -56,7 +60,7 @@ const TodaysDeals = () => {
         }}
       />
       <div className="m-4 font-serif mt-44 lg:m-0 lg:pt-20">
-        <Header_BrandDeals />
+        <HeaderBrandDeals />
 
         <div className="md:m-4 lg:w-4/5 lg:m-auto">
           <div className="border-2 py-4 md:p-4 lg:p-4 shadow-md bg-white">
@@ -73,7 +77,7 @@ const TodaysDeals = () => {
               />
             )} */}
 
-            {filteredProducts.length === 0 ? (
+            {productsToDisplay.length === 0 ? (
               <div className="flex justify-center items-center w-full">
                 <Lottie
                   className="w-[6rem]"

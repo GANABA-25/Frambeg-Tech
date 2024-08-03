@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-const Header_BrandDeals = () => {
+const HeaderBrandDeals = () => {
   return (
     <Fragment>
       <div className="border-b-2 mt-32">
@@ -51,4 +51,4 @@ const Header_BrandDeals = () => {
   );
 };
 
-export default Header_BrandDeals;
+export default HeaderBrandDeals;

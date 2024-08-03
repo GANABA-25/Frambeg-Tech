@@ -1,25 +1,51 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useLocation } from "react-router-dom";
-
-import { IoMdAdd } from "react-icons/io";
-import { HiOutlineMinus } from "react-icons/hi";
 import NavigationBar from "../../components/navBar/Navigation";
-
 import Footer from "../components/Footer";
 
 const ProductDetails = () => {
   const { state } = useLocation();
   const payload = state && state.payload;
 
+  const [currentImage, setCurrentImage] = useState(payload.productImage);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+
+  const images = [
+    payload.productImage2,
+    payload.productImage,
+    payload.productImage2,
+    payload.productImage2,
+    payload.productImage2,
+    payload.productImage2,
+  ];
+
   return (
     <Fragment>
       <NavigationBar />
       <div className="font-serif mt-40 md:mt-[12rem] lg:mt-[11rem] lg:flex">
+        <div className="grid gap-2 ml-8">
+          {images.map((image, index) => (
+            <img
+              key={index}
+              className={`w-[3rem] h-[3rem] border rounded-lg ${
+                selectedImageIndex === index
+                  ? "border-[0.1rem] border-blue-600"
+                  : ""
+              }`}
+              src={image}
+              onMouseEnter={() => {
+                setCurrentImage(image);
+                setSelectedImageIndex(index);
+              }}
+            />
+          ))}
+        </div>
         <div className="lg:w-4/5 lg:m-auto lg:flex lg:gap-24">
           <div className="flex justify-center items-center">
+            {/* Large image display */}
             <img
               className="max-[767px]:h-[10rem] max-[767px]:w-[10rem] md:h-[17rem] md:w-[17rem] lg:w-[30rem] lg:h-[15rem]"
-              src={payload.productImage}
+              src={currentImage}
               alt="product"
             />
           </div>
@@ -54,29 +80,6 @@ const ProductDetails = () => {
                 })}
               </h1>
             </span>
-
-            <div className=" flex gap-4 m-4">
-              <div className="flex mt-2">
-                <button
-                  // onClick={removeItemHandler}
-                  className="border-2 md:border-4 lg:border-2 px-4 hover:text-blue-600 md:px-8 lg:px-4 md:text-2xl lg:text-sm"
-                >
-                  <HiOutlineMinus />
-                </button>
-                <div className="border-2 md:border-4 lg:border-2 pt-1 px-4 md:px-8 lg:px-4 md:text-2xl lg:text-sm">
-                  0
-                </div>
-                <button
-                  // onClick={addItemHandler}
-                  className="border-2 md:border-4 lg:border-2 px-4 hover:text-blue-600 md:px-8 lg:px-4 md:text-2xl lg:text-sm"
-                >
-                  <IoMdAdd />
-                </button>
-              </div>
-              <button className="bg-slate-950 text-white p-2 px-14 text-sm mt-2 hover:bg-blue-600 shadow-lg md:text-xl lg:px-8 lg:text-sm">
-                add To Cart
-              </button>
-            </div>
           </div>
         </div>
       </div>
