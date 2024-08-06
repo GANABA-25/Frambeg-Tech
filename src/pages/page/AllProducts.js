@@ -84,7 +84,7 @@ const AllProducts = () => {
                     productName={product.productName}
                     description={product.description}
                     price={product.price}
-                    addToCart={product.addToCart}
+                    category={product.category}
                   />
                 ))}
               </div>

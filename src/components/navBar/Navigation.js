@@ -7,7 +7,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaTimes } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 import { FaCartFlatbed } from "react-icons/fa6";
-import { IoIosArrowForward } from "react-icons/io";
 
 import CartFile from "../cart/CartFile";
 import SearchInput from "./SearchInput";
@@ -238,7 +237,7 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
                       to="/Login"
                       className="border-2 border-white px-2 hover:text-blue-800"
                     >
-                      Login
+                      sign in
                     </Link>
                   </ul>
                 </nav>
@@ -334,9 +333,9 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
                 <li>
                   <Link
                     to="/SignIn"
-                    className="flex items-center active:text-red-600 lg:hover:opacity-50 p-2 lg:hover:opacity-50 lg:text-lg"
+                    className="flex items-center active:text-red-600 p-2 lg:hover:opacity-50 lg:text-lg"
                   >
-                    Sign in <IoIosArrowForward />
+                    Sign in
                   </Link>
                 </li>
               </ul>

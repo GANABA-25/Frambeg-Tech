@@ -7,8 +7,8 @@ const ImageWithText = (props) => {
         alt="Description of the image"
         className="w-full h-28 md:h-32 lg:h-48 lg:w-full"
       />
-      <div className="absolute top-0 left-0 right-0 bottom-0 ">
-        <div className="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-50 "></div>
+      <div className="absolute top-0 left-0 right-0 bottom-0">
+        <div className="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-50"></div>
         <div className="relative text-center pt-3">
           <h1 className="text-xs text-white font-bold lg:pt-7">
             {props.extraText}

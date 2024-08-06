@@ -1,9 +1,13 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+
 import NavigationBar from "../../components/navBar/Navigation";
+import RelatedProductsDetails from "../components/RelatedProductsDetails";
 import Footer from "../components/Footer";
 
 const ProductDetails = () => {
+  const [relatedProduct, setRelatedProduct] = useState([]);
   const { state } = useLocation();
   const payload = state && state.payload;
 
@@ -19,11 +23,29 @@ const ProductDetails = () => {
     payload.productImage2,
   ];
 
+  useEffect(() => {
+    const fetchRelatedProducts = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/products/relatedProducts/${payload.category}`
+        );
+        setRelatedProduct(response.data.relatedProducts);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (payload.category) {
+      fetchRelatedProducts();
+    }
+  }, [payload.category]);
+
   return (
     <Fragment>
       <NavigationBar />
+
       <div className="font-serif mt-40 md:mt-[12rem] lg:mt-[11rem] lg:flex">
-        <div className="grid gap-2 ml-8">
+        <div className="grid gap-2 ml-8 absolute">
           {images.map((image, index) => (
             <img
               key={index}
@@ -41,8 +63,7 @@ const ProductDetails = () => {
           ))}
         </div>
         <div className="lg:w-4/5 lg:m-auto lg:flex lg:gap-24">
-          <div className="flex justify-center items-center">
-            {/* Large image display */}
+          <div className="flex justify-center items-center bg-blue-500 lg:p-8">
             <img
               className="max-[767px]:h-[10rem] max-[767px]:w-[10rem] md:h-[17rem] md:w-[17rem] lg:w-[30rem] lg:h-[15rem]"
               src={currentImage}
@@ -88,7 +109,19 @@ const ProductDetails = () => {
         <h1 className="text-2xl font-bold md:text-4xl lg:text-2xl">
           Related Products
         </h1>
-        <p>This is a section for related products</p>
+        <div className="grid grid-cols-2 mx-4 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
+          {relatedProduct.map((product) => (
+            <RelatedProductsDetails
+              key={product._id}
+              id={product._id}
+              productImage={product.productImage}
+              productImage2={product.productImage2}
+              productName={product.productName}
+              description={product.description}
+              price={product.price}
+            />
+          ))}
+        </div>
       </div>
       <Footer />
     </Fragment>
