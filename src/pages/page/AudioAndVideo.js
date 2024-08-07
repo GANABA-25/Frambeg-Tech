@@ -88,7 +88,7 @@ const AudioAndVideo = () => {
                   productName={AudioAndVideo.productName}
                   description={AudioAndVideo.description}
                   price={AudioAndVideo.price}
-                  addToCart={AudioAndVideo.addToCart}
+                  category={AudioAndVideo.category}
                 />
               ))}
 
@@ -136,7 +136,7 @@ const AudioAndVideo = () => {
                     productName={AudioAndVideo.productName}
                     description={AudioAndVideo.description}
                     price={AudioAndVideo.price}
-                    addToCart={AudioAndVideo.addToCart}
+                    category={AudioAndVideo.category}
                   />
                 ))}
                 <div>

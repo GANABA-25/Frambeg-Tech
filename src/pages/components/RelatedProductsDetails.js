@@ -1,8 +1,18 @@
+import { useNavigate } from "react-router-dom";
+
 const RelatedProductsDetails = (props) => {
+  const navigate = useNavigate();
   return (
     <div className="h-full flex flex-col justify-between border-2">
       <div className="mb-auto">
-        <div className="group bg-blue-10003 flex justify-center">
+        <div
+          onClick={() =>
+            navigate("/ProductDetails", {
+              state: { payload: props },
+            })
+          }
+          className="group bg-blue-10003 flex justify-center"
+        >
           <img
             src={props.productImage}
             alt="Initial"

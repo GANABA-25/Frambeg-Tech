@@ -78,7 +78,7 @@ const HomeAppliances = () => {
                 productName={HomeAppliance.productName}
                 description={HomeAppliance.description}
                 price={HomeAppliance.price}
-                addToCart={HomeAppliance.addToCart}
+                category={HomeAppliance.category}
               />
             ))}
           </div>
@@ -125,7 +125,7 @@ const HomeAppliances = () => {
                     productName={HomeAppliance.productName}
                     description={HomeAppliance.description}
                     price={HomeAppliance.price}
-                    addToCart={HomeAppliance.addToCart}
+                    category={HomeAppliance.category}
                   />
                 ))}
 

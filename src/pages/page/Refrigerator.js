@@ -86,7 +86,7 @@ const Refrigerator = () => {
                   productName={Refrigerator.productName}
                   description={Refrigerator.description}
                   price={Refrigerator.price}
-                  addToCart={Refrigerator.addToCart}
+                  category={Refrigerator.category}
                 />
               ))}
               <div>
@@ -132,7 +132,7 @@ const Refrigerator = () => {
                     productName={Refrigerator.productName}
                     description={Refrigerator.description}
                     price={Refrigerator.price}
-                    addToCart={Refrigerator.addToCart}
+                    category={Refrigerator.category}
                   />
                 ))}
                 <div>
