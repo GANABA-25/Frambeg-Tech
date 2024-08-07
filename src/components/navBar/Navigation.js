@@ -141,7 +141,7 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
       <header className="mt-5 lg:mt-0 relative">
         {/*---------------------------------- SMALL SCREEN & MEDIUM SCREEN NAVBAR ----------------------------------*/}
         {/* SMALL & MEDIUM SCREEN NAVBAR ICONS */}
-        <div className=" py-5 px-2 bg-blue-600 lg:hidden fixed w-full top-0 z-10">
+        <div className="py-5 px-2 bg-blue-600 lg:hidden fixed w-full top-0 z-10">
           <div className="flex justify-between">
             <div className="flex lg:hidden">
               <div

@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 import NavigationBar from "../../components/navBar/Navigation";
-import RelatedProductsDetails from "../components/RelatedProductsDetails";
+import ProductItem from "../components/ProductItem";
 import Footer from "../components/Footer";
 
 const ProductDetails = () => {
@@ -43,13 +43,12 @@ const ProductDetails = () => {
   return (
     <Fragment>
       <NavigationBar />
-
-      <div className="font-serif mt-40 md:mt-[12rem] lg:mt-[11rem] lg:flex">
-        <div className="grid gap-2 ml-8 absolute">
+      <div className="py-5 px-2 font-serif mt-[8.5rem] md:mt-[9rem] lg:mt-[11rem] lg:flex lg:py-0 lg:px-0">
+        <div className="max-[767px]:flex justify-center max-[767px]:mb-4 md:flex md:mb-4 gap-2 lg:ml-8 lg:absolute lg:grid">
           {images.map((image, index) => (
             <img
               key={index}
-              className={`w-[3rem] h-[3rem] border rounded-lg ${
+              className={`w-[3rem] h-[3rem] p-[0.17rem] border rounded-lg md:w-[5rem] md:h-[5rem] lg:h-[3.5rem] lg:w-[3.5rem] ${
                 selectedImageIndex === index
                   ? "border-[0.1rem] border-blue-600"
                   : ""
@@ -63,7 +62,7 @@ const ProductDetails = () => {
           ))}
         </div>
         <div className="lg:w-4/5 lg:m-auto lg:flex lg:gap-24">
-          <div className="flex justify-center items-center bg-blue-500 lg:p-8">
+          <div className="max-[767px]:p-8 flex justify-center items-center bg-blue-500 md:p-8">
             <img
               className="max-[767px]:h-[10rem] max-[767px]:w-[10rem] md:h-[17rem] md:w-[17rem] lg:w-[30rem] lg:h-[15rem]"
               src={currentImage}
@@ -71,11 +70,11 @@ const ProductDetails = () => {
             />
           </div>
 
-          <div className="">
-            <h1 className="text-xl text-blue-600 m-4 mt-9 font-bold md:text-3xl md:mt-16 lg:text-xl lg:mt-0">
+          <div className="mt-4 grid max-[767px]:gap-4 md:gap-4 lg:mt-0">
+            <h1 className="text-xl text-blue-600 font-bold md:text-3xl lg:text-xl">
               {payload.productName}
             </h1>
-            <div className="mx-4 max-[767px]:text-[0.9rem] md:text-xl lg:text-[1rem]">
+            <div className=" max-[767px]:text-[0.9rem] md:text-xl lg:text-[1rem]">
               <p>{payload.description}</p>
             </div>
 
@@ -105,13 +104,13 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      <div className="m-4 max-[767px]:mt-8 lg:w-4/5 lg:m-auto lg:my-12">
-        <h1 className="text-2xl font-bold md:text-4xl lg:text-2xl">
+      <div className="py-5 px-2 lg:py-0 lg:px-0 lg:my-16 lg:w-4/5 lg:m-auto">
+        <h1 className="mb-4 text-2xl font-bold md:text-4xl lg:text-2xl lg:my-6">
           Related Products
         </h1>
-        <div className="grid grid-cols-2 mx-4 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
+        <div className="grid grid-cols-2 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3">
           {relatedProduct.map((product) => (
-            <RelatedProductsDetails
+            <ProductItem
               key={product._id}
               id={product._id}
               productImage={product.productImage}
