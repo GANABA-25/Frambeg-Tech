@@ -7,18 +7,19 @@ import { HiOutlineMinus } from "react-icons/hi";
 import { FaRegTimesCircle } from "react-icons/fa";
 
 const CartItem = (props) => {
-  const { description, quantity, total, price, productImage, id } = props.item;
+  const { description, quantity, total, price, productImage, productId } =
+    props.item;
 
   const dispatch = useDispatch();
 
   const removeItemHandler = () => {
-    dispatch(cartAction.removeItemFromCart(id));
+    dispatch(cartAction.removeItemFromCart(productId));
   };
 
   const addItemHandler = () => {
     dispatch(
       cartAction.addItemToCart({
-        id,
+        productId,
         price,
         description,
       })
@@ -26,7 +27,7 @@ const CartItem = (props) => {
   };
 
   const removeItemCompletelyHandler = () => {
-    dispatch(cartAction.removeItemCompletely(id));
+    dispatch(cartAction.removeItemCompletely(productId));
   };
 
   return (

@@ -1,4 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { sendCartData, fetchCartData } from "./store/cart-actions";
 
 import Home from "./pages/page/homePage/Home";
 import AllProducts from "./pages/page/AllProducts";
@@ -12,6 +15,8 @@ import SignIn from "./pages/page/authentication/SignIn";
 import Signup from "./pages/page/authentication/Signup";
 import ResetPasswordEmailVerification from "./pages/page/authentication/ResetPasswordEmailVerification";
 import ResetPassword from "./pages/page/authentication/ResetPassword";
+
+let isInitial = true;
 
 const router = createBrowserRouter([
   {
@@ -37,6 +42,27 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const userId = useSelector((state) => state.user.userId);
+  const item = useSelector(
+    (state) => state.cart.items[state.cart.items.length - 1]
+  ); // Selecting the last added item
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchCartData());
+  // }, [dispatch]);
+
+  useEffect(() => {
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
+
+    if (item) {
+      dispatch(sendCartData(item, userId));
+    }
+  }, [item, dispatch]);
+
   return (
     <div>
       <RouterProvider router={router} />

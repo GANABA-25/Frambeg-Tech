@@ -91,14 +91,14 @@ const TodaysDeals = () => {
                   {filteredProducts?.map((todaysDeals) => (
                     <ProductItem
                       key={todaysDeals._id}
-                      id={todaysDeals._id}
+                      productId={todaysDeals._id}
                       productImage={todaysDeals.productImage}
                       productImage2={todaysDeals.productImage2}
                       productName={todaysDeals.productName}
                       description={todaysDeals.description}
                       price={todaysDeals.price}
                       discount={todaysDeals.discount}
-                      addToCart={todaysDeals.addToCart}
+                      category={todaysDeals.category}
                     />
                   ))}
                 </div>

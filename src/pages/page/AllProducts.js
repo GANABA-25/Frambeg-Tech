@@ -78,7 +78,7 @@ const AllProducts = () => {
                 {filteredProducts.map((product) => (
                   <ProductItem
                     key={product._id}
-                    id={product._id}
+                    productId={product._id}
                     productImage={product.productImage}
                     productImage2={product.productImage2}
                     productName={product.productName}

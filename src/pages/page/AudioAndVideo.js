@@ -82,7 +82,7 @@ const AudioAndVideo = () => {
               {filteredProducts?.map((AudioAndVideo) => (
                 <ProductItem
                   key={AudioAndVideo._id}
-                  id={AudioAndVideo._id}
+                  productId={AudioAndVideo._id}
                   productImage={AudioAndVideo.productImage}
                   productImage2={AudioAndVideo.productImage2}
                   productName={AudioAndVideo.productName}
@@ -130,7 +130,7 @@ const AudioAndVideo = () => {
                 {filteredProducts?.map((AudioAndVideo) => (
                   <ProductItem
                     key={AudioAndVideo._id}
-                    id={AudioAndVideo._id}
+                    productId={AudioAndVideo._id}
                     productImage={AudioAndVideo.productImage}
                     productImage2={AudioAndVideo.productImage2}
                     productName={AudioAndVideo.productName}

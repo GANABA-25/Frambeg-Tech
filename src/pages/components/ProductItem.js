@@ -8,13 +8,20 @@ const ProductItem = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { title, price, discount, total, description, productImage, id } =
-    props;
+  const {
+    title,
+    price,
+    discount,
+    total,
+    description,
+    productImage,
+    productId,
+  } = props;
 
   const addToCartHandler = () => {
     dispatch(
       cartAction.addItemToCart({
-        id,
+        productId,
         title,
         price,
         discount,

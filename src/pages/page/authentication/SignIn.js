@@ -14,18 +14,18 @@ import ScrollToTop from "../../components/ScrollToTop";
 import formLoadingAnimation from "../../../lottie/Animation - form loading.json";
 
 const SignIn = () => {
-  const dispatch = useDispatch();
   const [viewPassword, setViewPassword] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
-
-  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setViewPassword(!viewPassword);
@@ -54,7 +54,9 @@ const SignIn = () => {
       );
 
       if (response.status === 200) {
-        dispatch(userActions.setUser({ userId: response.data.userId }));
+        const userId = response.data.userId;
+        dispatch(userActions.setUserId(userId));
+
         navigate("/");
         setLoginData({
           email: "",

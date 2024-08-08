@@ -6,14 +6,20 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: initialCartState,
   reducers: {
+    replaceCart(state, action) {
+      state.totalQuantity = action.payload.totalQuantity;
+      state.items = action.payload.items;
+    },
     addItemToCart(state, action) {
       const newItem = action.payload;
-      const existingItem = state.items.find((item) => item.id === newItem.id);
+      const existingItem = state.items.find(
+        (item) => item.productId === newItem.productId
+      );
       state.totalQuantity++;
       state.subtotal = state.subtotal + newItem.price;
       if (!existingItem) {
         state.items.push({
-          id: newItem.id,
+          productId: newItem.productId,
           price: newItem.price,
           quantity: 1,
           totalPrice: newItem.price,
@@ -28,12 +34,16 @@ const cartSlice = createSlice({
       }
     },
     removeItemFromCart(state, action) {
-      const id = action.payload;
-      const existingItem = state.items.find((item) => item.id === id);
+      const productId = action.payload;
+      const existingItem = state.items.find(
+        (item) => item.productId === productId
+      );
       state.totalQuantity--;
       state.subtotal = state.subtotal - existingItem.price;
       if (existingItem.quantity === 1) {
-        state.items = state.items.filter((item) => item.id !== id);
+        state.items = state.items.filter(
+          (item) => item.productId !== productId
+        );
       } else {
         existingItem.quantity--;
         existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
@@ -41,12 +51,16 @@ const cartSlice = createSlice({
     },
 
     removeItemCompletely(state, action) {
-      const id = action.payload;
-      const existingItem = state.items.find((item) => item.id === id);
+      const productId = action.payload;
+      const existingItem = state.items.find(
+        (item) => item.productId === productId
+      );
       state.totalQuantity = state.totalQuantity - existingItem.quantity;
       state.subtotal = state.subtotal - existingItem.totalPrice;
       if (existingItem.quantity >= 1) {
-        state.items = state.items.filter((item) => item.id !== id);
+        state.items = state.items.filter(
+          (item) => item.productId !== productId
+        );
       }
     },
   },

@@ -80,7 +80,7 @@ const Refrigerator = () => {
               {filteredProducts?.map((Refrigerator) => (
                 <ProductItem
                   key={Refrigerator._id}
-                  id={Refrigerator._id}
+                  productId={Refrigerator._id}
                   productImage={Refrigerator.productImage}
                   productImage2={Refrigerator.productImage2}
                   productName={Refrigerator.productName}
@@ -126,7 +126,7 @@ const Refrigerator = () => {
                 {filteredProducts?.map((Refrigerator) => (
                   <ProductItem
                     key={Refrigerator._id}
-                    id={Refrigerator._id}
+                    productId={Refrigerator._id}
                     productImage={Refrigerator.productImage}
                     productImage2={Refrigerator.productImage2}
                     productName={Refrigerator.productName}

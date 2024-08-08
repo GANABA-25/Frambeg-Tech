@@ -103,9 +103,9 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
               <ul>
                 {cartItems.map((item) => (
                   <CartItem
-                    key={item.id}
+                    key={item.productId}
                     item={{
-                      id: item.id,
+                      productId: item.productId,
                       price: item.price,
                       total: item.totalPrice,
                       quantity: item.quantity,

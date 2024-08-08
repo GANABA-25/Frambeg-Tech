@@ -77,13 +77,13 @@ const NewArrival = () => {
                   {newArrivalProducts?.map((NewArrival) => (
                     <ProductItem
                       key={NewArrival._id}
-                      id={NewArrival._id}
+                      productId={NewArrival._id}
                       productImage={NewArrival.productImage}
                       productImage2={NewArrival.productImage2}
                       productName={NewArrival.productName}
                       description={NewArrival.description}
                       price={NewArrival.price}
-                      addToCart={NewArrival.addToCart}
+                      category={NewArrival.category}
                     />
                   ))}
                 </div>
@@ -95,36 +95,6 @@ const NewArrival = () => {
                 </div>
               </div>
             )}
-
-            {/* {checkSearchedWord && filteredProducts.length === 0 ? (
-              <div className="mx-8 lg:ml-16">
-                <h1 className="text-xl">No results for {searchedWord}</h1>
-                <p>Try checking your spelling or use more general terms</p>
-              </div>
-            ) : (
-              <>
-                <div className="grid grid-cols-2 mx-4 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
-                  {newArrivalProducts?.map((NewArrival) => (
-                    <ProductItem
-                      key={NewArrival.id}
-                      id={NewArrival.id}
-                      productImage={NewArrival.productImage}
-                      productImage2={NewArrival.productImage2}
-                      productName={NewArrival.productName}
-                      description={NewArrival.description}
-                      price={NewArrival.price}
-                      addToCart={NewArrival.addToCart}
-                    />
-                  ))}
-                </div>
-                <div className="lg:ml-16">
-                  <Pagination
-                    totalPages={totalPages}
-                    handlePageClick={handlePageClick}
-                  />
-                </div>
-              </>
-            )} */}
           </div>
           <div className="flex justify-between gap-3 bg-sky-500 p-4 my-10 text-white">
             <div>
