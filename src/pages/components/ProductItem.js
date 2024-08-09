@@ -1,12 +1,13 @@
 import { Fragment } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import { cartAction } from "../../store/cart-slice";
+import { sendCartData } from "../../store/cart-actions";
 
 const ProductItem = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userId = useSelector((state) => state.user.userId);
 
   const {
     title,
@@ -19,17 +20,27 @@ const ProductItem = (props) => {
   } = props;
 
   const addToCartHandler = () => {
-    dispatch(
-      cartAction.addItemToCart({
-        productId,
-        title,
-        price,
-        discount,
-        total,
-        description,
-        productImage,
-      })
-    );
+    const itemToAdd = {
+      productId,
+      title,
+      price,
+      discount,
+      total,
+      description,
+      productImage,
+    };
+
+    // First, dispatch the action to add the item to the cart
+    dispatch(cartAction.addItemToCart(itemToAdd));
+
+    // Then, send the item data to the backend
+    const itemToSend = {
+      ...itemToAdd,
+      quantity: 1, // Assuming quantity is 1 for the first addition
+      totalPrice: price, // Assuming totalPrice is just the price for one unit
+    };
+
+    dispatch(sendCartData(itemToSend, userId));
   };
 
   return (

@@ -107,7 +107,7 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
                     item={{
                       productId: item.productId,
                       price: item.price,
-                      total: item.totalPrice,
+                      totalPrice: item.totalPrice,
                       quantity: item.quantity,
                       description: item.description,
                       productImage: item.productImage,

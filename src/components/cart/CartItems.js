@@ -7,7 +7,7 @@ import { HiOutlineMinus } from "react-icons/hi";
 import { FaRegTimesCircle } from "react-icons/fa";
 
 const CartItem = (props) => {
-  const { description, quantity, total, price, productImage, productId } =
+  const { description, quantity, totalPrice, price, productImage, productId } =
     props.item;
 
   const dispatch = useDispatch();
@@ -62,7 +62,7 @@ const CartItem = (props) => {
             </div>
             <h4 className="text-xl">
               ¢
-              {total.toLocaleString(undefined, {
+              {totalPrice.toLocaleString(undefined, {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
               })}

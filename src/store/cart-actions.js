@@ -1,41 +1,36 @@
 import { cartAction } from "./cart-slice";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { userActions } from "../store/user-slice";
 import axios from "axios";
 
-// export const fetchCartData = () => {
-//   return async (dispatch) => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.get(`http://localhost:8080/cart/getCart`);
+export const fetchCartData = (userId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/cart/getCart/${userId}`
+      );
 
-//         if (response.status === 200) {
-//           console.log("cart fetched successfully");
-//           dispatch(cartAction.replaceCart(response.data.cart));
-//         }
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     };
+      const cartData = response.data.cart;
+      dispatch(cartAction.replaceCart(cartData));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 
-//     fetchData();
-//   };
-// };
-
-export const sendCartData = (item, userId) => {
-  return async () => {
-    const sendRequest = async () => {
-      try {
-        const response = await axios.post(
-          `http://localhost:8080/cart/addToCart/${userId}`,
-          item
-        );
-
-        console.log("Cart data sent successfully:", response.data);
-      } catch (error) {
-        console.error("Error sending cart data:", error);
+export const sendCartData = (itemToSend, userId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/cart/addToCart/${userId}`,
+        itemToSend
+      );
+      if (response.status === 200) {
+        const message = response.data.message;
+        dispatch(userActions.setMessage(message));
       }
-    };
-
-    sendRequest();
+    } catch (error) {
+      console.error("Error sending cart data:", error);
+    }
   };
 };

@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { userActions } from "../../store/user-slice";
 import { GiBasket } from "react-icons/gi";
 
 const CartFile = (props) => {
   const cartQuantity = useSelector((state) => state.cart.totalQuantity);
-  const [addedToCart, setAddedToCart] = useState(false);
+  const dispatch = useDispatch();
+  const message = useSelector((state) => state.user.message);
+  const showMessage = useSelector((state) => state.user.showMessage);
 
   useEffect(() => {
-    if (cartQuantity > 0) {
-      setAddedToCart(true);
-      const timer = setTimeout(() => setAddedToCart(false), 1000);
+    if (showMessage) {
+      const timer = setTimeout(() => {
+        dispatch(userActions.clearMessage());
+      }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [cartQuantity]);
+  }, [showMessage, dispatch]);
 
   return (
     <>
@@ -26,9 +29,10 @@ const CartFile = (props) => {
           {cartQuantity}
         </h1>
       </div>
-      {addedToCart && (
+
+      {showMessage && (
         <h1 className="absolute text-white max-[767px]:left-[18.2rem] max-[767px]:top-[1.1rem] z-20 text-center bg-green-600 p-2 text-sm md:text-lg md:top-[1rem] md:left-[39rem] lg:top-[9.6rem] lg:left-[73rem]">
-          item added to cart
+          {message}
         </h1>
       )}
     </>
