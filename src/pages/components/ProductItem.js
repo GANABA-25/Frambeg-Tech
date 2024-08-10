@@ -30,14 +30,12 @@ const ProductItem = (props) => {
       productImage,
     };
 
-    // First, dispatch the action to add the item to the cart
     dispatch(cartAction.addItemToCart(itemToAdd));
 
-    // Then, send the item data to the backend
     const itemToSend = {
       ...itemToAdd,
-      quantity: 1, // Assuming quantity is 1 for the first addition
-      totalPrice: price, // Assuming totalPrice is just the price for one unit
+      quantity: 1,
+      totalPrice: price,
     };
 
     dispatch(sendCartData(itemToSend, userId));

@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
-import { userActions } from "../../../store/user-slice";
 import { useNavigate } from "react-router-dom";
+import { fetchCartData } from "../../../store/cart-actions";
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import axios from "axios";
@@ -54,8 +54,8 @@ const SignIn = () => {
       );
 
       if (response.status === 200) {
-        const userId = response.data.userId;
-        dispatch(userActions.setUserId(userId));
+        sessionStorage.setItem("userId", response.data.userId);
+        dispatch(fetchCartData());
 
         navigate("/");
         setLoginData({

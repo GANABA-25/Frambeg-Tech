@@ -1,7 +1,8 @@
 import { Fragment } from "react";
 import { useDispatch } from "react-redux";
-
 import { cartAction } from "../../store/cart-slice";
+import { removeCartItem } from "../../store/cart-actions";
+
 import { IoMdAdd } from "react-icons/io";
 import { HiOutlineMinus } from "react-icons/hi";
 import { FaRegTimesCircle } from "react-icons/fa";
@@ -13,7 +14,15 @@ const CartItem = (props) => {
   const dispatch = useDispatch();
 
   const removeItemHandler = () => {
+    const itemToRemove = {
+      productId,
+      price,
+      quantity,
+    };
+
     dispatch(cartAction.removeItemFromCart(productId));
+
+    dispatch(removeCartItem(itemToRemove));
   };
 
   const addItemHandler = () => {

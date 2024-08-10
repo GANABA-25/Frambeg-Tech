@@ -40,13 +40,14 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const userId = useSelector((state) => state.user.userId);
-
+  const userId = sessionStorage.getItem("userId");
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCartData(userId));
-  }, [dispatch]);
+    if (userId) {
+      dispatch(fetchCartData());
+    }
+  }, [userId, dispatch]);
 
   return (
     <div>
