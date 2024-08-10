@@ -2,14 +2,23 @@ import { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import { cartAction } from "../../store/cart-slice";
 import { removeCartItem } from "../../store/cart-actions";
+import { sendCartData } from "../../store/cart-actions";
 
 import { IoMdAdd } from "react-icons/io";
 import { HiOutlineMinus } from "react-icons/hi";
 import { FaRegTimesCircle } from "react-icons/fa";
 
 const CartItem = (props) => {
-  const { description, quantity, totalPrice, price, productImage, productId } =
-    props.item;
+  const {
+    title,
+    price,
+    total,
+    description,
+    quantity,
+    totalPrice,
+    productImage,
+    productId,
+  } = props.item;
 
   const dispatch = useDispatch();
 
@@ -20,12 +29,27 @@ const CartItem = (props) => {
       quantity,
     };
 
+    const itemToDelete = {
+      ...itemToRemove,
+      quantity: 1,
+      totalPrice: price,
+    };
+
     dispatch(cartAction.removeItemFromCart(productId));
 
-    dispatch(removeCartItem(itemToRemove));
+    dispatch(removeCartItem(itemToDelete));
   };
 
   const addItemHandler = () => {
+    const itemToAdd = {
+      productId,
+      title,
+      price,
+      total,
+      description,
+      productImage,
+    };
+
     dispatch(
       cartAction.addItemToCart({
         productId,
@@ -33,6 +57,14 @@ const CartItem = (props) => {
         description,
       })
     );
+
+    const itemToSend = {
+      ...itemToAdd,
+      quantity: 1,
+      totalPrice: price,
+    };
+
+    dispatch(sendCartData(itemToSend));
   };
 
   const removeItemCompletelyHandler = () => {

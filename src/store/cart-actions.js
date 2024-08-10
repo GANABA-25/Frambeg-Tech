@@ -4,7 +4,8 @@ import axios from "axios";
 
 export const fetchCartData = () => {
   return async (dispatch) => {
-    const userId = sessionStorage.getItem("userId");
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const userId = user.userId;
     try {
       const response = await axios.get(
         `http://localhost:8080/cart/getCart/${userId}`
@@ -19,7 +20,8 @@ export const fetchCartData = () => {
 
 export const sendCartData = (itemToSend) => {
   return async (dispatch) => {
-    const userId = sessionStorage.getItem("userId");
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const userId = user.userId;
     try {
       const response = await axios.post(
         `http://localhost:8080/cart/addToCart/${userId}`,
@@ -37,7 +39,8 @@ export const sendCartData = (itemToSend) => {
 
 export const removeCartItem = (itemToRemove) => {
   return async (dispatch) => {
-    const userId = sessionStorage.getItem("userId");
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const userId = user.userId;
 
     console.log(userId);
     try {
