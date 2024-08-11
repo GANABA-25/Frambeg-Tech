@@ -95,7 +95,7 @@ const Home = () => {
                   description={todaysDeals.description}
                   price={todaysDeals.price}
                   discount={todaysDeals.discount}
-                  addToCart={todaysDeals.addToCart}
+                  category={todaysDeals.category}
                 />
               ))}
             </div>

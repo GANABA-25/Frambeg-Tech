@@ -1,8 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-// import "~slick-carousel/slick/slick.css";
-// import "~slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
@@ -16,6 +14,7 @@ const Carousel = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    cssEase: "linear",
   };
 
   return (
@@ -25,26 +24,26 @@ const Carousel = () => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 4, type: "spring" }}
-        className="max-[767px]:mt-[9rem] md:mt-[9rem] lg:mt-[9.6rem]"
+        className="max-[767px]:mt-[9rem] md:mt-[9rem] lg:mt-[9.6rem] overflow-hidden"
       >
         <Slider {...settings}>
-          <div className=" px-0 mx-0">
+          <div className="px-0 mx-0 overflow-hidden">
             <img
-              className="h-85 md:h-50 lg:h-85 w-full object-cover "
+              className="w-full max-[767px]:h-85 md:h-50 object-cover lg:h-85"
               src="https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711541577/FrambegTech/HOME%20PAGE/backGroundImage_1_vuski8.jpg"
               alt="backGroundImage (1)"
             />
           </div>
-          <div className=" px-0 mx-0">
+          <div className="px-0 mx-0 overflow-hidden">
             <img
-              className="h-85 md:h-50 lg:h-85 w-full object-cover "
+              className="w-full max-[767px]:h-85 md:h-50 object-cover lg:h-85"
               src="https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711541581/FrambegTech/HOME%20PAGE/backGroundImage_ebxorr.jpg"
               alt="backGroundImage"
             />
           </div>
-          <div className=" px-0 mx-0">
+          <div className="px-0 mx-0 overflow-hidden">
             <img
-              className="h-85 md:h-50 lg:h-85 w-full object-cover"
+              className="w-full max-[767px]:h-85 md:h-50 object-cover lg:h-85"
               src="https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711541580/FrambegTech/HOME%20PAGE/backGroundImage_3_epucho.jpg"
               alt="backGroundImage (3)"
             />
@@ -96,3 +95,6 @@ const Carousel = () => {
 };
 
 export default Carousel;
+
+{
+}

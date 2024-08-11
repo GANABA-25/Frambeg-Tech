@@ -66,33 +66,41 @@ const AllProducts = () => {
         <div>
           {productsToDisplay.length === 0 ? (
             <div className="flex justify-center items-center w-full">
-              <Lottie
-                className="w-[6rem]"
-                animationData={loadingAnimation}
-                loop={true}
-              />
+              <h1>No Products matches {searchedWord}</h1>
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-2 mx-4 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
-                {filteredProducts.map((product) => (
-                  <ProductItem
-                    key={product._id}
-                    productId={product._id}
-                    productImage={product.productImage}
-                    productImage2={product.productImage2}
-                    productName={product.productName}
-                    description={product.description}
-                    price={product.price}
-                    category={product.category}
+              {allProducts.length === 0 ? (
+                <div className="flex justify-center items-center w-full">
+                  <Lottie
+                    className="w-[6rem]"
+                    animationData={loadingAnimation}
+                    loop={true}
                   />
-                ))}
-              </div>
+                </div>
+              ) : (
+                <Fragment>
+                  <div className="grid grid-cols-2 mx-4 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
+                    {productsToDisplay.map((product) => (
+                      <ProductItem
+                        key={product._id}
+                        productId={product._id}
+                        productImage={product.productImage}
+                        productImage2={product.productImage2}
+                        productName={product.productName}
+                        description={product.description}
+                        price={product.price}
+                        category={product.category}
+                      />
+                    ))}
+                  </div>
 
-              <Pagination
-                totalPages={totalPages}
-                handlePageClick={handlePageClick}
-              />
+                  <Pagination
+                    totalPages={totalPages}
+                    handlePageClick={handlePageClick}
+                  />
+                </Fragment>
+              )}
             </>
           )}
         </div>

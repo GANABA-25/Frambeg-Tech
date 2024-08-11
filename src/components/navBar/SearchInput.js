@@ -3,7 +3,7 @@ import { Fragment, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
 const SearchInput = ({ onHandleInput, onCheckSearchValue }) => {
-  const [searchWord, setSearchWord] = useState();
+  const [searchWord, setSearchWord] = useState("");
 
   const searchInputHandler = (e) => {
     setSearchWord(e.target.value);
