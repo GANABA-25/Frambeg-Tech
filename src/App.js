@@ -40,10 +40,15 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const user = JSON.parse(sessionStorage.getItem("user"));
-  const userId = user.userId;
+  let userId = null;
+  const userData = sessionStorage.getItem("user");
+
+  if (userData) {
+    const user = JSON.parse(userData);
+    userId = user.userId;
+  }
+
   const dispatch = useDispatch();
-  // const dispatch = useDispatch();
 
   useEffect(() => {
     if (userId) {

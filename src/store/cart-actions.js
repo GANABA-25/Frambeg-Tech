@@ -20,7 +20,14 @@ export const fetchCartData = () => {
 
 export const sendCartData = (itemToSend) => {
   return async (dispatch) => {
-    const user = JSON.parse(sessionStorage.getItem("user"));
+    const userData = sessionStorage.getItem("user");
+
+    if (!userData) {
+      console.log("No user data found in session storage.");
+      return;
+    }
+
+    const user = JSON.parse(userData);
     const userId = user.userId;
     try {
       const response = await axios.post(
