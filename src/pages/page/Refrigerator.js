@@ -84,16 +84,12 @@ const Refrigerator = () => {
           ) : (
             <>
               {!productsToDisplay.length ? (
-                <div className="flex justify-center items-center w-full lg:my-12">
-                  <h1>
-                    No products match your search query :
-                    <span className="font-bold text-red-600 lg:mx-2">
-                      {searchedWord}.
-                    </span>
-                  </h1>
-                  <h1 to="/AllProducts" className="uppercase ">
-                    Please use a more general term
-                  </h1>
+                <div className="grid max-[767px]:gap-4 text-center justify-center items-center w-full md:gap-8 md:text-xl md:my-8 lg:text-sm lg:flex lg:gap-0 lg:my-12">
+                  <h1>No products match your search query :</h1>
+                  <p className="font-bold text-red-600 lg:mx-2">
+                    {searchedWord}.
+                  </p>
+                  <h1 className="uppercase ">Please use a more general term</h1>
                 </div>
               ) : (
                 <Fragment>

@@ -15,6 +15,7 @@ import SignIn from "./pages/page/authentication/SignIn";
 import Signup from "./pages/page/authentication/Signup";
 import ResetPasswordEmailVerification from "./pages/page/authentication/ResetPasswordEmailVerification";
 import ResetPassword from "./pages/page/authentication/ResetPassword";
+import CheckOut from "./pages/page/CheckOut";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
         element: <ResetPasswordEmailVerification />,
       },
       { path: "/ResetPassword/:token", element: <ResetPassword /> },
+      { path: "/CheckOut", element: <CheckOut /> },
     ],
   },
 ]);

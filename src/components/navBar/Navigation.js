@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink, useLocation, Link } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, Link } from "react-router-dom";
 import { Fragment } from "react";
 import { useSelector } from "react-redux";
 
@@ -15,9 +15,11 @@ import ScrollToTop from "../../pages/components/ScrollToTop";
 
 import "../offcanvas/Offcanvas.css";
 import "../offcanvas/Offcanvas2.css";
+import axios from "axios";
 
 const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [HomePageColor, setHomePageColor] = useState("text-white");
   const [AllProductsPageColor, setAllProductsPageColor] =
     useState("text-white");
@@ -74,6 +76,36 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
     setIsOpen(!isOpen);
   };
 
+  const UserStatusHandler = async () => {
+    const userData = sessionStorage.getItem("user");
+
+    if (!userData) {
+      navigate("/SignIn");
+      return;
+    }
+
+    const parsedUserData = JSON.parse(userData);
+    const token = parsedUserData.token;
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/user/Authentication",
+        {},
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        navigate("/CheckOut");
+      }
+    } catch (error) {
+      navigate("/SignIn");
+    }
+  };
+
   return (
     <Fragment>
       <ScrollToTop />
@@ -126,7 +158,7 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
             <>
               <div className="mt-8 m-2">
                 <div className="bg-blue-10006 p-2 text-center text-white font-bold text-xl md:text-xl md:p-2 hover:bg-blue-600">
-                  <h1>Check Out</h1>
+                  <button onClick={UserStatusHandler}>Check Out</button>
                 </div>
               </div>
             </>
