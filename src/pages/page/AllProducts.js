@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import axios from "axios";
 
@@ -64,19 +65,27 @@ const AllProducts = () => {
           </p>
         </div>
         <div>
-          {productsToDisplay.length === 0 ? (
+          {allProducts.length === 0 ? (
             <div className="flex justify-center items-center w-full">
-              <h1>No Products matches {searchedWord}</h1>
+              <Lottie
+                className="w-[6rem]"
+                animationData={loadingAnimation}
+                loop={true}
+              />
             </div>
           ) : (
             <>
-              {allProducts.length === 0 ? (
-                <div className="flex justify-center items-center w-full">
-                  <Lottie
-                    className="w-[6rem]"
-                    animationData={loadingAnimation}
-                    loop={true}
-                  />
+              {!productsToDisplay.length ? (
+                <div className="flex justify-center items-center w-full lg:my-12">
+                  <h1>
+                    No products match your search query :
+                    <span className="font-bold text-red-600 lg:mx-2">
+                      {searchedWord}.
+                    </span>
+                  </h1>
+                  <Link to="/AllProducts" className="uppercase ">
+                    Please use a more general term
+                  </Link>
                 </div>
               ) : (
                 <Fragment>

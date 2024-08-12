@@ -45,7 +45,9 @@ const NewArrival = () => {
     product.productName.toLowerCase().includes(searchedWord.toLowerCase())
   );
 
-  // const productNameOnly = NewArrivalData.map((name) => name.productName);
+  const productsToDisplay = checkSearchedWord
+    ? filteredProducts
+    : newArrivalProducts;
 
   return (
     <Fragment>
@@ -63,7 +65,7 @@ const NewArrival = () => {
 
         <div className="md:m-4 lg:w-4/5 lg:m-auto">
           <div className="border-2 py-4 md:p-4 lg:p-4 shadow-md bg-white">
-            {filteredProducts.length === 0 ? (
+            {newArrivalProducts.length === 0 ? (
               <div className="flex justify-center items-center w-full">
                 <Lottie
                   className="w-[6rem]"
@@ -73,26 +75,42 @@ const NewArrival = () => {
               </div>
             ) : (
               <div>
-                <div className="grid grid-cols-2 mx-4 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
-                  {newArrivalProducts?.map((NewArrival) => (
-                    <ProductItem
-                      key={NewArrival._id}
-                      productId={NewArrival._id}
-                      productImage={NewArrival.productImage}
-                      productImage2={NewArrival.productImage2}
-                      productName={NewArrival.productName}
-                      description={NewArrival.description}
-                      price={NewArrival.price}
-                      category={NewArrival.category}
-                    />
-                  ))}
-                </div>
-                <div>
-                  <Pagination
-                    totalPages={totalPages}
-                    handlePageClick={handlePageClick}
-                  />
-                </div>
+                {!productsToDisplay.length ? (
+                  <div className="flex justify-center items-center w-full lg:my-12">
+                    <h1>
+                      No products match your search query :
+                      <span className="font-bold text-red-600 lg:mx-2">
+                        {searchedWord}.
+                      </span>
+                    </h1>
+                    <h1 to="/AllProducts" className="uppercase ">
+                      Please use a more general term
+                    </h1>
+                  </div>
+                ) : (
+                  <>
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
+                      {filteredProducts?.map((NewArrival) => (
+                        <ProductItem
+                          key={NewArrival._id}
+                          productId={NewArrival._id}
+                          productImage={NewArrival.productImage}
+                          productImage2={NewArrival.productImage2}
+                          productName={NewArrival.productName}
+                          description={NewArrival.description}
+                          price={NewArrival.price}
+                          category={NewArrival.category}
+                        />
+                      ))}
+                    </div>
+                    <div>
+                      <Pagination
+                        totalPages={totalPages}
+                        handlePageClick={handlePageClick}
+                      />
+                    </div>
+                  </>
+                )}
               </div>
             )}
           </div>

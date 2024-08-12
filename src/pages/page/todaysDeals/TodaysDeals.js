@@ -64,20 +64,7 @@ const TodaysDeals = () => {
 
         <div className="md:m-4 lg:w-4/5 lg:m-auto">
           <div className="border-2 py-4 md:p-4 lg:p-4 shadow-md bg-white">
-            {/* {checkSearchedWord && filteredProducts.length === 0 ? (
-              <div className="mx-8">
-                <h1 className="text-xl">No results for {searchedWord}</h1>
-                <p>Try checking your spelling or use more general terms</p>
-              </div>
-            ) : (
-              <TodaysDealsProducts
-                todaysDealsData={
-                  checkSearchedWord ? filteredProducts : todaysDealsData
-                }
-              />
-            )} */}
-
-            {productsToDisplay.length === 0 ? (
+            {bestDealsProducts.length === 0 ? (
               <div className="flex justify-center items-center w-full">
                 <Lottie
                   className="w-[6rem]"
@@ -87,27 +74,44 @@ const TodaysDeals = () => {
               </div>
             ) : (
               <>
-                <div className="grid grid-cols-2 mx-4 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0 lg:ml-16">
-                  {filteredProducts?.map((todaysDeals) => (
-                    <ProductItem
-                      key={todaysDeals._id}
-                      productId={todaysDeals._id}
-                      productImage={todaysDeals.productImage}
-                      productImage2={todaysDeals.productImage2}
-                      productName={todaysDeals.productName}
-                      description={todaysDeals.description}
-                      price={todaysDeals.price}
-                      discount={todaysDeals.discount}
-                      category={todaysDeals.category}
-                    />
-                  ))}
-                </div>
-                <div>
-                  <Pagination
-                    totalPages={totalPages}
-                    handlePageClick={handlePageClick}
-                  />
-                </div>
+                {!productsToDisplay.length ? (
+                  <div className="flex justify-center items-center w-full lg:my-12">
+                    <h1>
+                      " No products match your search query:
+                      <span className="font-bold text-red-600 lg:mx-2">
+                        {searchedWord}.
+                      </span>
+                      "
+                    </h1>
+                    <h1 to="/AllProducts" className="uppercase lg:mx-1">
+                      Please use a more general term
+                    </h1>
+                  </div>
+                ) : (
+                  <Fragment>
+                    <div className="grid grid-cols-2 mx-4 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
+                      {filteredProducts?.map((todaysDeals) => (
+                        <ProductItem
+                          key={todaysDeals._id}
+                          productId={todaysDeals._id}
+                          productImage={todaysDeals.productImage}
+                          productImage2={todaysDeals.productImage2}
+                          productName={todaysDeals.productName}
+                          description={todaysDeals.description}
+                          price={todaysDeals.price}
+                          discount={todaysDeals.discount}
+                          category={todaysDeals.category}
+                        />
+                      ))}
+                    </div>
+                    <div>
+                      <Pagination
+                        totalPages={totalPages}
+                        handlePageClick={handlePageClick}
+                      />
+                    </div>
+                  </Fragment>
+                )}
               </>
             )}
           </div>

@@ -43,6 +43,10 @@ const HomeAppliances = () => {
     product.productName.toLowerCase().includes(searchedWord.toLowerCase())
   );
 
+  const productsToDisplay = checkSearchedWord
+    ? filteredProducts
+    : homeApplianceProducts;
+
   return (
     <Fragment>
       <ScrollToTop />
@@ -54,12 +58,13 @@ const HomeAppliances = () => {
           setSearchedWord(searchWord);
         }}
       />
-      <div className="font-serif mt-44 lg:mt-0 lg:pt-[8rem]">
-        <div className="lg:hidden">
-          <h1 className="text-4xl m-4 mt-36 mb-10 lg:text-7xl font-bold text-blue-600 lg:my-24 ">
+
+      <div className="max-[767px]:pt-[10rem] md:pt-[8rem] h-full font-serif lg:w-4/5 lg:m-auto">
+        <div className="max-[767px]:mb-4 grid gap-6 md:my-24 md:gap-6 mx-4 lg:mx-0">
+          <h1 className="max-[767px]:text-4xl font-bold text-blue-600 lg:text-6xl">
             Home Appliances
           </h1>
-          <p className="m-4 opacity-75">
+          <p className="opacity-75">
             Discover the best collection of products specifically focused on
             home appliances. Find a comprehensive selection of kitchen
             appliances, home electronics, and other household essentials.
@@ -68,76 +73,55 @@ const HomeAppliances = () => {
             browsing top-quality brands and products designed to make your home
             more comfortable and efficient.
           </p>
-          <div className="grid grid-cols-2 mx-4 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0 lg:ml-16">
-            {filteredProducts?.map((HomeAppliance) => (
-              <ProductItem
-                key={HomeAppliance._id}
-                productId={HomeAppliance._id}
-                productImage={HomeAppliance.productImage}
-                productImage2={HomeAppliance.productImage2}
-                productName={HomeAppliance.productName}
-                description={HomeAppliance.description}
-                price={HomeAppliance.price}
-                category={HomeAppliance.category}
-              />
-            ))}
-          </div>
-          <div className="lg:ml-16">
-            <Pagination
-              totalPages={totalPages}
-              handlePageClick={handlePageClick}
-            />
-          </div>
         </div>
+        <div>
+          {homeApplianceProducts.length === 0 ? (
+            <div className="flex justify-center items-center w-full">
+              <Lottie
+                className="w-[6rem]"
+                animationData={loadingAnimation}
+                loop={true}
+              />
+            </div>
+          ) : (
+            <>
+              {!productsToDisplay.length ? (
+                <div className="flex justify-center items-center w-full lg:my-12">
+                  <h1>
+                    No products match your search query :
+                    <span className="font-bold text-red-600 lg:mx-2">
+                      {searchedWord}.
+                    </span>
+                  </h1>
+                  <h1 to="/AllProducts" className="uppercase ">
+                    Please use a more general term
+                  </h1>
+                </div>
+              ) : (
+                <Fragment>
+                  <div className="grid grid-cols-2 mx-4 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
+                    {filteredProducts.map((product) => (
+                      <ProductItem
+                        key={product._id}
+                        productId={product._id}
+                        productImage={product.productImage}
+                        productImage2={product.productImage2}
+                        productName={product.productName}
+                        description={product.description}
+                        price={product.price}
+                        category={product.category}
+                      />
+                    ))}
+                  </div>
 
-        <div className="md:m-4 lg:w-4/5 lg:m-auto">
-          <div className="hidden lg:my-24 lg:grid lg:gap-6">
-            <h1 className="text-6xl font-bold text-blue-600">
-              Home Appliances
-            </h1>
-            <p className="">
-              Discover the best collection of products specifically focused on
-              home appliances. Find a comprehensive selection of kitchen
-              appliances, home electronics, and other household essentials.
-              Whether you're upgrading your kitchen or shopping for everyday
-              household items, you'll find everything you need right here. Enjoy
-              browsing top-quality brands and products designed to make your
-              home more comfortable and efficient.
-            </p>
-          </div>
-          <div className="hidden lg:block ">
-            {filteredProducts.length === 0 ? (
-              <div className="flex justify-center items-center w-full">
-                <Lottie
-                  className="w-[6rem]"
-                  animationData={loadingAnimation}
-                  loop={true}
-                />
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 mx-4 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0 ">
-                {filteredProducts?.map((HomeAppliance) => (
-                  <ProductItem
-                    key={HomeAppliance._id}
-                    productId={HomeAppliance._id}
-                    productImage={HomeAppliance.productImage}
-                    productImage2={HomeAppliance.productImage2}
-                    productName={HomeAppliance.productName}
-                    description={HomeAppliance.description}
-                    price={HomeAppliance.price}
-                    category={HomeAppliance.category}
-                  />
-                ))}
-
-                <div>
                   <Pagination
                     totalPages={totalPages}
                     handlePageClick={handlePageClick}
                   />
-                </div>
-              </div>
-            )}
-          </div>
+                </Fragment>
+              )}
+            </>
+          )}
         </div>
       </div>
       <Footer />
