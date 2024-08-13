@@ -3,11 +3,16 @@ import { userActions } from "../store/user-slice";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-export const fetchCartData = (userId) => {
+export const fetchCartData = (userId, token) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/cart/getCart/${userId}`
+        `http://localhost:8080/cart/getCart/${userId}`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
       );
       const cartData = response.data.cart;
       dispatch(cartAction.replaceCart(cartData));
@@ -25,10 +30,16 @@ export const sendCartData = (itemToSend) => {
     }
     const userData = JSON.parse(storedAuthData);
     const userId = userData.userId;
+    const token = userData.token;
     try {
       const response = await axios.post(
         `http://localhost:8080/cart/addToCart/${userId}`,
-        itemToSend
+        itemToSend,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
       );
       if (response.status === 200) {
         const message = response.data.message;

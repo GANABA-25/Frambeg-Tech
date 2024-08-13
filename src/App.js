@@ -44,6 +44,7 @@ const router = createBrowserRouter([
 
 function App() {
   const userId = useSelector((state) => state.auth.userId);
+  const token = useSelector((state) => state.auth.token);
 
   const dispatch = useDispatch();
 
@@ -56,9 +57,9 @@ function App() {
 
   useEffect(() => {
     if (userId) {
-      dispatch(fetchCartData(userId));
+      dispatch(fetchCartData(userId, token));
     }
-  }, [userId, dispatch]);
+  }, [userId, token, dispatch]);
 
   return (
     <div>
