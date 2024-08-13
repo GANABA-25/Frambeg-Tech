@@ -1,8 +1,9 @@
 import { Fragment } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { cartAction } from "../../store/cart-slice";
 import { removeCartItem } from "../../store/cart-actions";
-import { sendCartData } from "../../store/cart-actions";
+import { sendCartData, removeItemCompletely } from "../../store/cart-actions";
 
 import { IoMdAdd } from "react-icons/io";
 import { HiOutlineMinus } from "react-icons/hi";
@@ -36,7 +37,6 @@ const CartItem = (props) => {
     };
 
     dispatch(cartAction.removeItemFromCart(productId));
-
     dispatch(removeCartItem(itemToDelete));
   };
 
@@ -68,7 +68,15 @@ const CartItem = (props) => {
   };
 
   const removeItemCompletelyHandler = () => {
+    const itemToDelete = {
+      productId,
+      price,
+      quantity,
+    };
+
     dispatch(cartAction.removeItemCompletely(productId));
+
+    dispatch(removeItemCompletely(itemToDelete));
   };
 
   return (

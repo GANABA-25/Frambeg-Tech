@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation, useNavigate, Link } from "react-router-dom";
 import { Fragment } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../store/authentication-slice";
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaTimes } from "react-icons/fa";
@@ -18,8 +19,6 @@ import "../offcanvas/Offcanvas2.css";
 import axios from "axios";
 
 const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
-  const location = useLocation();
-  const navigate = useNavigate();
   const [HomePageColor, setHomePageColor] = useState("text-white");
   const [AllProductsPageColor, setAllProductsPageColor] =
     useState("text-white");
@@ -30,13 +29,17 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
   const [NewArrivalPageColor, setNewArrivalPageColor] = useState("text-white");
   const [TodaysDealsPageColor, setTodaysDealsPageColor] =
     useState("text-white");
-
-  // const cartQuantity = useSelector((state) => state.cart.totalQuantity);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const token = useSelector((state) => state.auth.token);
   const subtotal = useSelector((state) => state.cart.subtotal);
 
   const cartItems = useSelector((state) => state.cart.items);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     location.pathname === "/"
@@ -76,17 +79,10 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
     setIsOpen(!isOpen);
   };
 
-  const UserStatusHandler = async () => {
-    const userData = sessionStorage.getItem("user");
-
-    if (!userData) {
+  const checkOutHandler = async () => {
+    if (!isLoggedIn) {
       navigate("/SignIn");
-      return;
     }
-
-    const parsedUserData = JSON.parse(userData);
-    const token = parsedUserData.token;
-
     try {
       const response = await axios.post(
         "http://localhost:8080/user/Authentication",
@@ -104,6 +100,11 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
     } catch (error) {
       navigate("/SignIn");
     }
+  };
+
+  const signOutHandler = () => {
+    sessionStorage.removeItem("user");
+    dispatch(logout());
   };
 
   return (
@@ -156,18 +157,19 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
             </span>
           ) : (
             <>
-              <div className="mt-8 m-2">
-                <div className="bg-blue-10006 p-2 text-center text-white font-bold text-xl md:text-xl md:p-2 hover:bg-blue-600">
-                  <button onClick={UserStatusHandler}>Check Out</button>
-                </div>
-              </div>
+              <button
+                onClick={checkOutHandler}
+                className="mt-8 m-2 w-full bg-blue-10006 p-2 text-center text-white font-bold text-xl md:text-xl md:p-2 hover:bg-blue-600"
+              >
+                Check Out
+              </button>
             </>
           )}
         </div>
         <div
           onClick={toggleOffcanvas}
           className={`overlay ${isOpen ? "open" : ""}`}
-        ></div>
+        />
       </div>
 
       <header className="mt-5 lg:mt-0 relative">
@@ -265,12 +267,21 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
                     >
                       <NavLink to="/TodaysDeals">Today's Deals</NavLink>
                     </li>
-                    <Link
-                      to="/Login"
-                      className="border-2 border-white px-2 hover:text-blue-800"
-                    >
-                      sign in
-                    </Link>
+                    {isLoggedIn ? (
+                      <button
+                        onClick={signOutHandler}
+                        className="flex items-center active:text-red-600 p-2 lg:hover:opacity-50 lg:text-lg"
+                      >
+                        Sign Out
+                      </button>
+                    ) : (
+                      <Link
+                        to="/Login"
+                        className="border-2 border-white px-2 hover:text-blue-800"
+                      >
+                        sign in
+                      </Link>
+                    )}
                   </ul>
                 </nav>
               </nav>
@@ -361,15 +372,21 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
                 <li>
                   <CartFile onClick={toggleOffcanvas} />
                 </li>
-
-                <li>
+                {isLoggedIn ? (
+                  <button
+                    onClick={signOutHandler}
+                    className="flex items-center active:text-red-600 p-2 lg:hover:opacity-50 lg:text-lg"
+                  >
+                    Sign Out
+                  </button>
+                ) : (
                   <Link
                     to="/SignIn"
                     className="flex items-center active:text-red-600 p-2 lg:hover:opacity-50 lg:text-lg"
                   >
                     Sign in
                   </Link>
-                </li>
+                )}
               </ul>
             </nav>
           </div>

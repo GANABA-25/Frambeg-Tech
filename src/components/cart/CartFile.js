@@ -13,7 +13,7 @@ const CartFile = (props) => {
     if (showMessage) {
       const timer = setTimeout(() => {
         dispatch(userActions.clearMessage());
-      }, 2000);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [showMessage, dispatch]);

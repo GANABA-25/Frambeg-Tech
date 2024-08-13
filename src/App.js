@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { login } from "./store/authentication-slice";
 import { fetchCartData } from "./store/cart-actions";
 
 import Home from "./pages/page/homePage/Home";
@@ -42,19 +43,20 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  let userId = null;
-  const userData = sessionStorage.getItem("user");
-
-  if (userData) {
-    const user = JSON.parse(userData);
-    userId = user.userId;
-  }
+  const userId = useSelector((state) => state.auth.userId);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const storedAuthData = sessionStorage.getItem("user");
+    if (storedAuthData) {
+      dispatch(login(JSON.parse(storedAuthData)));
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
     if (userId) {
-      dispatch(fetchCartData());
+      dispatch(fetchCartData(userId));
     }
   }, [userId, dispatch]);
 

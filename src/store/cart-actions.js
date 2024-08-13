@@ -1,11 +1,10 @@
 import { cartAction } from "./cart-slice";
 import { userActions } from "../store/user-slice";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
-export const fetchCartData = () => {
+export const fetchCartData = (userId) => {
   return async (dispatch) => {
-    const user = JSON.parse(sessionStorage.getItem("user"));
-    const userId = user.userId;
     try {
       const response = await axios.get(
         `http://localhost:8080/cart/getCart/${userId}`
@@ -20,15 +19,12 @@ export const fetchCartData = () => {
 
 export const sendCartData = (itemToSend) => {
   return async (dispatch) => {
-    const userData = sessionStorage.getItem("user");
-
-    if (!userData) {
-      console.log("No user data found in session storage.");
+    const storedAuthData = sessionStorage.getItem("user");
+    if (!storedAuthData) {
       return;
     }
-
-    const user = JSON.parse(userData);
-    const userId = user.userId;
+    const userData = JSON.parse(storedAuthData);
+    const userId = userData.userId;
     try {
       const response = await axios.post(
         `http://localhost:8080/cart/addToCart/${userId}`,
@@ -46,21 +42,39 @@ export const sendCartData = (itemToSend) => {
 
 export const removeCartItem = (itemToRemove) => {
   return async (dispatch) => {
-    const userData = sessionStorage.getItem("user");
-
-    if (!userData) {
-      console.log("No user data found in session storage.");
+    const storedAuthData = sessionStorage.getItem("user");
+    if (!storedAuthData) {
       return;
     }
-
-    const user = JSON.parse(userData);
-    const userId = user.userId;
-
-    console.log(userId);
+    const userData = JSON.parse(storedAuthData);
+    const userId = userData.userId;
     try {
       const response = await axios.post(
         `http://localhost:8080/cart/removeProductFromCart/${userId}`,
         itemToRemove
+      );
+      if (response.status === 200) {
+        const message = response.data.message;
+        dispatch(userActions.setMessage(message));
+      }
+    } catch (error) {
+      console.error("Error sending cart data:", error);
+    }
+  };
+};
+
+export const removeItemCompletely = (itemToDelete) => {
+  return async (dispatch) => {
+    const storedAuthData = sessionStorage.getItem("user");
+    if (!storedAuthData) {
+      return;
+    }
+    const userData = JSON.parse(storedAuthData);
+    const userId = userData.userId;
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/cart/removeProductFromCartCompletely/${userId}`,
+        itemToDelete
       );
       if (response.status === 200) {
         const message = response.data.message;

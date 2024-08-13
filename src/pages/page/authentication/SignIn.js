@@ -9,18 +9,19 @@ import axios from "axios";
 import { BiSolidError } from "react-icons/bi";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import { login } from "../../../store/authentication-slice";
 
 import ScrollToTop from "../../components/ScrollToTop";
 import formLoadingAnimation from "../../../lottie/Animation - form loading.json";
 
 const SignIn = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [viewPassword, setViewPassword] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -54,8 +55,8 @@ const SignIn = () => {
       );
 
       if (response.status === 200) {
-        console.log(response.data);
         sessionStorage.setItem("user", JSON.stringify(response.data));
+        dispatch(login(response.data));
         dispatch(fetchCartData());
 
         navigate("/");
