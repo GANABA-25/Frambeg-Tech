@@ -1,6 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { login } from "./store/authentication-slice";
 import { fetchCartData } from "./store/cart-actions";
 
@@ -17,6 +17,9 @@ import Signup from "./pages/page/authentication/Signup";
 import ResetPasswordEmailVerification from "./pages/page/authentication/ResetPasswordEmailVerification";
 import ResetPassword from "./pages/page/authentication/ResetPassword";
 import CheckOut from "./pages/page/CheckOut";
+
+import InternetStatusMonitor from "./pages/components/InternetStatusMonitor";
+import InternetStatusAnimation from "./pages/components/InternetStatusAnimation";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +48,7 @@ const router = createBrowserRouter([
 function App() {
   const userId = useSelector((state) => state.auth.userId);
   const token = useSelector((state) => state.auth.token);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   const dispatch = useDispatch();
 
@@ -62,9 +66,19 @@ function App() {
   }, [userId, token, dispatch]);
 
   return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
+    <Fragment>
+      <InternetStatusMonitor setIsOnline={setIsOnline} />
+
+      {isOnline ? (
+        <div>
+          <RouterProvider router={router} />
+        </div>
+      ) : (
+        <div className="flex justify-center items-center">
+          <InternetStatusAnimation />
+        </div>
+      )}
+    </Fragment>
   );
 }
 

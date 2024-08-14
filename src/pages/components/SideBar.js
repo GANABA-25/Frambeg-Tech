@@ -1,86 +1,64 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 const SideBar = () => {
-  // const [shouldMove, setShouldMove] = useState(false);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollHeight = window.scrollY;
-
-  //     if (scrollHeight > 2400) {
-  //       setShouldMove(true);
-  //     } else {
-  //       setShouldMove(false);
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
-
-  // const divStyle = {
-  //   position: "fixed",
-  //   top: shouldMove ? "-370px" : "130px",
-  //   transition: "top 0.3s ease",
-  // };
-  // style={divStyle}
-
   return (
-    <div className="mt-4 hidden lg:block lg:pr-[4.5rem]">
-      <h1 className="font-bold text-2xl mt-[12rem]">Categories</h1>
-      <ul className="my-24 opacity-75 text-sm md:text-xl lg:text-sm">
-        <li className="my-3 hover:text-blue-500 cursor-pointer">
-          Air conditioner
-        </li>
-        <Link to="/AudioAndVideo">
-          <li className="my-3 hover:text-blue-500 cursor-pointer">
+    <Fragment>
+      <div className="mt-4 hidden lg:block ml-[4rem] font-serif">
+        <h1 className="font-bold text-2xl mt-[12rem]">Categories</h1>
+        <ul className="my-12 grid gap-4 opacity-75 text-sm md:text-xl lg:text-sm">
+          <Link to="" className="hover:text-blue-500 cursor-pointer">
+            Air conditioner
+          </Link>
+          <Link
+            className="hover:text-blue-500 cursor-pointer"
+            to="/AudioAndVideo"
+          >
             Audio & Video
-          </li>
-        </Link>
+          </Link>
 
-        <Link to="/NewArrival">
-          <li className="my-3 hover:text-blue-500 cursor-pointer">
+          <Link className="hover:text-blue-500 cursor-pointer" to="/NewArrival">
             New Arrivals
-          </li>
-        </Link>
+          </Link>
 
-        <Link to="/HomeAppliance">
-          <li className="my-3 hover:text-blue-500 cursor-pointer">
+          <Link
+            className="hover:text-blue-500 cursor-pointer"
+            to="/HomeAppliance"
+          >
             Home Appliances
-          </li>
-        </Link>
+          </Link>
 
-        <Link to="">
-          <li className="my-3 hover:text-blue-500 cursor-pointer">
+          <Link className="hover:text-blue-500 cursor-pointer" to="">
             Kitchen Appliances
-          </li>
-        </Link>
+          </Link>
 
-        <Link to="">
-          <li className="my-3 hover:text-blue-500 cursor-pointer">
+          <Link className="hover:text-blue-500 cursor-pointer" to="">
             PCs & laptop
-          </li>
-        </Link>
+          </Link>
 
-        <Link to="/Refrigerators">
-          <li className="my-3 hover:text-blue-500 cursor-pointer">
+          <Link
+            className="hover:text-blue-500 cursor-pointer"
+            to="/Refrigerators"
+          >
             Refrigerator
-          </li>
-        </Link>
+          </Link>
 
-        <Link to="/TodaysDeals">
-          <li className="my-3 hover:text-blue-500 cursor-pointer">
+          <Link
+            className="hover:text-blue-500 cursor-pointer"
+            to="/TodaysDeals"
+          >
             Best Deals
-          </li>
-        </Link>
-      </ul>
-      <h1 className="font-bold text-2xl my-12">
-        Search for <br /> your products
-      </h1>
-    </div>
+          </Link>
+        </ul>
+      </div>
+      <div className="grid gap-2 bg-gray-300 text-center px-2 py-6 m-2 shadow-lg">
+        <h1 className="font-bold uppercase">Important Notice</h1>
+        <p>
+          The search box above enables you to search for products based on the
+          current page. If you wish to search for a specific product, please
+          navigate to the appropriate category or the All Products page.
+        </p>
+      </div>
+    </Fragment>
   );
 };
 

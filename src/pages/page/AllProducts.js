@@ -1,14 +1,15 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import axios from "axios";
 
 import loadingAnimation from "../../lottie/Animation - loading.json";
 import ProductItem from "../components/ProductItem";
 import ScrollToTop from "../components/ScrollToTop";
-import Footer from "../components/Footer";
-import NavigationBar from "../../components/navBar/Navigation";
 import Pagination from "../components/Pagination";
+
+import NavigationBar from "../../components/navBar/Navigation";
+import SideBar from "../components/SideBar";
+import Footer from "../components/Footer";
 
 const AllProducts = () => {
   const [searchedWord, setSearchedWord] = useState("");
@@ -53,64 +54,71 @@ const AllProducts = () => {
         }
         onHandleInputInNav={(searchWord) => setSearchedWord(searchWord)}
       />
-      <div className="max-[767px]:pt-[10rem] md:pt-[8rem] h-full font-serif lg:w-4/5 lg:m-auto">
-        <div className="max-[767px]:mb-4 grid gap-6 md:my-24 md:gap-6 mx-4 lg:mx-0">
-          <h1 className="text-6xl font-bold text-blue-600">Shop</h1>
-          <p className="opacity-75">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            turpis velit, iaculis vel risus non, convallis rhoncus ligula.
-            Vestibulum ut lorem posuere, malesuada neque et, placerat quam. In
-            hac habitasse platea dictumst. Sed bibendum porttitor sem, at
-            sollicitudin orci placerat nec.
-          </p>
+      <div className="lg:flex">
+        <div className="flex-none w-[16rem] border-r-2">
+          <SideBar />
         </div>
-        <div>
-          {allProducts.length === 0 ? (
-            <div className="flex justify-center items-center w-full">
-              <Lottie
-                className="w-[6rem]"
-                animationData={loadingAnimation}
-                loop={true}
-              />
-            </div>
-          ) : (
-            <>
-              {!productsToDisplay.length ? (
-                <div className="grid max-[767px]:gap-4 text-center justify-center items-center w-full md:gap-8 md:text-xl md:my-8 lg:text-sm lg:flex lg:gap-0 lg:my-12">
-                  <h1>No products match your search query :</h1>
-                  <p className="font-bold text-red-600 lg:mx-2">
-                    {searchedWord}.
-                  </p>
-                  <h1 className="uppercase ">Please use a more general term</h1>
-                </div>
-              ) : (
-                <Fragment>
-                  <div className="grid grid-cols-2 mx-4 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
-                    {productsToDisplay.map((product) => (
-                      <ProductItem
-                        key={product._id}
-                        productId={product._id}
-                        productImage={product.productImage}
-                        productImage2={product.productImage2}
-                        productName={product.productName}
-                        description={product.description}
-                        price={product.price}
-                        category={product.category}
-                      />
-                    ))}
-                  </div>
 
-                  <Pagination
-                    totalPages={totalPages}
-                    handlePageClick={handlePageClick}
-                  />
-                </Fragment>
-              )}
-            </>
-          )}
+        <div className="max-[767px]:pt-[10rem] md:pt-[8rem] h-full font-serif lg:w-[74.5%] lg:px-[2rem]">
+          <div className="max-[767px]:mb-4 grid gap-6 md:my-24 md:gap-6 mx-4 lg:mx-0">
+            <h1 className="text-6xl font-bold text-blue-600">Shop</h1>
+            <p className="opacity-75">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+              turpis velit, iaculis vel risus non, convallis rhoncus ligula.
+              Vestibulum ut lorem posuere, malesuada neque et, placerat quam. In
+              hac habitasse platea dictumst. Sed bibendum porttitor sem, at
+              sollicitudin orci placerat nec.
+            </p>
+          </div>
+          <div>
+            {allProducts.length === 0 ? (
+              <div className="flex justify-center items-center w-full">
+                <Lottie
+                  className="w-[6rem]"
+                  animationData={loadingAnimation}
+                  loop={true}
+                />
+              </div>
+            ) : (
+              <>
+                {!productsToDisplay.length ? (
+                  <div className="grid max-[767px]:gap-4 text-center justify-center items-center w-full md:gap-8 md:text-xl md:my-8 lg:text-sm lg:flex lg:gap-0 lg:my-12">
+                    <h1>No products match your search query :</h1>
+                    <p className="font-bold text-red-600 lg:mx-2">
+                      {searchedWord}.
+                    </p>
+                    <h1 className="uppercase ">
+                      Please use a more general term
+                    </h1>
+                  </div>
+                ) : (
+                  <Fragment>
+                    <div className="grid grid-cols-2 mx-4 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
+                      {productsToDisplay.map((product) => (
+                        <ProductItem
+                          key={product._id}
+                          productId={product._id}
+                          productImage={product.productImage}
+                          productImage2={product.productImage2}
+                          productName={product.productName}
+                          description={product.description}
+                          price={product.price}
+                          category={product.category}
+                        />
+                      ))}
+                    </div>
+
+                    <Pagination
+                      totalPages={totalPages}
+                      handlePageClick={handlePageClick}
+                    />
+                  </Fragment>
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
-
       <Footer />
     </Fragment>
   );
