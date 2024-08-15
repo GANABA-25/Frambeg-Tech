@@ -7,7 +7,7 @@ import authSlice from "./authentication-slice";
 const store = configureStore({
   reducer: {
     cart: cartSlice.reducer,
-    searchInput: searchBarSlice.reducer,
+    search: searchBarSlice,
     user: userSlice,
     auth: authSlice,
   },

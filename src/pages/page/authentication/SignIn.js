@@ -67,7 +67,7 @@ const SignIn = () => {
       }
     } catch (error) {
       const errors = error.response?.data?.errors;
-      if (errors) {
+      if (!errors) {
         setErrorMsg(error.response.data.message);
       } else {
         setErrorMsg("An error occurred, Try again later");

@@ -51,7 +51,7 @@ const ProductDetails = () => {
         onHandleInputInNav={(searchWord) => setSearchedWord(searchWord)}
       />
       <div className="py-5 px-2 font-serif mt-[8.5rem] md:mt-[9rem] lg:mt-[11rem] lg:flex lg:py-0 lg:px-0">
-        <div className="max-[767px]:flex justify-center max-[767px]:mb-4 md:flex md:mb-4 gap-2 lg:ml-8 lg:absolute lg:grid">
+        <div className="max-[767px]:flex justify-center cursor-pointer max-[767px]:mb-4 md:flex md:mb-4 gap-2 lg:ml-8 lg:absolute lg:grid">
           {images.map((image, index) => (
             <img
               key={index}

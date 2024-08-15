@@ -1,17 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { searchWord: "" };
-
-const searchBarSlice = createSlice({
-  name: "searchBar",
-  initialState,
+const searchSlice = createSlice({
+  name: "search",
+  initialState: {
+    query: "",
+    results: [],
+    isLoading: false,
+  },
   reducers: {
-    handleSearchWord: (state, action) => {
-      state.searchWord = action.payload;
+    setQuery(state, action) {
+      state.query = action.payload;
+    },
+    setResults(state, action) {
+      state.results = action.payload;
+    },
+    setLoading(state, action) {
+      state.isLoading = action.payload;
     },
   },
 });
 
-export const searchBarAction = searchBarSlice.actions;
-
-export default searchBarSlice;
+export const { setQuery, setResults, setLoading } = searchSlice.actions;
+export default searchSlice.reducer;

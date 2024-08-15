@@ -8,7 +8,7 @@ import { MdOutlinePayment } from "react-icons/md";
 const Offers = () => {
   return (
     <Fragment>
-      <div className="grid grid-cols-2 md:grid-cols-4 shadow-md border-2 gap-4 bg-white m-4 p-4 md:absolute md:top-46 lg:w-4/5 lg:m-auto lg:top-90 lg:right-0 lg:left-0">
+      <div className="grid grid-cols-2 md:grid-cols-4 shadow-md border-2 gap-4 bg-white m-4 p-4 md:absolute md:top-46 lg:w-4/5 lg:m-auto lg:top-[47rem]  lg:right-0 lg:left-0">
         <div className="md:flex lg:flex">
           <div className="text-blue-700 text-3xl md:px-2 lg:p-5">
             <FaShippingFast />

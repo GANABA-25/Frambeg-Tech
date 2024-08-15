@@ -13,7 +13,6 @@ import TopBrands from "./TopBrands";
 import CustomerComments from "./CustomerComments";
 import ProductItem from "../../components/ProductItem";
 import loadingAnimation from "../../../lottie/Animation - loading.json";
-import Pagination from "../../components/Pagination";
 import Footer from "../../components/Footer";
 
 const Home = () => {

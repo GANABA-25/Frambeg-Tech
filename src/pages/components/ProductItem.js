@@ -51,7 +51,7 @@ const ProductItem = (props) => {
                 state: { payload: props },
               })
             }
-            className="group bg-blue-10003 flex justify-center"
+            className="group bg-blue-10003 flex justify-center cursor-pointer"
           >
             <img
               src={props.productImage}
