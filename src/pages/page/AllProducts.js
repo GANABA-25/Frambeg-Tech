@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import Lottie from "lottie-react";
 import axios from "axios";
 
@@ -13,53 +12,47 @@ import SideBar from "../components/SideBar";
 import Footer from "../components/Footer";
 
 const AllProducts = () => {
-  const { results, isLoading } = useSelector((state) => state.search);
+  const [searchedWord, setSearchedWord] = useState("");
+  const [checkSearchedWord, setCheckedSearchedWord] = useState(false);
+  const [allProducts, setAllProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
+  const fetchProducts = async (page) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/products/allProducts?page=${page}`
+      );
+      const { products, totalPages } = response.data;
+      setAllProducts(products);
+      setTotalPages(totalPages);
+    } catch (error) {
+      console.error("Failed to fetch products:", error);
+    }
+  };
 
-  // const [searchedWord, setSearchedWord] = useState("");
-  // const [checkSearchedWord, setCheckedSearchedWord] = useState(false);
-  // const [allProducts, setAllProducts] = useState([]);
-  // const [currentPage, setCurrentPage] = useState(0);
-  // const [totalPages, setTotalPages] = useState(0);
+  useEffect(() => {
+    fetchProducts(currentPage + 1);
+  }, [currentPage]);
 
-  // const fetchProducts = async (page) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `http://localhost:8080/products/allProducts?page=${page}`
-  //     );
-  //     const { products, totalPages } = response.data;
-  //     setAllProducts(products);
-  //     setTotalPages(totalPages);
-  //   } catch (error) {
-  //     console.error("Failed to fetch products:", error);
-  //   }
-  // };
+  const handlePageClick = (data) => {
+    setCurrentPage(data.selected);
+  };
 
-  // useEffect(() => {
-  //   fetchProducts(currentPage + 1);
-  // }, [currentPage]);
+  const filteredProducts = allProducts.filter((product) =>
+    product.productName.toLowerCase().includes(searchedWord.toLowerCase())
+  );
 
-  // const handlePageClick = (data) => {
-  //   setCurrentPage(data.selected);
-  // };
-
-  // const filteredProducts = allProducts.filter((product) =>
-  //   product.productName.toLowerCase().includes(searchedWord.toLowerCase())
-  // );
-
-  // const productsToDisplay = checkSearchedWord ? filteredProducts : allProducts;
+  const productsToDisplay = checkSearchedWord ? filteredProducts : allProducts;
 
   return (
     <Fragment>
       <ScrollToTop />
       <NavigationBar
-      // onHandleCheckSearchValue={(isChecked) =>
-      //   setCheckedSearchedWord(isChecked)
-      // }
-      // onHandleInputInNav={(searchWord) => setSearchedWord(searchWord)}
+        onHandleCheckSearchValue={(isChecked) =>
+          setCheckedSearchedWord(isChecked)
+        }
+        onHandleInputInNav={(searchWord) => setSearchedWord(searchWord)}
       />
       <div className="lg:flex">
         <div className="flex-none w-[16rem] border-r-2">
@@ -77,26 +70,7 @@ const AllProducts = () => {
               sollicitudin orci placerat nec.
             </p>
           </div>
-
           <div>
-            {results.length > 0 ? (
-              results.map((product) => (
-                <ProductItem
-                  key={product._id}
-                  productId={product._id}
-                  productImage={product.productImage}
-                  productImage2={product.productImage2}
-                  productName={product.productName}
-                  description={product.description}
-                  price={product.price}
-                  category={product.category}
-                />
-              ))
-            ) : (
-              <p>No products found.</p>
-            )}
-          </div>
-          {/* <div>
             {allProducts.length === 0 ? (
               <div className="flex justify-center items-center w-full">
                 <Lottie
@@ -142,7 +116,7 @@ const AllProducts = () => {
                 )}
               </>
             )}
-          </div> */}
+          </div>
         </div>
       </div>
       <Footer />
