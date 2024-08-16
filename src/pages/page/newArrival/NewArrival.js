@@ -13,8 +13,6 @@ import Pagination from "../../components/Pagination";
 import Footer from "../../components/Footer";
 
 const NewArrival = () => {
-  const [searchedWord, setSearchedWord] = useState("");
-  const [checkSearchedWord, setCheckedSearchedWord] = useState(false);
   const [newArrivalProducts, setNewArrivalProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -41,25 +39,10 @@ const NewArrival = () => {
     setCurrentPage(data.selected);
   };
 
-  const filteredProducts = newArrivalProducts.filter((product) =>
-    product.productName.toLowerCase().includes(searchedWord.toLowerCase())
-  );
-
-  const productsToDisplay = checkSearchedWord
-    ? filteredProducts
-    : newArrivalProducts;
-
   return (
     <Fragment>
       <ScrollToTop />
-      <NavigationBar
-        onHandleCheckSearchValue={(checkSearchedWord) =>
-          setCheckedSearchedWord(checkSearchedWord ? true : false)
-        }
-        onHandleInputInNav={(searchWord) => {
-          setSearchedWord(searchWord);
-        }}
-      />
+      <NavigationBar />
       <div className="m-4 font-serif mt-44 lg:m-0 lg:pt-20">
         <HeaderBrandDeal />
 
@@ -74,42 +57,28 @@ const NewArrival = () => {
                 />
               </div>
             ) : (
-              <div>
-                {!productsToDisplay.length ? (
-                  <div className="grid max-[767px]:gap-4 text-center justify-center items-center w-full md:gap-8 md:text-xl md:my-8 lg:text-sm lg:flex lg:gap-0 lg:my-12">
-                    <h1>No products match your search query :</h1>
-                    <p className="font-bold text-red-600 lg:mx-2">
-                      {searchedWord}.
-                    </p>
-                    <h1 className="uppercase ">
-                      Please use a more general term
-                    </h1>
-                  </div>
-                ) : (
-                  <>
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
-                      {filteredProducts?.map((NewArrival) => (
-                        <ProductItem
-                          key={NewArrival._id}
-                          productId={NewArrival._id}
-                          productImage={NewArrival.productImage}
-                          productImage2={NewArrival.productImage2}
-                          productName={NewArrival.productName}
-                          description={NewArrival.description}
-                          price={NewArrival.price}
-                          category={NewArrival.category}
-                        />
-                      ))}
-                    </div>
-                    <div>
-                      <Pagination
-                        totalPages={totalPages}
-                        handlePageClick={handlePageClick}
-                      />
-                    </div>
-                  </>
-                )}
-              </div>
+              <Fragment>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
+                  {newArrivalProducts?.map((NewArrival) => (
+                    <ProductItem
+                      key={NewArrival._id}
+                      productId={NewArrival._id}
+                      productImage={NewArrival.productImage}
+                      productImage2={NewArrival.productImage2}
+                      productName={NewArrival.productName}
+                      description={NewArrival.description}
+                      price={NewArrival.price}
+                      category={NewArrival.category}
+                    />
+                  ))}
+                </div>
+                <div>
+                  <Pagination
+                    totalPages={totalPages}
+                    handlePageClick={handlePageClick}
+                  />
+                </div>
+              </Fragment>
             )}
           </div>
           <div className="flex justify-between gap-3 bg-sky-500 p-4 my-10 text-white">

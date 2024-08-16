@@ -1,43 +1,50 @@
 import { Fragment, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./SearchInput.css";
 
-import { FaSearch } from "react-icons/fa";
-
-const SearchInput = ({ onHandleInput, onCheckSearchValue }) => {
-  const [searchWord, setSearchWord] = useState("");
+const SearchInput = () => {
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isOverlayVisible, setOverlayVisible] = useState(false);
 
   const searchInputHandler = (e) => {
-    setSearchWord(e.target.value);
-    onCheckSearchValue(e.target.value);
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      navigate(`/SearchResultPage?searchedTerm=${searchTerm}`);
+      setOverlayVisible(false);
+    }
   };
 
-  const searchHandler = (e) => {
-    e.preventDefault();
-    onHandleInput(searchWord);
+  const handleFocus = () => {
+    setOverlayVisible(true);
+  };
 
-    setSearchWord("");
+  const handleBlur = () => {
+    setOverlayVisible(false);
   };
 
   return (
     <Fragment>
-      <form
-        onSubmit={searchHandler}
-        className="relative flex justify-center items-center md:mx-2"
-      >
-        <input
-          type="text"
-          placeholder="search for product"
-          onChange={searchInputHandler}
-          value={searchWord}
-          className="max-[767px]:w-full text-slate-950 border-2 bg-grayDark focus:border-0 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:rounded-sm p-[0.4rem] md:w-full lg:w-72"
-        />
-        <FaSearch
-          className={`absolute right-2 opacity-${
-            searchWord ? "0" : "50"
-          } text-black 
-          }`}
-        />
-      </form>
+      <div className={`overlay ${isOverlayVisible ? "visible" : ""}`} />
+
+      <div className="search-input-container">
+        <form
+          onSubmit={searchInputHandler}
+          className="relative flex justify-center items-center md:mx-2"
+        >
+          <input
+            type="text"
+            placeholder="search for product"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            className="max-[767px]:w-full text-slate-950 border-2 bg-grayDark focus:border-0 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:rounded-sm p-[0.4rem] md:w-full lg:w-72"
+          />
+        </form>
+      </div>
     </Fragment>
   );
 };
+
 export default SearchInput;

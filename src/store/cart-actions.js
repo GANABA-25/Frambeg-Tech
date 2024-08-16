@@ -1,6 +1,5 @@
 import { cartAction } from "./cart-slice";
 import { userActions } from "../store/user-slice";
-import { useSelector } from "react-redux";
 import axios from "axios";
 
 export const fetchCartData = (userId, token) => {

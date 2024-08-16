@@ -16,8 +16,6 @@ import loadingAnimation from "../../../lottie/Animation - loading.json";
 import Footer from "../../components/Footer";
 
 const Home = () => {
-  const [searchedWord, setSearchedWord] = useState("");
-  const [checkSearchedWord, setCheckedSearchedWord] = useState(false);
   const [bestDealsProducts, setBestDealsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -41,19 +39,9 @@ const Home = () => {
     fetchBestDealsProducts(currentPage + 1);
   }, [currentPage]);
 
-  const filteredProducts = bestDealsProducts.filter((product) =>
-    product.productName.toLowerCase().includes(searchedWord.toLowerCase())
-  );
   return (
     <Fragment>
-      <NavigationBar
-        onHandleCheckSearchValue={(checkSearchedWord) =>
-          setCheckedSearchedWord(checkSearchedWord ? true : false)
-        }
-        onHandleInputInNav={(searchWord) => {
-          setSearchedWord(searchWord);
-        }}
-      />
+      <NavigationBar />
 
       <section className="font-serif">
         <Carousel />
@@ -64,7 +52,7 @@ const Home = () => {
 
         <BrandDeals />
 
-        {filteredProducts.length === 0 ? (
+        {bestDealsProducts.length === 0 ? (
           <div className="flex justify-center items-center w-full">
             <Lottie
               className="w-[6rem]"
@@ -84,7 +72,7 @@ const Home = () => {
               </Link>
             </div>
             <div className="grid grid-cols-2 mb-8 gap-x-2 gap-y-8 md:grid-cols-3 md:mx-4 lg:grid-cols-4">
-              {filteredProducts?.map((todaysDeals) => (
+              {bestDealsProducts?.map((todaysDeals) => (
                 <ProductItem
                   key={todaysDeals._id}
                   id={todaysDeals._id}

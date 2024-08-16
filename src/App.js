@@ -17,6 +17,7 @@ import Signup from "./pages/page/authentication/Signup";
 import ResetPasswordEmailVerification from "./pages/page/authentication/ResetPasswordEmailVerification";
 import ResetPassword from "./pages/page/authentication/ResetPassword";
 import CheckOut from "./pages/page/CheckOut";
+import SearchResultPage from "./pages/page/SearchResultPage";
 
 import InternetStatusMonitor from "./pages/components/InternetStatusMonitor";
 import InternetStatusAnimation from "./pages/components/InternetStatusAnimation";
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
       },
       { path: "/ResetPassword/:token", element: <ResetPassword /> },
       { path: "/CheckOut", element: <CheckOut /> },
+      { path: "/SearchResultPage", element: <SearchResultPage /> },
     ],
   },
 ]);

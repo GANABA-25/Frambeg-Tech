@@ -11,8 +11,6 @@ import Pagination from "../../components/Pagination";
 import Footer from "../../components/Footer";
 
 const TodaysDeals = () => {
-  const [searchedWord, setSearchedWord] = useState("");
-  const [checkSearchedWord, setCheckedSearchedWord] = useState(false);
   const [bestDealsProducts, setBestDealsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -40,25 +38,10 @@ const TodaysDeals = () => {
     setCurrentPage(data.selected);
   };
 
-  const filteredProducts = bestDealsProducts.filter((product) =>
-    product.productName.toLowerCase().includes(searchedWord.toLowerCase())
-  );
-
-  const productsToDisplay = checkSearchedWord
-    ? filteredProducts
-    : bestDealsProducts;
-
   return (
     <Fragment>
       <ScrollToTop />
-      <NavigationBar
-        onHandleCheckSearchValue={(checkSearchedWord) =>
-          setCheckedSearchedWord(checkSearchedWord ? true : false)
-        }
-        onHandleInputInNav={(searchWord) => {
-          setSearchedWord(searchWord);
-        }}
-      />
+      <NavigationBar />
       <div className="m-4 font-serif mt-44 lg:m-0 lg:pt-20">
         <HeaderBrandDeals />
 
@@ -73,43 +56,29 @@ const TodaysDeals = () => {
                 />
               </div>
             ) : (
-              <>
-                {!productsToDisplay.length ? (
-                  <div className="grid max-[767px]:gap-4 text-center justify-center items-center w-full md:gap-8 md:text-xl md:my-8 lg:text-sm lg:flex lg:gap-0 lg:my-12">
-                    <h1>No products match your search query :</h1>
-                    <p className="font-bold text-red-600 lg:mx-2">
-                      {searchedWord}.
-                    </p>
-                    <h1 className="uppercase ">
-                      Please use a more general term
-                    </h1>
-                  </div>
-                ) : (
-                  <Fragment>
-                    <div className="grid grid-cols-2 mx-4 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
-                      {filteredProducts?.map((todaysDeals) => (
-                        <ProductItem
-                          key={todaysDeals._id}
-                          productId={todaysDeals._id}
-                          productImage={todaysDeals.productImage}
-                          productImage2={todaysDeals.productImage2}
-                          productName={todaysDeals.productName}
-                          description={todaysDeals.description}
-                          price={todaysDeals.price}
-                          discount={todaysDeals.discount}
-                          category={todaysDeals.category}
-                        />
-                      ))}
-                    </div>
-                    <div>
-                      <Pagination
-                        totalPages={totalPages}
-                        handlePageClick={handlePageClick}
-                      />
-                    </div>
-                  </Fragment>
-                )}
-              </>
+              <Fragment>
+                <div className="grid grid-cols-2 mx-4 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
+                  {bestDealsProducts?.map((todaysDeals) => (
+                    <ProductItem
+                      key={todaysDeals._id}
+                      productId={todaysDeals._id}
+                      productImage={todaysDeals.productImage}
+                      productImage2={todaysDeals.productImage2}
+                      productName={todaysDeals.productName}
+                      description={todaysDeals.description}
+                      price={todaysDeals.price}
+                      discount={todaysDeals.discount}
+                      category={todaysDeals.category}
+                    />
+                  ))}
+                </div>
+                <div>
+                  <Pagination
+                    totalPages={totalPages}
+                    handlePageClick={handlePageClick}
+                  />
+                </div>
+              </Fragment>
             )}
           </div>
 

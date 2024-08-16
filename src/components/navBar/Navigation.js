@@ -193,12 +193,7 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
             <CartFile onClick={toggleOffcanvas} />
           </div>
           <div className="mt-4 lg:hidden">
-            <SearchInput
-              onCheckSearchValue={(checkSearchWord) =>
-                onHandleCheckSearchValue(checkSearchWord)
-              }
-              onHandleInput={(searchWord) => onHandleInputInNav(searchWord)}
-            />
+            <SearchInput />
           </div>
         </div>
 
@@ -319,12 +314,7 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
                     Frambeg Tech
                   </h1>
                 </div>
-                <SearchInput
-                  onCheckSearchValue={(checkSearchWord) =>
-                    onHandleCheckSearchValue(checkSearchWord)
-                  }
-                  onHandleInput={(searchWord) => onHandleInputInNav(searchWord)}
-                />
+                <SearchInput />
               </div>
             </div>
 

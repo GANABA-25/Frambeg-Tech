@@ -52,16 +52,6 @@ const SideBar = () => {
       </div>
       <div className="grid gap-12">
         <div className="hidden border border-blue-600 font-serif lg:grid gap-2 bg-blue-10003 px-2 py-6 m-2 shadow-lg">
-          <h1 className="font-bold uppercase text-blue-600">
-            Important Notice
-          </h1>
-          <p className="text-sm ">
-            The search box above enables you to search for products based on the
-            current page. If you wish to search for a specific product, please
-            navigate to the appropriate category or the All Products page.
-          </p>
-        </div>
-        <div className="hidden border border-blue-600 font-serif lg:grid gap-2 bg-blue-10003 px-2 py-6 m-2 shadow-lg">
           <h1 className="font-bold text-blue-600 uppercase">
             Register and Join Us
           </h1>

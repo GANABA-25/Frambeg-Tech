@@ -12,8 +12,6 @@ import SideBar from "../components/SideBar";
 import Footer from "../components/Footer";
 
 const AllProducts = () => {
-  const [searchedWord, setSearchedWord] = useState("");
-  const [checkSearchedWord, setCheckedSearchedWord] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -39,21 +37,10 @@ const AllProducts = () => {
     setCurrentPage(data.selected);
   };
 
-  const filteredProducts = allProducts.filter((product) =>
-    product.productName.toLowerCase().includes(searchedWord.toLowerCase())
-  );
-
-  const productsToDisplay = checkSearchedWord ? filteredProducts : allProducts;
-
   return (
     <Fragment>
       <ScrollToTop />
-      <NavigationBar
-        onHandleCheckSearchValue={(isChecked) =>
-          setCheckedSearchedWord(isChecked)
-        }
-        onHandleInputInNav={(searchWord) => setSearchedWord(searchWord)}
-      />
+      <NavigationBar />
       <div className="lg:flex">
         <div className="flex-none w-[16rem] border-r-2">
           <SideBar />
@@ -81,39 +68,27 @@ const AllProducts = () => {
               </div>
             ) : (
               <>
-                {!productsToDisplay.length ? (
-                  <div className="grid max-[767px]:gap-4 text-center justify-center items-center w-full md:gap-8 md:text-xl md:my-8 lg:text-sm lg:flex lg:gap-0 lg:my-12">
-                    <h1>No products match your search query :</h1>
-                    <p className="font-bold text-red-600 lg:mx-2">
-                      {searchedWord}.
-                    </p>
-                    <h1 className="uppercase ">
-                      Please use a more general term
-                    </h1>
+                <Fragment>
+                  <div className="grid grid-cols-2 mx-4 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
+                    {allProducts.map((product) => (
+                      <ProductItem
+                        key={product._id}
+                        productId={product._id}
+                        productImage={product.productImage}
+                        productImage2={product.productImage2}
+                        productName={product.productName}
+                        description={product.description}
+                        price={product.price}
+                        category={product.category}
+                      />
+                    ))}
                   </div>
-                ) : (
-                  <Fragment>
-                    <div className="grid grid-cols-2 mx-4 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3 lg:mx-0">
-                      {productsToDisplay.map((product) => (
-                        <ProductItem
-                          key={product._id}
-                          productId={product._id}
-                          productImage={product.productImage}
-                          productImage2={product.productImage2}
-                          productName={product.productName}
-                          description={product.description}
-                          price={product.price}
-                          category={product.category}
-                        />
-                      ))}
-                    </div>
 
-                    <Pagination
-                      totalPages={totalPages}
-                      handlePageClick={handlePageClick}
-                    />
-                  </Fragment>
-                )}
+                  <Pagination
+                    totalPages={totalPages}
+                    handlePageClick={handlePageClick}
+                  />
+                </Fragment>
               </>
             )}
           </div>
