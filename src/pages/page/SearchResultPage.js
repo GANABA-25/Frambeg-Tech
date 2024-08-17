@@ -4,30 +4,35 @@ import { useSelector, useDispatch } from "react-redux";
 import Lottie from "lottie-react";
 import loadingAnimation from "../../lottie/Animation - loading.json";
 import axios from "axios";
+import { setLoading } from "../../store/searchBar-slice";
 
+import Pagination from "../components/Pagination";
 import ScrollToTop from "../components/ScrollToTop";
 import NavigationBar from "../../components/navBar/Navigation";
 import ProductItem from "../components/ProductItem";
 import SideBar from "../components/SideBar";
 import Footer from "../components/Footer";
-import { setLoading } from "../../store/searchBar-slice";
 
 const SearchResultPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.search.isLoading);
   const location = useLocation();
   const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
 
   const searchedTerm = new URLSearchParams(location.search).get("searchedTerm");
 
   useEffect(() => {
-    const fetchSearchResults = async () => {
+    const fetchSearchResults = async (page) => {
       dispatch(setLoading(true));
       try {
         const response = await axios.get(
-          `http://localhost:8080/products/searchedProducts/?searchedTerm=${searchedTerm}`
+          `http://localhost:8080/products/searchedProducts/?searchedTerm=${searchedTerm}&page=${page}`
         );
-        setProducts(response.data.results);
+        const { products, totalPages } = response.data;
+        setProducts(products);
+        setTotalPages(totalPages);
       } catch (error) {
         console.error("Error fetching search results", error);
       } finally {
@@ -36,11 +41,15 @@ const SearchResultPage = () => {
     };
 
     if (searchedTerm) {
-      fetchSearchResults();
+      fetchSearchResults(currentPage + 1);
     }
-  }, [searchedTerm]);
+  }, [searchedTerm, currentPage]);
 
   const productCount = products.length;
+
+  const handlePageClick = (data) => {
+    setCurrentPage(data.selected);
+  };
 
   return (
     <Fragment>
@@ -99,10 +108,10 @@ const SearchResultPage = () => {
                         ))}
                       </div>
 
-                      {/* <Pagination
+                      <Pagination
                         totalPages={totalPages}
                         handlePageClick={handlePageClick}
-                      /> */}
+                      />
                     </Fragment>
                   )}
                 </>
