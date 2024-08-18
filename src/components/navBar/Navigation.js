@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink, useLocation, useNavigate, Link } from "react-router-dom";
 import { Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { cartAction } from "../../store/cart-slice";
 import { logout } from "../../store/authentication-slice";
 
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -18,7 +19,7 @@ import "../offcanvas/Offcanvas.css";
 import "../offcanvas/Offcanvas2.css";
 import axios from "axios";
 
-const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
+const NavigationBar = () => {
   const [HomePageColor, setHomePageColor] = useState("text-white");
   const [AllProductsPageColor, setAllProductsPageColor] =
     useState("text-white");
@@ -104,6 +105,9 @@ const NavigationBar = ({ onHandleInputInNav, onHandleCheckSearchValue }) => {
 
   const signOutHandler = () => {
     sessionStorage.removeItem("user");
+    dispatch(
+      cartAction.replaceCart({ items: [], totalQuantity: 0, subtotal: 0 })
+    ); // Reset cart
     dispatch(logout());
   };
 

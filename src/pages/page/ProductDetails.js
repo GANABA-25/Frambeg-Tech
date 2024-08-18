@@ -1,15 +1,16 @@
 import { Fragment, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Lottie from "lottie-react";
 import axios from "axios";
 
 import NavigationBar from "../../components/navBar/Navigation";
 import ProductItem from "../components/ProductItem";
+import loadingAnimation from "../../lottie/Animation - loading.json";
 import Footer from "../components/Footer";
 
 const ProductDetails = () => {
   const [relatedProduct, setRelatedProduct] = useState([]);
-  const [searchedWord, setSearchedWord] = useState("");
-  const [checkSearchedWord, setCheckedSearchedWord] = useState(false);
+  const [response, setResponse] = useState("");
   const { state } = useLocation();
   const payload = state && state.payload;
 
@@ -31,6 +32,7 @@ const ProductDetails = () => {
         const response = await axios.get(
           `http://localhost:8080/products/relatedProducts/${payload.category}`
         );
+        setResponse(response);
         setRelatedProduct(response.data.relatedProducts);
       } catch (error) {
         console.log(error);
@@ -44,12 +46,7 @@ const ProductDetails = () => {
 
   return (
     <Fragment>
-      <NavigationBar
-        onHandleCheckSearchValue={(isChecked) =>
-          setCheckedSearchedWord(isChecked)
-        }
-        onHandleInputInNav={(searchWord) => setSearchedWord(searchWord)}
-      />
+      <NavigationBar />
       <div className="py-5 px-2 font-serif mt-[8.5rem] md:mt-[9rem] lg:mt-[11rem] lg:flex lg:py-0 lg:px-0">
         <div className="max-[767px]:flex justify-center cursor-pointer max-[767px]:mb-4 md:flex md:mb-4 gap-2 lg:ml-8 lg:absolute lg:grid">
           {images.map((image, index) => (
@@ -115,19 +112,29 @@ const ProductDetails = () => {
         <h1 className="mb-4 text-2xl font-bold md:text-4xl lg:text-2xl lg:my-6">
           Related Products
         </h1>
-        <div className="grid grid-cols-2 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3">
-          {relatedProduct.map((product) => (
-            <ProductItem
-              key={product._id}
-              id={product._id}
-              productImage={product.productImage}
-              productImage2={product.productImage2}
-              productName={product.productName}
-              description={product.description}
-              price={product.price}
+        {!response ? (
+          <div className="flex justify-center items-center w-full">
+            <Lottie
+              className="w-[6rem]"
+              animationData={loadingAnimation}
+              loop={true}
             />
-          ))}
-        </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-x-2 gap-y-8 md:grid-cols-3 lg:grid-cols-3">
+            {relatedProduct.map((product) => (
+              <ProductItem
+                key={product._id}
+                id={product._id}
+                productImage={product.productImage}
+                productImage2={product.productImage2}
+                productName={product.productName}
+                description={product.description}
+                price={product.price}
+              />
+            ))}
+          </div>
+        )}
       </div>
       <Footer />
     </Fragment>

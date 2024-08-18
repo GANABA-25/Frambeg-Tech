@@ -2,6 +2,8 @@ import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SearchInput.css";
 
+import { FaSearch } from "react-icons/fa";
+
 const SearchInput = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
@@ -40,6 +42,12 @@ const SearchInput = () => {
             onFocus={handleFocus}
             onBlur={handleBlur}
             className="max-[767px]:w-full text-slate-950 border-2 bg-grayDark focus:border-0 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:rounded-sm p-[0.4rem] md:w-full lg:w-72"
+          />
+          <FaSearch
+            className={`absolute right-2 z-[1005] ${
+              searchTerm ? "opacity-0" : "opacity-50"
+            } text-black 
+          }`}
           />
         </form>
       </div>
