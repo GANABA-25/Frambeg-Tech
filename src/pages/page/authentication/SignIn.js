@@ -57,7 +57,6 @@ const SignIn = () => {
       if (response.status === 200) {
         sessionStorage.setItem("user", JSON.stringify(response.data));
         dispatch(login(response.data));
-        dispatch(fetchCartData());
 
         navigate("/");
         setLoginData({

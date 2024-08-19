@@ -63,9 +63,9 @@ function App() {
 
   useEffect(() => {
     if (userId) {
-      dispatch(fetchCartData(userId, token));
+      dispatch(fetchCartData(userId));
     }
-  }, [userId, token, dispatch]);
+  }, [userId, dispatch]);
 
   return (
     <Fragment>
