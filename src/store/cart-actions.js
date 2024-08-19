@@ -2,11 +2,16 @@ import { cartAction } from "./cart-slice";
 import { userActions } from "../store/user-slice";
 import axios from "axios";
 
-export const fetchCartData = (userId) => {
+export const fetchCartData = (userId, token) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/cart/getCart/${userId}`
+        `http://localhost:8080/cart/getCart/${userId}`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
       );
       const cartData = response.data.cart;
       dispatch(cartAction.replaceCart(cartData));
