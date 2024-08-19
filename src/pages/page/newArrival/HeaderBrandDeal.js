@@ -7,12 +7,14 @@ const dummyData = [
       "https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711541583/FrambegTech/HOME%20PAGE/cover_oo5vyp.jpg",
     label: "The only case you need",
     text: "Shop now",
+    id: "1",
   },
   {
     image:
       "https://res.cloudinary.com/dmdnq9vh8/image/upload/v1711541577/FrambegTech/HOME%20PAGE/airPod_jax7jp.jpg",
     label: "Get 30% OFF",
     text: "Shop now",
+    id: "2",
     extraText: "BRAND DAY",
   },
 ];
@@ -40,6 +42,7 @@ const HeaderBrandDeal = () => {
         <div className="py-6 px-4lg:grid md:grid md:grid-cols-2 md:gap-4 lg:m-0 lg:grid-cols-2 lg:gap-4">
           {dummyData.map((Data) => (
             <ImageWithText
+              key={Data.id}
               image={Data.image}
               label={Data.label}
               text={Data.text}
