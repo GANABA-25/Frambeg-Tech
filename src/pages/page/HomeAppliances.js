@@ -35,6 +35,7 @@ const HomeAppliances = () => {
 
   const handlePageClick = (data) => {
     setCurrentPage(data.selected);
+    window.scrollTo(0, 0);
   };
 
   return (
